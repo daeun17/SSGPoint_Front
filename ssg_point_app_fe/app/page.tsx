@@ -47,6 +47,7 @@ export default function Home() {
           rel="noopener noreferrer"
         >
           <h2 className={`mb-3 text-2xl font-semibold`}>
+            <span>
             logout{' '}
               -&gt;
             </span>
