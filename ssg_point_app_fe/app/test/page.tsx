@@ -16,8 +16,8 @@ export default function Home() {
 
   
   return (
-    <div className="box-border block w-full h-full relative bg-white">
-      <div className="box-border block w-full h-full absolute top-0 left-0 bg-white">
+    <div className="box-border block w-[360px] h-[800px] relative bg-white">
+      <div className="box-border block w-[360px] h-[2050px] absolute top-0 left-0 bg-white">
         <div className="w-[360px] h-[1857px]">
           <Image src={main05} width={360} height={316} alt="main05" className="absolute top-[1475px] left-0 object-cover" />
           

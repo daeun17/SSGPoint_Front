@@ -3,7 +3,7 @@ import React from "react";
 const Line14 = () => {
   return (
     <svg
-      className="absolute top-[1819px] left-0"
+      className="absolute top-[1791px] left-0"
       width={360}
       height={1}
       viewBox="0 0 360 1"
