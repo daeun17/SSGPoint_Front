@@ -1,6 +1,6 @@
 import React from "react";
 
-const Line14 = () => {
+const FootLine = () => {
   return (
     <svg
       className="absolute top-[1791px] left-0"
@@ -15,4 +15,4 @@ const Line14 = () => {
   );
 };
 
-export default Line14;
+export default FootLine;

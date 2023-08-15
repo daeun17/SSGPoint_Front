@@ -10,6 +10,7 @@ import rectangle38 from "/public/home/rectangle38.png";
 import rectangle39 from "/public/home/rectangle39.png";
 import rectangle40 from "/public/home/rectangle40.png";
 import Image from "next/image";
+import Footer from "@/components/layout/Footer";
 
 
 export default function Home() {
@@ -148,5 +149,3 @@ export default function Home() {
     </div>
   )
 }
-
-

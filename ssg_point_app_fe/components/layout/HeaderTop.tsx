@@ -30,6 +30,7 @@ function HeaderTop() {
                     <Logo url={'/'} imgUrl={rogo} imgAlt={'신세계포인트 로고'}
                     />
                     : "other component"}
+                    
                 <nav className='header_menu'>
                     <ul className='flex gap-4 justify-center items-center'>
                         <li className='text-sm font-medium'>
