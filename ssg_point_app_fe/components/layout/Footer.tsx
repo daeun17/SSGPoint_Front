@@ -4,7 +4,7 @@ import Image from 'next/image';
 import footermark from '../../public/images/footermark.png';
 import Link from 'next/link';
 
-export default function Footertest() {
+export default function Footer() {
     return (
         <footer className={styles.font}>
             <div className={styles.footer_box} style={{ transitionDuration: '300ms', transform: 'unset' }}>

@@ -12,7 +12,7 @@ const Header = () => {
 
     return (
         <header className='main_header'>
-            {pathname === '/'
+            {pathname === '/' || pathname === '/couponPage'
                     ?
                     <div>
                         <HeaderTop />
