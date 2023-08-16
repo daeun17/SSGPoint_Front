@@ -1,58 +1,65 @@
 import React from 'react'
-import rectangle41 from "/public/home/rectangle41.png";
+import styles from './Footer.module.css'
 import Image from 'next/image';
-import FootLine from '@/app/(home)/components/elements/FootLine';
+import footermark from '../../public/images/footermark.png';
+import Link from 'next/link';
 
-interface FooterProps {
-    offsetTop?: number;
-}
-
-export default function Footer({ offsetTop = 0 }: FooterProps) {
+export default function Footertest() {
     return (
-        <div className="">
-            <p style={{ top: `${1811 + offsetTop}px` }} className="absolute left-6 text-sm font-medium text-center text-black">
-                서비스 이용약관
-            </p>
-            <p style={{ top: `${1840 + offsetTop}px` }} className="absolute left-6 text-xs font-light text-left text-black">
-                신세계포인트 고객센터
-            </p>
-            <p style={{ top: `${1841 + offsetTop}px` }} className="absolute left-[169px] text-xs font-light text-center text-black">
-                운영시간 : 09시 - 18시
-            </p>
-            <p style={{ top: `${1856 + offsetTop}px` }} className="absolute left-[169px] text-xs font-light text-center text-black">
-                점심시간 : 12시 - 13시
-            </p>
-            <p style={{ top: `${1871 + offsetTop}px` }} className="absolute left-[169px] text-xs font-light text-center text-black">
-                (공휴일 제외)
-            </p>
-            <p style={{ top: `${1906 + offsetTop}px` }} className="absolute left-6 text-[11px] font-light text-center text-[#727272]">
-                (주)이마트 서울시 중구 세종대로 7길 37(순화동)
-            </p>
-            <p style={{ top: `${1926 + offsetTop}px` }} className="absolute left-6 text-[11px] font-light text-center text-[#727272]">
-                대표자 : 강희석
-            </p>
-            <p style={{ top: `${1926 + offsetTop}px` }} className="absolute left-[113px] text-[11px] font-light text-center text-[#727272]">
-                사업자등록번호 : 206-86-50913
-            </p>
-            <p style={{ top: `${1951 + offsetTop}px` }} className="absolute left-6 text-[8px] font-light text-center text-[#727272]">
-                COPYRIGHT (c) EMART INC. ALL RIGHTS RESERVED.
-            </p>
-            <p style={{ top: `${1858 + offsetTop}px` }} className="absolute left-6 text-[22px] font-medium text-center text-black">
-                1899-4349
-            </p>
-            <p style={{ top: `${1811 + offsetTop}px` }} className="absolute left-36 text-sm font-medium text-center text-[#e82a2a]">
-                개인정보 처리방침
-            </p>
+        <footer className={styles.font}>
+            <div className={styles.footer_box} style={{ transitionDuration: '300ms', transform: 'unset' }}>
+                <ul className={styles.terms}>
+                    <li><Link href="#">서비스 이용약관</Link></li>
+                    <li><Link href="#" className={styles.fnt_color}>개인정보 처리방침</Link></li>
+                </ul>
+                <div className={styles.info}>
+                    <p className={styles.tit}>신세계포인트 고객센터</p>
+                    <button className={styles.tel}>1899-4349</button>
+                    <p className={styles.txt0}>
+                        운영시간: <em>09</em>시 - <em>18</em>시<br />
+                        점심시간: <em>12</em>시 - <em>13</em>시<br />
+                        (공휴일 제외)
+                    </p>
+                </div>
+                <div className={styles.txt_cnt}>
+                    <p className={styles.txt}>
+                        <span className={styles.txt0}>㈜이마트 서울시 중구 세종대로 7길 37(순화동)</span>
+                        <span className={styles.txt1}>대표자 : 강희석</span>
+                        <span className={styles.txt2}>사업자등록번호 : 206-86-50913</span>
+                    </p>
+                    <p className={styles.copyright}>COPYRIGHT (c) EMART INC. ALL RIGHTS RESERVED.</p>
+                </div>
+                <div className={styles.wa_mark}>
+                    <Link title="새창" href="http://www.wa.or.kr/board/list.asp?BoardID=0006" target="_blank" rel="noopener noreferrer">
+                        <Image
+                            className={styles.wa}
+                            src={footermark}
+                            width={67}
+                            height={46.156}
+                            alt="(사)한국장애인단체총연합회 한국웹접근성인증평가원 웹 접근성 우수사이트 인증마크 (WA인증마크)"
+                        />
+                    </Link>
+                </div>
+            </div>
 
-            <Image
-                style={{ top: `${1921 + offsetTop}px` }}
-                className="absolute right-[10px] object-contain"
-                src={rectangle41}
-                width={50}
-                height={10}
-                alt="rectangle41"
-            />
-            <FootLine />
-        </div>
-    )
+            {/* <div id="alertCustomerTel" className="alert_popup">
+                <div className="layer">
+                    <div className="pop_contents">
+                        <p className="alert_txt">
+                            고객센터에 연결하시겠습니까?<br />
+                            운영시간 : 9시 ~ 18시<br />
+                            점심시간 : 12시 ~ 13시<br />
+                            <span className="sm sm_block">(공휴일 제외)</span>
+                        </p>
+                    </div>
+                    <div className="btn_box">
+                        <button className="btn1">아니오</button>
+                        <a href="#" className="btn0">예</a>
+                    </div>
+                </div>
+                <div className="dimmed"></div>
+            </div> */}
+        </footer>
+    );
+
 }

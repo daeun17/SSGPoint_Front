@@ -1,14 +1,13 @@
-'use client'
+
 
 import Link from 'next/link'
-import Image from 'next/image'
 import React, { useState } from 'react'
-
 import HeaderUserStatus from './HeaderUserStatus'
 import SideMenu from '../widget/SideMenu'
 import Logo from '../ui/header/Logo'
 import { usePathname } from 'next/navigation'
-// import rogo from "/public/home/ssgpoint-logo.gif";
+import BackUrl from '../ui/header/BackUrl'
+
 
 function HeaderTop() {
     const [isLogin, setIsLogin] = useState<Boolean>(false)
@@ -19,7 +18,9 @@ function HeaderTop() {
         setIsOpened(!isOpened)
         console.log(isOpened)
     }
-    const rogo = "/home/ssgpoint-logo.gif";
+    const rogo = "/images/ssgpoint-logo.gif";
+    const backurl = "/images/backurl.png";
+    
 
     return (
         <>
@@ -29,9 +30,11 @@ function HeaderTop() {
                     ?
                     <Logo url={'/'} imgUrl={rogo} imgAlt={'신세계포인트 로고'}
                     />
-                    : "other component"}
+                    : <BackUrl imgUrl={backurl} imgAlt={'뒤로가기'} />
+                        
+                }
                     
-                <nav className='header_menu'>
+                <nav className='header_menu mr-2'>
                     <ul className='flex gap-4 justify-center items-center'>
                         <li className='text-sm font-medium'>
                             {isLogin ?
