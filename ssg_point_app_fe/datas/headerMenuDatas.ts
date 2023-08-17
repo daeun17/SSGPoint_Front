@@ -17,9 +17,5 @@ export const headerMenuDatas: HeaderMenuType[] = [
         name: "쿠폰",
         url: "/couponPage"
     },
-    {
-        id: 4,
-        name: "Login",
-        url: "/login"
-    }
+    
 ];
