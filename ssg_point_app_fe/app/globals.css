@@ -15,6 +15,9 @@
     /* dark mode */
   }
 }
+:root {
+  --swiper-theme-color: #007aff;
+}
 
 
 @font-face {
@@ -69,19 +72,17 @@
 }
 
 
-/* a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,button,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,main,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video,Link {
+a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,button,canvas,caption,center,cite,code,dd,del,details,dfn,div,dl,dt,em,embed,fieldset,figcaption,figure,footer,form,h1,h2,h3,h4,h5,h6,header,hgroup,html,i,iframe,img,ins,kbd,label,legend,li,main,mark,menu,nav,object,ol,output,p,pre,q,ruby,s,samp,section,small,span,strike,strong,sub,summary,sup,table,tbody,td,tfoot,th,thead,time,tr,tt,u,ul,var,video,Link {
   border: 0;
   letter-spacing: -.25px;
   font-family: Inter, Noto Sans KR, Malgun Gothic, 맑은고딕, 굴림, gulim, helvetica, arial, sans-serif;
   vertical-align: baseline;
   outline: none
-} */
+}
 
 
 
-/* * {
-  box-sizing: border-box;
-} */
+
 
 body,
 ul,
@@ -140,7 +141,6 @@ dd {
   width: 100%;
   z-index: 10;
   background-color: var(--ssg-point-secondary);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 0;
   position: static;
 }
