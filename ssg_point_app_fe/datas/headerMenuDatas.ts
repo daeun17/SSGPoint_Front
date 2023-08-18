@@ -22,4 +22,9 @@ export const headerMenuDatas: HeaderMenuType[] = [
         name: "회원가입",
         url: "/member/join"
     },
+    {   
+        id: 5,
+        name: "회원가입 본인인증",
+        url: "/member/join/cert"
+    },
 ];

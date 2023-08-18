@@ -2,7 +2,10 @@
 import Link from 'next/link'
 import styles from './styles.module.css'
 import React from 'react'
-import LoginArea from './LoginArea';
+import LoginArea from './LoginArea'
+
+
+
 
 export const metadata = {
   title: '신세계포인트 - 로그인',
