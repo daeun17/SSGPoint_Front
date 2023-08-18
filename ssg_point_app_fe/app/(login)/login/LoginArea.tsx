@@ -5,25 +5,48 @@ import styles from './styles.module.css'
 import Link from 'next/link';
 
 export default function LoginArea() {
-  const [email, setEmail] = useState<string>('');
+  const [id, setId] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
+    if (!id && !password) {
+      alert('아이디와 비밀번호를 입력해주세요.');
+      return;
+    }
     
-    if (!email) {
+    if (!id) {
       alert('아이디를 입력해주세요.');
       return;
     }
-
+    
     if (!password) {
       alert('비밀번호를 입력해주세요.');
       return;
     }
-    if (!email || !password) {
-      alert('아이디와 비밀번호를 입력해주세요.');
-      return;
+  
+    try {
+      const response = await fetch('/api/v1/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ 
+          login_id: id,  // email 값을 username 필드로 전송
+          password: password 
+        })
+      });
+  
+      // 추가적인 응답 처리가 필요한 경우 여기에 코드를 추가할 수 있습니다.
+      if (response.ok) {
+        // 예: 로그인 성공 시 페이지 리디렉션 또는 메시지 표시 등
+      } else {
+        // 예: 오류 메시지 표시
+        console.error("Login failed:", await response.text());
+      }
+    } catch (error) {
+      console.error("Error sending POST request:", error);
     }
-    fetch('/api/test', {method: 'POST'})
   };
 
 
@@ -34,8 +57,8 @@ export default function LoginArea() {
           <label htmlFor="id00" className="hidden">
             <span className={styles.in_box}></span>
           </label>
-          <input id="id00" name="email" type="text" placeholder="아이디" value={email}
-            onChange={(e) => setEmail(e.target.value)}
+          <input id="id00" name="id" type="text" placeholder="아이디" value={id}
+            onChange={(e) => setId(e.target.value)}
             title="로그인을 위해 아이디를 입력해주세요." />
         </div>
         <div className={styles.input_box}>
