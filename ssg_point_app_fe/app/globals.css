@@ -141,7 +141,6 @@ dd {
   width: 100%;
   z-index: 10;
   background-color: var(--ssg-point-secondary);
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   padding: 0;
 }
 

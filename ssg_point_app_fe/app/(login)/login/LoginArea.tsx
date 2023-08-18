@@ -32,16 +32,16 @@ export default function LoginArea() {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({ 
-          login_id: id,  // email 값을 username 필드로 전송
+          login_id: id,  // id 값을 username 필드로 전송
           password: password 
         })
       });
   
-      // 추가적인 응답 처리가 필요한 경우 여기에 코드를 추가할 수 있습니다.
+      
       if (response.ok) {
-        // 예: 로그인 성공 시 페이지 리디렉션 또는 메시지 표시 등
+        // 로그인 성공 시 페이지 리디렉션 또는 메시지 표시 등
       } else {
-        // 예: 오류 메시지 표시
+        // 오류 메시지 표시
         console.error("Login failed:", await response.text());
       }
     } catch (error) {
