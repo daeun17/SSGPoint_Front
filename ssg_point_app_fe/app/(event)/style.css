@@ -93,3 +93,12 @@ select option {
   background: url(https://m.shinsegaepoint.com/img/event_end_date.fea1accb.png) no-repeat;
   background-size: 100% auto;
 }
+
+.event_list li .end_date p {
+  font-size: 14px;
+  font-weight: 700;
+  padding-top: 15px;
+  background: linear-gradient(106.4deg,#eb0000 6.03%,#eb6612 21.34%,#c68200 37.11%,#fc348c 52.88%,#7720a7 67.72%,#0ca19a 82.1%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
