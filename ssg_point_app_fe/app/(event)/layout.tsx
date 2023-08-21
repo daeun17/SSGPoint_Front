@@ -35,7 +35,6 @@ export default function EventLayout({
                     </div>
                     </div> : null
             }
-            
           {children}
         </section>
     )
