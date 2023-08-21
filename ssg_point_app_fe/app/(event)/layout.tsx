@@ -25,6 +25,7 @@ export default function EventLayout({
                     </li>
                     </ul>
             </div>
+            {/* from으로 바꾸기 */}
             {pathname == '/ingevent' ? 
                     <div className='event_sort_box'>
                     <div className='select_box'>
