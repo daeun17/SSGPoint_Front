@@ -81,9 +81,6 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,button,c
 }
 
 
-
-
-
 body,
 ul,
 ol,
@@ -108,6 +105,9 @@ dd {
 }
 
 
+
+/* 헤더 부분 */
+
 .header_bottom li {
   position: relative;
 }
@@ -124,15 +124,6 @@ dd {
   animation: slideUp 0.3s ease-in-out forwards;
 }
 
-@keyframes slideUp {
-  0% {
-    top: 0;
-  }
-
-  100% {
-    top: -0.5rem;
-  }
-}
 
 .main_header {
   position: sticky;
@@ -150,9 +141,80 @@ dd {
   font-weight: 500;
 }
 
-
 .back_btn {
   width: 48px;
   height: 56px;
   
+}
+
+
+/* 로그인 */
+.login_cnt {
+  padding: 40px
+}
+
+.login_cnt .sp_img_tit {
+  margin-bottom: 40px
+}
+
+.login_cnt .sp_tit1 {
+  padding-bottom: 40px
+}
+
+.login_cnt .sp_tit1 strong {
+  font-weight: 700
+}
+.sp_img_tit {
+  width: 89px;
+  height: 56px;
+  background: url(/images/login-logo.gif) no-repeat center 0;
+  background-size: 100% auto;
+  margin: 0 auto
+}
+
+
+/* 회원가입 */
+.top_cnt0,
+.top_cnt1 {
+    padding: 40px 20px
+}
+
+.sp_tit2 {
+    font-size: 24px;
+    line-height: 34px;
+    font-weight: 400;
+    word-break: keep-all
+}
+
+.sp_tit2 strong {
+    font-weight: 700
+}
+
+.sp_tit2 strong.fnt_color {
+    color: #f16701 !important
+}
+
+
+
+
+
+/* 쿠폰 */
+
+
+.content.coupon~.menu_bar .menu_coupon a:before,.content.main~.menu_bar .menu_home a:before,.content.membership~.menu_bar .menu_membership a:before,.content.mypage~.menu_bar .menu_mypage a:before,.content.mypoint~.menu_bar .menu_point a:before,.content.point_tip~.menu_bar .menu_tip a:before {
+  background-position: top
+}
+
+.content.coupon~.menu_bar .menu_coupon a:after,.content.main~.menu_bar .menu_home a:after,.content.membership~.menu_bar .menu_membership a:after,.content.mypage~.menu_bar .menu_mypage a:after,.content.mypoint~.menu_bar .menu_point a:after,.content.point_tip~.menu_bar .menu_tip a:after {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #000
 }
