@@ -1,10 +1,10 @@
 'use client'
 
 import React, { useState } from 'react'
-import styles from './styles.module.css'
+import styles from './Loginarea.module.css'
 import Link from 'next/link';
 
-export default function LoginArea() {
+export default function Loginarea() {
   const [id, setId] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
