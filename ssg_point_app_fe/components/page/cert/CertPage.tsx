@@ -3,7 +3,7 @@ import React from 'react'
 export default function CertPage() {
     return (
         <div>
-            <div className="auth_tab">
+            {/* <div className="auth_tab">
                 <ul role="tablist" className="auth_tab_menu">
                     <li role="presentation" className="on">
                         <a href="javascript:void(0)" role="tab" aria-selected="true" className="phone">휴대폰인증
@@ -252,7 +252,7 @@ export default function CertPage() {
                     <div className="dimed">
                     </div>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }
