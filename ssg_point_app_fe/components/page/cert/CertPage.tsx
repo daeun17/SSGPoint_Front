@@ -1,15 +1,22 @@
 'use client'
-
 import React, { useEffect, useState } from 'react'
 import styles from './CertPage.module.css'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
+import { CertFormDataType } from '@/types/certFormDataType'
 
 export default function CertPage() {
+    const [certData, setCertData] = useState<CertFormDataType>({
+        name: '',
+        birthday: '',
+        phone: '',
+        gender: 'M',
+        nationality: 'L',
+    });
 
-    const [gender, setGender] = useState<String>('M')
-    const [nationality, setNationality] = useState<String>('L')
 
 
-
+    const router = useRouter()
 
     return (
         <div>
@@ -33,7 +40,7 @@ export default function CertPage() {
                                 <div className={styles.form_box}>
                                     <p className={styles.tit}> 이름을 입력해 주세요. </p>
                                     <div className={styles.input_box}>
-                                        <input id="name00" type="text" title="회원가입을 위해 입력해주세요." />
+                                        <input name="name" id="name" type="text" title="회원가입을 위해 입력해주세요." />
                                         <label htmlFor="name00"><span className={styles.in_box}>이름 입력</span>
                                         </label>
                                     </div>
@@ -45,13 +52,13 @@ export default function CertPage() {
                                     </p>
                                     <div className={`${styles.radio_group_box} ${styles.col2}`}>
                                         <div className={styles.radio_box}>
-                                            <input id="radio00" type="radio" name="radioName00" value="M" defaultChecked checked={gender === 'M'}
-                                                onChange={() => setGender('M')} />
+                                            <input id="radio00" type="radio" name="radioName00" value="M" defaultChecked
+                                            />
                                             <label htmlFor="radio00">남자</label>
                                         </div>
                                         <div className={styles.radio_box}>
-                                            <input id="radio01" type="radio" name="radioName00" value="F" checked={gender === 'F'}
-                                                onChange={() => setGender('F')} />
+                                            <input id="radio01" type="radio" name="radioName00" value="F"
+                                            />
                                             <label htmlFor="radio01">여자</label>
                                         </div>
                                     </div>
@@ -66,8 +73,7 @@ export default function CertPage() {
                                                 name="radioName10"
                                                 value="L"
                                                 defaultChecked
-                                                checked={nationality === 'L'}
-                                                onChange={() => setNationality('L')}
+
                                             />
                                             <label htmlFor="radio10">내국인</label>
                                         </div>
@@ -77,8 +83,7 @@ export default function CertPage() {
                                                 type="radio"
                                                 name="radioName10"
                                                 value="F"
-                                                checked={nationality === 'F'}
-                                                onChange={() => setNationality('F')}
+
                                             />
                                             <label htmlFor="radio11">외국인</label>
                                         </div>
@@ -190,16 +195,18 @@ export default function CertPage() {
                             </div>
                             <div className={styles.tab_box1}>
                                 <div className={styles.btn_box}>
-                                    <button className={styles.btn_primary}> 인증번호 요청 </button>
+                                    <button className={styles.btn_primary}
+                                        onClick={() => router.push('/member/join/agree')}> 인증번호 요청 </button>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div className="notice_box">
-                <h3 className="tit">[유의사항]</h3>
-                <ul className="list_cnt">
+            <div className={styles.notice_box}>
+                <h3 className={styles.tit}>[유의사항]</h3>
+                <ul className={styles.list_cnt}>
                     <li>본인 명의의 인증 수단 정보를 정확히 입력해 주세요.</li>
                     <li>법인명의 휴대전화(법인폰)는 통신사에서 본인인증 서비스 신청 후 휴대폰 인증을 하실 수 있습니다.</li>
                     <li>개명하신 회원님의 경우 통신사 등에 등록된 본인인증 정보가 개명하신 이름으로 바뀐 이후부터 자동으로 변경됩니다.</li>

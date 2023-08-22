@@ -208,7 +208,7 @@
     -webkit-animation-timing-function: linear;
     animation-timing-function: linear;
     -webkit-animation-iteration-count: infinite;
-    animation-iteration-count: infinite
+    animation-iteration-count: infinite;
 }
 .radio_group_box {
     font-size: 0
@@ -229,6 +229,7 @@
     position: relative;
     height: 48px
 }
+
 .radio_box input {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -239,6 +240,7 @@
     height: 100%;
     border-radius: 0
 }
+
 .radio_box label {
     position: absolute;
     z-index: 2;
@@ -261,10 +263,13 @@
     border-radius: 8px;
     text-align: center;
 }
-.radio_box input:checked+label,.radio_box input:checked~label {
+
+.radio_box input:checked+label,
+.radio_box input:checked~label {
     background: #000;
     color: #fff
 }
+
 .radio_box input:checked+label:before {
     content: "";
     display: inline-block;
@@ -278,6 +283,7 @@
 .form_box.error .phone_select_box .select_box select {
     border-color: #e5e5e5
 }
+
 .phone_select_box {
     position: relative;
     font-size: 0
@@ -306,7 +312,7 @@
 
 
 
- .select_box:after {
+.select_box:after {
     content: "";
     position: absolute;
     z-index: 1;
@@ -332,9 +338,11 @@
     position: relative;
     z-index: 1;
     color: #000;
-    -webkit-appearance: none;  /* Chrome, Safari, Edge */
-    -moz-appearance: none;     /* Firefox */
-    appearance: none;   
+    -webkit-appearance: none;
+    
+    -moz-appearance: none;
+    
+    appearance: none;
 }
 
 .select_box.readyonly_bg:after {
@@ -354,6 +362,7 @@
     top: 25px;
     right: 16px
 }
+
 .chk_group_box.col2 .chk_box {
     width: 50%
 }
@@ -435,6 +444,7 @@
 .agree_marketing_popup .terms_agree_box {
     padding: 20px 20px 0
 }
+
 .marketing_cnt .terms_agree_box h3.tit2 {
     font-size: 18px;
     margin-bottom: 16px
@@ -451,19 +461,23 @@
 .cnt_box0+.terms_agree_box {
     padding-top: 0
 }
+
 .join_agree_box .terms_agree_box {
     padding: 15px 0 15px 20px;
     margin-top: 15px
 }
+
 .join_agree_box .terms_agree_box .add_info_agree_cnt {
     margin-top: 10px
 }
+
 .auth_tab_content .terms_agree_box {
     background: none;
     padding: 0 20px
 }
 
-.agree_form_box>.tit,.agree_form_box>.tit2 {
+.agree_form_box>.tit,
+.agree_form_box>.tit2 {
     padding: 0 0 17px 0;
     font-size: 18px;
     font-weight: 500;
@@ -513,17 +527,20 @@
     padding-left: 16px
 }
 
-.agree_all_chk .chk_box label .in_box,.agree_form .chk_box label .in_box {
+.agree_all_chk .chk_box label .in_box,
+.agree_form .chk_box label .in_box {
     display: table-cell;
     vertical-align: middle;
     word-break: keep-all;
     font-size: 13px
 }
+
 .agree_form_box .agree_all_chk {
     padding: 0 0 17px 0;
     margin: 0 0 17px 0;
     position: relative
 }
+
 .agree_form_box .agree_all_chk:after {
     content: "";
     width: 100%;
@@ -542,6 +559,7 @@
 .agree_form_box .agree_all_chk.clear:after {
     display: none
 }
+
 .agree_marketing_popup .marketing_cnt .check_list {
     margin-top: 15px
 }
@@ -569,11 +587,13 @@
 .agree_marketing_popup .marketing_cnt .check_list li+li {
     margin-top: 8px
 }
+
 .agree_list .agree_form {
     position: relative;
     padding: 0 22px 0 0;
     margin: 0 0 16px 0;
 }
+
 .agree_show {
     position: absolute;
     right: 0;
@@ -581,6 +601,7 @@
     width: 24px;
     height: 22px
 }
+
 .agree_show span {
     display: block;
     width: 24px;
@@ -615,6 +636,7 @@
     color: #000;
     font-weight: 500
 }
+
 .btn_box .sub_txt0 {
     font-size: 12px;
     color: #767676;
@@ -635,6 +657,7 @@
     line-height: 24px;
     font-weight: 500;
 }
+
 .list_cnt li {
     position: relative;
     font-size: 12px;
@@ -642,4 +665,15 @@
     color: #767676;
     padding-left: 7px;
     letter-spacing: -.5px;
+}
+
+.list_cnt li:before {
+    content: "Â·";
+    position: absolute;
+    left: 0;
+    top: 0;
+    line-height: 20px;
+    font-size: 12px;
+    color: #767676;
+    font-weight: 700;
 }
