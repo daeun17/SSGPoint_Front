@@ -430,3 +430,22 @@
 .list_cnt li+li {
     margin-top: 4px;
 }
+.input_box input.readonly_bg:-moz-read-only {
+    background: #fbfbfb;
+    border: 1px solid #e8e8e8;
+    color: #767676
+}
+
+.input_box input.readonly_bg:read-only,.input_box input:disabled {
+    background: #fbfbfb;
+    border: 1px solid #e8e8e8;
+    color: #767676
+}
+
+.input_box input.readonly_bg:-moz-read-only+label,.input_box input.readonly_bg:-moz-read-only~label {
+    visibility: hidden
+}
+
+.input_box input.readonly_bg:read-only+label,.input_box input.readonly_bg:read-only~label,.input_box input:disabled+label {
+    visibility: hidden
+}

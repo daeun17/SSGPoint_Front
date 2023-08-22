@@ -1,11 +1,11 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import styles from './CertPage.module.css'
-import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { CertFormDataType } from '@/types/certFormDataType'
 
 export default function CertPage() {
+    const router = useRouter()
     const [certData, setCertData] = useState<CertFormDataType>({
         name: '',
         birthday: '',
@@ -14,12 +14,24 @@ export default function CertPage() {
         nationality: 'L',
     });
 
+    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setCertData({
+            ...certData,
+            [name]: value
+        });
+        
+    }
 
+    const handleLocalStorage = (name: String, phone: String) => {
+        localStorage.setItem('tempName', name.toString())
+        localStorage.setItem('tempPhone', phone.toString())
+    }
 
-    const router = useRouter()
 
     return (
         <div>
+            {/* <form> */}
             <div className={styles.auth_tab}>
                 <ul role="tablist" className={styles.auth_tab_menu}>
                     <li role="presentation" className={styles.on}>
@@ -40,9 +52,8 @@ export default function CertPage() {
                                 <div className={styles.form_box}>
                                     <p className={styles.tit}> 이름을 입력해 주세요. </p>
                                     <div className={styles.input_box}>
-                                        <input name="name" id="name" type="text" title="회원가입을 위해 입력해주세요." />
-                                        <label htmlFor="name00"><span className={styles.in_box}>이름 입력</span>
-                                        </label>
+                                        <input name="name" id="name" type="text" placeholder='이름 입력' title="회원가입을 위해 입력해주세요."
+                                            onChange={handleOnChange} />
                                     </div>
                                     <p className={styles.error_txt}>
                                     </p>
@@ -52,13 +63,13 @@ export default function CertPage() {
                                     </p>
                                     <div className={`${styles.radio_group_box} ${styles.col2}`}>
                                         <div className={styles.radio_box}>
-                                            <input id="radio00" type="radio" name="radioName00" value="M" defaultChecked
-                                            />
+                                            <input id="radio00" type="radio" name="gender" value="M" defaultChecked
+                                                onChange={handleOnChange} />
                                             <label htmlFor="radio00">남자</label>
                                         </div>
                                         <div className={styles.radio_box}>
-                                            <input id="radio01" type="radio" name="radioName00" value="F"
-                                            />
+                                            <input id="radio01" type="radio" name="gender" value="F"
+                                                onChange={handleOnChange} />
                                             <label htmlFor="radio01">여자</label>
                                         </div>
                                     </div>
@@ -70,10 +81,10 @@ export default function CertPage() {
                                             <input
                                                 id="radio10"
                                                 type="radio"
-                                                name="radioName10"
+                                                name="nationality"
                                                 value="L"
                                                 defaultChecked
-
+                                                onChange={handleOnChange}
                                             />
                                             <label htmlFor="radio10">내국인</label>
                                         </div>
@@ -81,9 +92,9 @@ export default function CertPage() {
                                             <input
                                                 id="radio11"
                                                 type="radio"
-                                                name="radioName10"
+                                                name="nationality"
                                                 value="F"
-
+                                                onChange={handleOnChange}
                                             />
                                             <label htmlFor="radio11">외국인</label>
                                         </div>
@@ -93,10 +104,9 @@ export default function CertPage() {
                                     <em className="not-italic" >(예: 19990101)</em>
                                 </p>
                                     <div className={styles.input_box}>
-                                        <input id="birthday00" type="tel" />
-                                        <label htmlFor="birthday00">
-                                            <span className={styles.in_box}>법정생년월일 8자리</span>
-                                        </label>
+                                        <input id="birthday" name='birthday' placeholder='법정생년월일 8자리' type="tel"
+                                            onChange={handleOnChange} />
+
                                     </div>
                                     <p className={styles.error_txt}>
                                     </p>
@@ -115,10 +125,10 @@ export default function CertPage() {
                                             </select>
                                         </div>
                                         <div className={styles.input_box}>
-                                            <input id="phone00" maxLength={11} type="tel" />
-                                            <label htmlFor="phone00">
-                                                <span className={styles.in_box}>-없이 휴대폰 번호 입력</span>
-                                            </label>
+                                            <input id="phone" name='phone' maxLength={11} type="tel"
+                                                placeholder='-없이 휴대폰 번호 입력'
+                                                onChange={handleOnChange} />
+
                                         </div>
                                     </div>
                                     <p className={styles.error_txt}>
@@ -196,8 +206,8 @@ export default function CertPage() {
                             <div className={styles.tab_box1}>
                                 <div className={styles.btn_box}>
                                     <button className={styles.btn_primary}
-                                        onClick={() => router.push('/member/join/agree')}> 인증번호 요청 </button>
-
+                                        onClick={() => {handleLocalStorage(certData.name, certData.phone);
+                                        router.push('/member/join/agree');}}> 인증번호 요청 </button>
                                 </div>
                             </div>
                         </div>
@@ -213,6 +223,7 @@ export default function CertPage() {
                     <li>인증 오류 시 코리아크레딧뷰로 고객센터 02-708-1000에 문의해 주세요.</li>
                 </ul>
             </div>
+            {/* </form> */}
         </div>
 
 

@@ -1,8 +1,86 @@
-import React from 'react'
+'use client'
+
+import React, { useEffect, useState } from 'react'
 import styles from './FormArea.module.css'
-import Link from 'next/link'
+import { SignUpFormDataType } from '@/types/signUpFormDataType'
 
 export default function FormArea() {
+    const [signupData, setSignupData] = useState<SignUpFormDataType>({
+        loginId: '',
+        password: '',
+        name: '',
+        phone: '',
+        address: '',
+        agree1: localStorage.getItem('tempagree1') === 'true' ? true : false,
+        agree2: localStorage.getItem('tempagree2') === 'true' ? true : false,
+        agree3: localStorage.getItem('tempagree2') === 'true' ? true : false,
+        agree4: localStorage.getItem('tempagree2') === 'true' ? true : false,
+        agree5: localStorage.getItem('tempagree2') === 'true' ? true : false,
+        agree6: localStorage.getItem('tempagree2') === 'true' ? true : false,
+    })
+
+    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value, type, checked } = e.target;
+        if (type === "checkbox") {
+            setSignupData({
+                ...signupData,
+                [name]: checked
+            });
+        } else {
+            setSignupData({
+                ...signupData,
+                [name]: value
+            });
+        }
+    }
+    const formatPhoneNumber = (number: string) => {
+        return number.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
+    };
+
+    const handleSignUp = async () => {
+        try {
+            const response = await fetch('/api/v1/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    login_id: signupData.loginId,
+                    password: signupData.password,
+                    name: signupData.name,
+                    phone: signupData.phone,
+                    address: signupData.address,
+                    agree1: signupData.agree1,
+                    agree2: signupData.agree2,
+                    agree3: signupData.agree3,
+                    agree4: signupData.agree4,
+                    agree5: signupData.agree5,
+                    agree6: signupData.agree6,
+                })
+            }).then(res => res.json())
+            .then(data => console.log(data))
+            .catch(err => console.log(err))
+
+            
+        } catch (error) {
+            console.error("Error sending POST request:", error);
+        }
+    }
+
+    useEffect(() => {
+        const tempName = localStorage.getItem('tempName');
+        const tempPhone = localStorage.getItem('tempPhone');
+
+        if (tempName && tempPhone) {
+            setSignupData({
+                ...signupData,
+                name: tempName,
+                phone: formatPhoneNumber(tempPhone),
+            })
+        }
+
+    }, [])
+
     return (
         <div>
             <div className={styles.cnt_box0}>
@@ -10,9 +88,10 @@ export default function FormArea() {
                     <p className={styles.tit}> 아이디<span className="hidden">필수항목</span></p>
                     <div className={styles.input_btn_box}>
                         <div className={styles.input_box}>
-                            <input type="email" id="id00" title="회원 가입을 위한 아이디 입력"  />
-                            <label htmlFor="id00">
-                                <span className={styles.in_box}>영문, 숫자 6~20자리 입력해주세요.</span></label>
+                            <input type="text" id="loginId" name='loginId'
+                                placeholder='영문, 숫자 6~20자리 입력해주세요.' title="회원 가입을 위한 아이디 입력"
+                                onChange={handleOnChange} />
+
                         </div>
                         <div className={styles.btn_box}>
                             <button className={styles.btn2}> 중복확인 </button>
@@ -23,32 +102,35 @@ export default function FormArea() {
                 <div className={`${styles.form_box} ${styles.required}`}>
                     <p className={styles.tit}> 비밀번호 <span className="hidden">필수항목</span></p>
                     <div className={styles.input_box}>
-                        <input type="password" id="pw00" title="회원 가입을 위한 비밀번호 입력"  />
-                        <label htmlFor="pw00"><span className={styles.in_box}>영문 대/소문자, 숫자, 특수문자 중 3가지 이상을 조합하여 8-20자리로 입력해 주세요.</span></label>
+                        <input type="password" id="password" name='password'
+                            placeholder='영문 대/소문자, 숫자, 특수문자 중 3가지 이상을 조합하여 8-20자리로 입력해 주세요.' title="회원 가입을 위한 비밀번호 입력"
+                            onChange={handleOnChange} />
+
                     </div>
                     <p className={styles.error_txt}> 비밀번호 형식에 맞게 입력해주세요. </p>
                 </div>
                 <div className={`${styles.form_box} ${styles.required}`}>
-                    <p className={styles.tit}> 비밀번호 확인 
-                    <span className="hidden">필수항목</span></p>
+                    <p className={styles.tit}> 비밀번호 확인
+                        <span className="hidden">필수항목</span></p>
                     <div className={styles.input_box}>
-                        <input type="password" id="pw01"  />
-                        <label htmlFor="pw01"><span className={styles.in_box}>입력하신 비밀번호를 다시 한번 입력해주세요.</span></label>
+                        <input type="password" id="pwck" name='pwck' placeholder='입력하신 비밀번호를 다시 한번 입력해주세요.' />
+
                     </div>
                     <p className={styles.error_txt}> 비밀번호가 일치하지 않습니다. </p>
                 </div>
                 <div className={`${styles.form_box} ${styles.required}`}>
                     <p className={styles.tit}> 이름 <span className="hidden">필수항목</span></p>
                     <div className={styles.input_box}>
-                        <input type="text" id="name00" title="이름" readOnly className={styles.readonly_bg} />
-                        <label htmlFor="name00"><span className={styles.in_box}>이름 입력</span></label>
+                        <input type="text" id="name" name='name' title="이름" value={signupData.name.toString()} readOnly
+                            className={styles.readonly_bg} />
+
                     </div>
                 </div>
                 <div className={`${styles.form_box} ${styles.required}`}>
                     <p className={styles.tit}> 휴대폰번호 <span className="hidden">필수항목</span></p>
                     <div className={styles.input_box}>
-                        <input type="text" id="phone00" title="휴대폰번호" readOnly className={styles.readonly_bg} />
-                        <label htmlFor="phone00"><span className={styles.in_box}>휴대폰 번호 입력</span></label>
+                        <input type="text" id="phone" name='phone' title="휴대폰번호" value={signupData.phone.toString()} readOnly className={styles.readonly_bg} />
+
                     </div>
                 </div>
                 <div className={`${styles.form_box} ${styles.required}`}>
@@ -57,8 +139,8 @@ export default function FormArea() {
                         <div className={`${styles.input_btn_box} ${styles.w_type2}`}>
                             <div className={styles.input_box}>
                                 <input type="text" id="address00" readOnly />
-                                <label htmlFor="address00" className="">                                    
-                                <span className={styles.in_box}>우편번호</span>
+                                <label htmlFor="address00" className="">
+                                    <span className={styles.in_box}>우편번호</span>
                                 </label>
                             </div>
                             <div className={styles.btn_box}>
@@ -71,11 +153,8 @@ export default function FormArea() {
                                 <span className={styles.in_box}>주소</span>
                             </label>
                         </div>
-                        <div className={styles.input_box}>
-                            <input type="text" id="address02" readOnly />
-                            <label htmlFor="address02">
-                                <span className={styles.in_box}>상세주소</span>
-                            </label>
+                        <div className={styles.input_box} >
+                            <input type="text" id="address02" name='address' placeholder='상세주소' onChange={handleOnChange} />
                         </div>
                     </div>
                 </div>
@@ -86,14 +165,14 @@ export default function FormArea() {
                     <ul className={`${styles.agree_list} ${styles.btn_type0} ${styles.txt_type0}`}>
                         <li className={`${styles.agree_form} ${styles.join_agree}`}>
                             <div className={styles.chk_box}>
-                                <input type="checkbox" id="terms0" value="104001704" />
+                                <input type="checkbox" id="terms0" name='agree1' checked={!!signupData.agree1} onChange={handleOnChange} />
                                 <label htmlFor="terms0">[선택] 혜택제공 및 분석을 위한 개인정보 수집 및 이용 동의</label>
                             </div>
                             <button className={styles.agree_show}><span>내용보기</span></button>
                         </li>
                         <li className={`${styles.agree_form} ${styles.join_agree}`}>
                             <div className={styles.chk_box}>
-                                <input type="checkbox" id="terms1" value="104001705" />
+                                <input type="checkbox" id="terms1" name='agree2' checked={!!signupData.agree2} onChange={handleOnChange} />
                                 <label htmlFor="terms1">[선택] 이마트/신세계 공동 개인정보 수집 및 이용 동의</label>
                             </div>
                             <button className={styles.agree_show}><span>내용보기</span></button>
@@ -102,25 +181,25 @@ export default function FormArea() {
                     <div className={styles.agree_sub_box}>
                         <p className={styles.add_info_agree_tit}> 신세계포인트 광고정보 수신동의 </p>
                         <div className={`${styles.chk_box} ${styles.simple}`}>
-                            <input id="receveAllspoint" type="checkbox" value="0" />
-                            <label htmlFor="receveAllspoint">전체동의</label>
+                            <input id="receiveAllspoint" type="checkbox" value="0" />
+                            <label htmlFor="receiveAllspoint">전체동의</label>
                         </div>
                         <div className={`${styles.chk_group_box} ${styles.col_f}`}>
                             <div className={`${styles.chk_box} ${styles.simple}`}>
-                                <input id="recevespoint0" type="checkbox" value="email" />
-                                <label htmlFor="recevespoint0">이메일</label>
+                                <input id="receivespoint0" type="checkbox" name='agree3' checked={!!signupData.agree3} onChange={handleOnChange} />
+                                <label htmlFor="receivespoint0">이메일</label>
                             </div>
                             <div className={`${styles.chk_box} ${styles.simple}`}>
-                                <input id="recevespoint1" type="checkbox" value="sms" />
-                                <label htmlFor="recevespoint1">문자</label>
+                                <input id="receivespoint1" type="checkbox" name='agree4' checked={!!signupData.agree4} onChange={handleOnChange} />
+                                <label htmlFor="receivespoint1">문자</label>
                             </div>
                             <div className={`${styles.chk_box} ${styles.simple}`}>
-                                <input id="recevespoint2" type="checkbox" value="dm" />
-                                <label htmlFor="recevespoint2">DM</label>
+                                <input id="receivespoint2" type="checkbox" name='agree5' checked={!!signupData.agree5} onChange={handleOnChange} />
+                                <label htmlFor="receivespoint2">DM</label>
                             </div>
                             <div className={`${styles.chk_box} ${styles.simple}`}>
-                                <input id="recevespoint3" type="checkbox" value="tm" />
-                                <label htmlFor="recevespoint3">TM</label>
+                                <input id="receivespoint3" type="checkbox" name='agree6' checked={!!signupData.agree6} onChange={handleOnChange} />
+                                <label htmlFor="receivespoint3">TM</label>
                             </div>
                         </div>
                     </div>
@@ -137,7 +216,17 @@ export default function FormArea() {
 
             <div className={styles.cnt_box2}>
                 <div className={styles.btn_box}>
-                    <Link href="" className={styles.btn_primary}>확인</Link>
+                    <button className={styles.btn_primary}
+                        onClick={() => {
+                            console.log(
+                                signupData.loginId, signupData.password, signupData.name,
+                                signupData.phone, signupData.address,
+                                signupData.agree1, signupData.agree2,
+                                signupData.agree3, signupData.agree4,
+                                signupData.agree5, signupData.agree6,
+                            );
+                            handleSignUp();
+                        }}>확인</button>
                 </div>
             </div>
 
