@@ -11,14 +11,16 @@ const Header = () => {
     const pathname = usePathname();
 
     return (
-        <header className='main_header'>
+        <header className='main_header' >
             {pathname === '/' || pathname === '/couponPage'
                     ?
                     <div>
                         <HeaderTop />
                         <HeaderBottom />
-                    </div>
-                    : <HeaderTop />}
+                    </div >
+                    : <div >
+                        <HeaderTop />
+                        </div>}
             
             
         </header>
