@@ -7,7 +7,7 @@ import { LogInFormDataType } from '@/types/loginFormDataType';
 
 
 export default function Loginarea() {
-  const autoLogin = localStorage.getItem('autoLogin');
+  
 
   const [loginData, setLoginData] = useState<LogInFormDataType>({
     loginId: '',
@@ -19,17 +19,22 @@ export default function Loginarea() {
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    if (name === 'isAutoId' && e.target.checked) {
-      handleLocalStorage(loginData.loginId)
+    if (name === 'isAutoId') {
+      if (e.target.checked) {
+        handleLocalStorage(loginData.loginId);
+      } else {
+        // 체크박스가 해제되면 로컬 스토리지의 값도 삭제
+        localStorage.removeItem('autoLogin');
+      }
     }
     if (name === 'isAutoId' || name === 'isAutoLogin') {
-      console.log(name, e.target.checked)
+      
       setLoginData({
         ...loginData,
         [name]: e.target.checked
       })
     } else {
-      console.log(name, value)
+      
       setLoginData({
         ...loginData,
         [name]: value
@@ -46,16 +51,18 @@ export default function Loginarea() {
   }
 
   useEffect(() => {
-    console.log(typeof autoLogin)
-    if (autoLogin) {
-      setLoginData({
-        ...loginData,
-        loginId: autoLogin,
-        isAutoId: true
-      })
-    }
-  }, [])
-
+    if(typeof window !== 'undefined') {
+      const autoLogin = localStorage.getItem('autoLogin') || '';
+      console.log("localStorage",autoLogin.length > 0 ? autoLogin : 'no data');
+      if(autoLogin) {
+        setLoginData({
+          ...loginData,
+          loginId: autoLogin,
+          isAutoId: true
+        })
+      }
+    }    
+  },[])
 
   const handleLogin = async () => {
     if (!loginData.loginId && !loginData.password) {
@@ -107,7 +114,7 @@ export default function Loginarea() {
           type="text"
           placeholder="아이디"
           onChange={handleOnChange}
-          defaultValue={autoLogin ?? ''}
+          defaultValue={loginData.loginId}
           title="로그인을 위해 아이디를 입력해주세요." />
       </div>
       <div className={styles.input_box}>
@@ -139,7 +146,7 @@ export default function Loginarea() {
         </div>
       </div>
       <div className={styles.btn_box}>
-        <button onClick={() => { console.log(loginData.loginId, loginData.password) }} className={styles.btn_primary}>로그인</button>
+        <button onClick={() => { console.log(handleLogin) }} className={styles.btn_primary}>로그인</button>
       </div>
       <ul className={styles.btn_list_box}>
         <li>

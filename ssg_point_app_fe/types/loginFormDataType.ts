@@ -1,5 +1,5 @@
 export interface LogInFormDataType {
-    loginId: String,
+    loginId: string,
     password: String,
     isAutoId: Boolean,
     isAutoLogin: Boolean,
