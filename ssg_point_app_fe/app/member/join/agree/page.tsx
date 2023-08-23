@@ -1,7 +1,12 @@
 import React from 'react'
+import Step from '@/components/page/signup/step/Step';
+import AgreeArea from '@/components/page/signup/AgreeArea';
 
-export default function page() {
+export default function Agree() {
   return (
-    <div>page</div>
+    <div>
+        <Step step={2}/>
+        <AgreeArea />
+    </div>
   )
 }

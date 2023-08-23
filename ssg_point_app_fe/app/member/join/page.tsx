@@ -1,6 +1,5 @@
 import React from 'react'
-import styles from './styles.module.css'
-import Link from 'next/link'
+
 import SignUpSeq from '@/components/page/signup/SignUpSeq'
 
 export default function Join() {
@@ -16,7 +15,7 @@ export default function Join() {
             <br />
           </p>
         </div>
-        <SignUpSeq />
+        <SignUpSeq/>
       </section>
     </div>
   )
