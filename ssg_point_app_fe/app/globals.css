@@ -80,7 +80,6 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,button,c
   outline: none
 }
 
-
 body,
 ul,
 ol,
@@ -124,7 +123,15 @@ dd {
   animation: slideUp 0.3s ease-in-out forwards;
 }
 
+@keyframes slideUp {
+  0% {
+    top: 0;
+  }
 
+  100% {
+    top: -0.5rem;
+  }
+}
 .main_header {
   position: sticky;
   top: 0;
@@ -193,13 +200,6 @@ dd {
 .sp_tit2 strong.fnt_color {
     color: #f16701 !important
 }
-
-
-
-
-
-
-
 
 /* 쿠폰 */
 
