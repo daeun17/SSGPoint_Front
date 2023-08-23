@@ -1,34 +1,36 @@
-import React from 'react'
+import React, { useMemo } from 'react'
 import EventListCard from './EventListCard';
+import { EventType } from '@/types/eventype';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import SortMenu from './SortMenu';
+import { List } from 'postcss/lib/list';
+import modulestyle from './Event.module.css'
 
+
+// export default async function EventList(events : any) {
 export default async function EventList() {
-    const resp = await fetch("http://localhost:9999/event" ,{next: {revalidate : 0}} ); //todd : 상위 com의 url에 따라 다른 API호출  
-    const event = await resp.json();
-    
-    //인터페이스 만들기 
 
+    const resp = await fetch("http://localhost:9999/event2" ,{next: {revalidate : 0}} );
+    const event = await resp.json();
   return (
-    <div className='event_list'>
+    <>
+    <div className={modulestyle.event_list}>
     <ul>
         {
-            event.map((item: {
-                id: number; 
-                event_thumbnail: string; 
-                event_head: string; 
-                event_start: string; 
-                event_end: string; 
-                event_url: string; }) => 
+            event.map((item: EventType) => 
                 (<EventListCard 
                     id = {item.id}
                     img = {item.event_thumbnail}
                     title = {item.event_head}
                     startdate = {item.event_start}
                     enddate = {item.event_end}
-                    link_url = {item.event_url}
                 />
             ))
         }
     </ul>
   </div>
+  </>
   )
 }
+
+

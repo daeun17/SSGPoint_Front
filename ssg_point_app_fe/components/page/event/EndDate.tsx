@@ -1,4 +1,6 @@
 import React from 'react'
+import modulestyle from './Event.module.css'
+
 
 function EndDate({enddate} : {enddate:Date}) {
     const today = new Date;
@@ -8,7 +10,7 @@ function EndDate({enddate} : {enddate:Date}) {
     diff = Math.ceil(diff / (1000 * 60 * 60 * 24));
 
   return (
-    <div className='end_date'>
+    <div className={modulestyle.end_date}>
         <p>
             <span>{diff}</span> 일 남음
         </p>
