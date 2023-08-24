@@ -1,31 +1,48 @@
-import React, { useMemo } from 'react'
+'use client'
+import React, { useEffect, useMemo, useState } from 'react'
 import EventListCard from './EventListCard';
 import { EventType } from '@/types/eventype';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import SortMenu from './SortMenu';
-import { List } from 'postcss/lib/list';
 import modulestyle from './Event.module.css'
 
 
 // export default async function EventList(events : any) {
-export default async function EventList() {
+export default function EventList() {
 
-    const resp = await fetch("http://localhost:9999/event2" ,{next: {revalidate : 0}} );
-    const event = await resp.json();
+    const path = usePathname();
+    const query = useSearchParams();
+
+    const [eventData, setEventData] = useState<EventType[]>();
+    useEffect(() => {
+        const getData = async () => {
+            await fetch(`http://localhost:9999/event?_sort=${query.get('_sort')}&_order=${query.get('_order')}` ,{next: {revalidate : 1800}} ) 
+            .then(res => res.json())
+            .then(data =>{
+                setEventData(data)
+                console.log(data)
+            })
+        }
+        getData();
+    }, [query]);
+
+
+        
+
   return (
     <>
     <div className={modulestyle.event_list}>
     <ul>
         {
-            event.map((item: EventType) => 
+            eventData ? eventData.map((item: EventType) => 
                 (<EventListCard 
+                    key = {item.id}
                     id = {item.id}
                     img = {item.event_thumbnail}
                     title = {item.event_head}
                     startdate = {item.event_start}
                     enddate = {item.event_end}
                 />
-            ))
+            )) : null
         }
     </ul>
   </div>

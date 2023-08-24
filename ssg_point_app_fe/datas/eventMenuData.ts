@@ -1,6 +1,6 @@
 import { MenuType } from "@/types/MenuType";
 
-export const headerMenuDatas: MenuType[] = [
+export const eventMenuData: MenuType[] = [
 {
     id: 1,
     name: "진행 이벤트",

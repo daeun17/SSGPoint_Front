@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useParams, usePathname } from 'next/navigation'
 import React from 'react'
 import './style.css'
+import PageHeader from '@/components/layout/Point/PageHeader'
 
 export default function EventLayout({
     children,
@@ -11,6 +12,8 @@ export default function EventLayout({
   }) {
     const pathname = usePathname();
     return (
+      <>
+      <PageHeader/>
         <section className="content">
             <div className='tab_menu_box_event'>
                     <ul>
@@ -27,5 +30,6 @@ export default function EventLayout({
             </div>
           {children}
         </section>
+      </>
     )
   }
