@@ -1,9 +1,7 @@
-
-
 import Link from 'next/link'
 import React, { useState } from 'react'
 import HeaderUserStatus from './HeaderUserStatus'
-import SideMenu from '../widget/SideMenu'
+import SideMenu from '../widget/sidemenu/SideMenu'
 import Logo from '../ui/header/Logo'
 import { usePathname } from 'next/navigation'
 import BackUrl from '../ui/header/BackUrl'
