@@ -12,7 +12,7 @@ export default function EventLayout({
     const pathname = usePathname();
     return (
         <section className="content">
-            <div className='tab_menu_box event'>
+            <div className='tab_menu_box_event'>
                     <ul>
                     <li>
                         <Link href='/ingevent' className= {pathname === '/ingevent' ? `tab on` : `tab`}>진행 이벤트</Link>
