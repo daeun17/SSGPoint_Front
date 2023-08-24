@@ -18,10 +18,10 @@ function EventListCard({id, img, title, startdate, enddate } : {id :number, img 
   return (
     <li>
         <Link href={{pathname:'/event', query : {eventNo : id}}}>
-          {pathname == "/ingevent" ? <EndDate enddate={enddt}/> : 
-            pathname == "/endevent" ? <EndEventImg/> : 
-            pathname == "/winevent" ? <WinEventImg/> : null}
-            <img src={img} alt={title} />
+          {pathname == "/event/ingevent" ? <EndDate enddate={enddt}/> : 
+            pathname == "/event/endevent" ? <EndEventImg/> : 
+            pathname == "/event/winevent" ? <WinEventImg/> : null}
+          <img src={img} alt={title} />
 
             
         </Link>
