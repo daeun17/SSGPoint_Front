@@ -19,19 +19,20 @@ export default function PageHeader() {
           pathname === "mypoint" ? myPointMenuData : pathname === "event" ? eventMenuData : []
         }
         pathname = {pathname}
+        path = {path}
       />
     </div>
   )
 }
 
-const PageMenuUi = ({data, pathname}:{data: MenuType[], pathname: String}) => {
+const PageMenuUi = ({data, pathname,path}:{data: MenuType[], pathname: String, path :String}) => {
   if(data.length === 0) return null;
   return (
     <ul>
     {
       data.map((menu, idx)=> (
             <li key={idx}>
-              <Link href={menu.url} className= {pathname === menu.url ? `${modulestyle.tab} ${modulestyle.on}` : `${modulestyle.tab}`}>{menu.name}</Link>
+              <Link href={`/${pathname}${menu.url}`} className= {path === `/${pathname}${menu.url}` ? `${modulestyle.tab} ${modulestyle.on}` : `${modulestyle.tab}`}>{menu.name}</Link>
             </li>
           ))
     }

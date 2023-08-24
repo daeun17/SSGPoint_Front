@@ -13,21 +13,9 @@ export default function EventLayout({
     const pathname = usePathname();
     return (
       <>
-      <PageHeader/>
+      
         <section className="content">
-            <div className='tab_menu_box_event'>
-                    <ul>
-                    <li>
-                        <Link href='/ingevent' className= {pathname === '/ingevent' ? `tab on` : `tab`}>진행 이벤트</Link>
-                    </li>
-                    <li >
-                        <Link href='/endevent' className={pathname === '/endevent' ? "tab on" : "tab"}>종료 이벤트</Link>
-                    </li>
-                    <li >
-                        <Link href='/winevent' className={pathname === '/winevent' ? "tab on" : "tab"}>당첨 확인</Link>
-                    </li>
-                    </ul>
-            </div>
+          <PageHeader/>
           {children}
         </section>
       </>

@@ -45,16 +45,21 @@ export const headerMenuDatas: HeaderMenuType[] = [
     {
         id: 9,
         name: "이벤트 - 진행 이벤트",
-        url: "/ingevent"
+        url: "/event/ingevent"
     },
     {
         id: 10,
         name: "이벤트 - 종료 이벤트",
-        url: "/endevent"
+        url: "/event/endevent"
     },
     {
         id: 11,
         name: "이벤트 - 당첨 확인",
-        url: "/winevent"
-    }
+        url: "/event/winevent"
+    },
+    {
+        id: 12,
+        name: "마이 포인트",
+        url: "/mypoint"
+    },
 ];
