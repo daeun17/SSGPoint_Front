@@ -7,7 +7,7 @@ import { LogInFormDataType } from '@/types/loginFormDataType';
 
 
 export default function Loginarea() {
-
+  const isClient = typeof window !== 'undefined';
 
   const [loginData, setLoginData] = useState<LogInFormDataType>({
     loginId: '',
@@ -52,7 +52,7 @@ export default function Loginarea() {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      const autoLogin = localStorage.getItem('autoLogin') || '';
+      const autoLogin = isClient && localStorage.getItem('autoLogin') || '';
       console.log("localStorage", autoLogin.length > 0 ? autoLogin : 'no data');
       if (autoLogin) {
         setLoginData({
