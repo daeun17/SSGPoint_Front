@@ -16,8 +16,8 @@ export default function Footer() {
                     <p className={styles.tit}>신세계포인트 고객센터</p>
                     <button className={styles.tel}>1899-4349</button>
                     <p className={styles.txt0}>
-                        운영시간: <em>09</em>시 - <em>18</em>시<br />
-                        점심시간: <em>12</em>시 - <em>13</em>시<br />
+                        운영시간 : <em>09</em>시 - <em>18</em>시<br />
+                        점심시간 : <em>12</em>시 - <em>13</em>시<br />
                         (공휴일 제외)
                     </p>
                 </div>
