@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { useParams, usePathname } from 'next/navigation'
 import React from 'react'
 import './style.css'
-import PageHeader from '@/components/layout/Point/PageHeader'
+import PageHeader from '@/components/layout/SubMenu'
 
 export default function EventLayout({
     children,

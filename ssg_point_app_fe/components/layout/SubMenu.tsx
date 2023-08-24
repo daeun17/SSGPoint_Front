@@ -4,7 +4,7 @@ import { eventMenuData } from '@/datas/eventMenuData';
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useEffect } from 'react'
-import modulestyle from "./PageHeader.module.css"
+import modulestyle from "./SubMenu.module.css"
 import { MenuType } from '@/types/MenuType';
 
 // export default function PageHeader({props} : {props :{menudata : MenuType}}) {

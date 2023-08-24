@@ -1,8 +1,16 @@
-import PageHeader from '@/components/layout/Point/PageHeader'
+import PageHeader from '@/components/layout/SubMenu'
 import React from 'react'
 
-export default function layout() {
+export default function layout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  
   return (
-    <PageHeader/>
+    <section>
+      <PageHeader/>
+      {children}
+    </section>
   )
 }
