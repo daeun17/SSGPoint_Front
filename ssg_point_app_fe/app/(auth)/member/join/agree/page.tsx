@@ -5,7 +5,7 @@ import AgreeArea from '@/components/page/signup/AgreeArea';
 export default function Agree() {
   return (
     <div>
-        <Step step={2}/>
+        <Step step={2} title={'약관동의'}/>
         <AgreeArea />
     </div>
   )

@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 :root {
   --ssg-point-primary: #000;
   --ssg-point-secondary: #fff;
@@ -18,7 +20,9 @@
 :root {
   --swiper-theme-color: #007aff;
 }
-
+:root {
+  --swiper-navigation-size: 44px
+}
 
 @font-face {
   font-family: Noto Sans KR;
@@ -201,6 +205,57 @@ dd {
     color: #f16701 !important
 }
 
+.sp_tit1 {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 400;
+  word-break: keep-all;
+  letter-spacing: -.5px
+}
+
+.sp_tit1 strong {
+  font-weight: 500
+}
+
+.sp_tit1.space {
+  letter-spacing: -.8px
+}
+.txt_line0 {
+    position: relative;
+    vertical-align: top;
+    z-index: 1;
+    padding-right: 4px;
+    padding-left: 1px
+}
+
+.txt_line0:after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 100%;
+  height: 15px;
+  background: #ffdfb5;
+  z-index: -1;
+  bottom: 0;
+  left: 0
+}
+
+.user_underline {
+  font-weight: 500
+}
+.fw500 {
+  font-weight: 500!important
+}
+
+
+
+
+
+
+
+
+
+
 /* 쿠폰 */
 
 
@@ -221,3 +276,36 @@ dd {
   border-radius: 50%;
   background: #000
 }
+
+.main_event_banner {
+  background-color: var(--ssg-point-secondary);
+}
+
+
+
+.main_event_banner .swiper-scrollbar {
+  width: 73% !important;
+  height: 2px !important;
+  position: absolute;
+  z-index: 50;  /* 더 큰 z-index 값을 선택 */
+  bottom: 46px !important;
+  left: 30px !important;
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+  background: rgba(0,0,0,.1);
+}
+
+
+
+.swiper-pagination {
+  position: absolute;
+  text-align: center;
+  transition: 300ms opacity;
+  transform: translate3d(0, 0, 0);
+  z-index: 10;
+  font-size: 12px;
+}
+
+
+

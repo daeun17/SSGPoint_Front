@@ -3,20 +3,31 @@
 import React, { useEffect, useState } from 'react'
 import styles from './FormArea.module.css'
 import { SignUpFormDataType } from '@/types/signUpFormDataType'
+import { useRouter } from 'next/navigation';
+import PublicModal from '@/components/widget/modal/Modal';
+import { Button, useDisclosure } from "@nextui-org/react";
+
+
+
 
 export default function FormArea() {
+    const isClient = typeof window !== 'undefined';
+    const router = useRouter();
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    const [modalContent, setModalContent] = useState<string>("");
+
     const [signupData, setSignupData] = useState<SignUpFormDataType>({
         loginId: '',
         password: '',
         name: '',
         phone: '',
         address: '',
-        agree1: localStorage.getItem('tempagree1') === 'true' ? true : false,
-        agree2: localStorage.getItem('tempagree2') === 'true' ? true : false,
-        agree3: localStorage.getItem('tempagree2') === 'true' ? true : false,
-        agree4: localStorage.getItem('tempagree2') === 'true' ? true : false,
-        agree5: localStorage.getItem('tempagree2') === 'true' ? true : false,
-        agree6: localStorage.getItem('tempagree2') === 'true' ? true : false,
+        agree1: false,
+        agree2: false,
+        agree3: false,
+        agree4: false,
+        agree5: false,
+        agree6: false
     })
 
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,44 +44,63 @@ export default function FormArea() {
             });
         }
     }
+
     const formatPhoneNumber = (number: string) => {
         return number.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
     };
 
     const handleSignUp = async () => {
         try {
-            const response = await fetch('/api/v1/signup', {
+            const response = await fetch('https://smilekarina.duckdns.org/api/v1/user/join/cert', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    login_id: signupData.loginId,
+                    loginId: signupData.loginId,
+                    userName: signupData.name,
+                    email: "",
                     password: signupData.password,
-                    name: signupData.name,
                     phone: signupData.phone,
-                    address: signupData.address,
-                    agree1: signupData.agree1,
-                    agree2: signupData.agree2,
-                    agree3: signupData.agree3,
-                    agree4: signupData.agree4,
-                    agree5: signupData.agree5,
-                    agree6: signupData.agree6,
+                    address: signupData.address
                 })
             }).then(res => res.json())
-            .then(data => console.log(data))
-            .catch(err => console.log(err))
-
-            
+                .then(data => console.log(data))
+                .catch(err => console.log(err))
         } catch (error) {
             console.error("Error sending POST request:", error);
         }
     }
 
-    useEffect(() => {
-        const tempName = localStorage.getItem('tempName');
-        const tempPhone = localStorage.getItem('tempPhone');
+    const checkId = async () => {
+        try {
+            const response = await fetch(`https://smilekarina.duckdns.org/api/v1/join/${signupData.loginId}`)
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            console.log(data.success);
+            if (data.success) {
+                setModalContent("ID 중복 확인이 성공적으로 완료되었습니다.");
+            } else {
+                setModalContent("ID 중복 확인에 실패했습니다. 다른 ID를 사용해주세요.");
+            }
+        } catch (error) {
+            console.error("Error sending POST request:", error);
+            setModalContent("ID 중복 확인 중 오류가 발생했습니다. 다시 시도해주세요.");
+        }
+        onOpen();
+    }
 
+    useEffect(() => {
+        const tempName = isClient && localStorage.getItem('tempName');
+        const tempPhone = isClient && localStorage.getItem('tempPhone');
+        const tempagree1 = isClient && localStorage.getItem('tempagree1') === 'true';
+        const tempagree2 = isClient && localStorage.getItem('tempagree2') === 'true';
+        const tempagree3 = isClient && localStorage.getItem('tempagree2') === 'true';
+        const tempagree4 = isClient && localStorage.getItem('tempagree2') === 'true';
+        const tempagree5 = isClient && localStorage.getItem('tempagree2') === 'true';
+        const tempagree6 = isClient && localStorage.getItem('tempagree2') === 'true';
         if (tempName && tempPhone) {
             setSignupData({
                 ...signupData,
@@ -78,11 +108,24 @@ export default function FormArea() {
                 phone: formatPhoneNumber(tempPhone),
             })
         }
-
+        setSignupData(prevData => ({
+            ...prevData,
+            agree1: tempagree1,
+            agree2: tempagree2,
+            agree3: tempagree3,
+            agree4: tempagree4,
+            agree5: tempagree5,
+            agree6: tempagree6
+        }));
     }, [])
 
     return (
         <div>
+            <div>
+                <div>
+                <PublicModal isOpen={isOpen} onOpenChange={onOpenChange} content={modalContent}/>
+                </div>
+            </div>
             <div className={styles.cnt_box0}>
                 <div className={`${styles.form_box} ${styles.required}`}>
                     <p className={styles.tit}> 아이디<span className="hidden">필수항목</span></p>
@@ -91,10 +134,9 @@ export default function FormArea() {
                             <input type="text" id="loginId" name='loginId'
                                 placeholder='영문, 숫자 6~20자리 입력해주세요.' title="회원 가입을 위한 아이디 입력"
                                 onChange={handleOnChange} />
-
                         </div>
                         <div className={styles.btn_box}>
-                            <button className={styles.btn2}> 중복확인 </button>
+                            <button className={styles.btn2} onClick={checkId} > 중복확인 </button>
                         </div>
                     </div>
                     <p className={styles.error_txt}> 아이디 형식에 맞게 입력해주세요. </p>
@@ -105,7 +147,6 @@ export default function FormArea() {
                         <input type="password" id="password" name='password'
                             placeholder='영문 대/소문자, 숫자, 특수문자 중 3가지 이상을 조합하여 8-20자리로 입력해 주세요.' title="회원 가입을 위한 비밀번호 입력"
                             onChange={handleOnChange} />
-
                     </div>
                     <p className={styles.error_txt}> 비밀번호 형식에 맞게 입력해주세요. </p>
                 </div>
@@ -114,7 +155,6 @@ export default function FormArea() {
                         <span className="hidden">필수항목</span></p>
                     <div className={styles.input_box}>
                         <input type="password" id="pwck" name='pwck' placeholder='입력하신 비밀번호를 다시 한번 입력해주세요.' />
-
                     </div>
                     <p className={styles.error_txt}> 비밀번호가 일치하지 않습니다. </p>
                 </div>
@@ -123,14 +163,12 @@ export default function FormArea() {
                     <div className={styles.input_box}>
                         <input type="text" id="name" name='name' title="이름" value={signupData.name.toString()} readOnly
                             className={styles.readonly_bg} />
-
                     </div>
                 </div>
                 <div className={`${styles.form_box} ${styles.required}`}>
                     <p className={styles.tit}> 휴대폰번호 <span className="hidden">필수항목</span></p>
                     <div className={styles.input_box}>
                         <input type="text" id="phone" name='phone' title="휴대폰번호" value={signupData.phone.toString()} readOnly className={styles.readonly_bg} />
-
                     </div>
                 </div>
                 <div className={`${styles.form_box} ${styles.required}`}>
@@ -159,7 +197,6 @@ export default function FormArea() {
                     </div>
                 </div>
             </div>
-
             <div className={styles.terms_agree_box}>
                 <div className={styles.agree_form_box}>
                     <ul className={`${styles.agree_list} ${styles.btn_type0} ${styles.txt_type0}`}>
@@ -205,7 +242,6 @@ export default function FormArea() {
                     </div>
                 </div>
             </div>
-
             <div className={styles.add_info_agree_txt}>
                 <p>
                     당사, 관계사, 신세계포인트 제휴사가 제공하는 상품 및 서비스 홍보, 소식지 제공, 이벤트 정보 제공(할인 쿠폰, 포인트 추가 적립, 상품 할인 포함), 제휴행사를 안내해 드립니다. 수신동의 변경은 신세계포인트 고객센터 및 홈페이지(www.shinsegaepoint.com)에서 가능합니다.
@@ -213,7 +249,6 @@ export default function FormArea() {
                     ※ 서비스 주요 정책 및 공지사항 안내 등은 수신동의 여부와 관계없이 발송됩니다.
                 </p>
             </div>
-
             <div className={styles.cnt_box2}>
                 <div className={styles.btn_box}>
                     <button className={styles.btn_primary}
@@ -226,10 +261,10 @@ export default function FormArea() {
                                 signupData.agree5, signupData.agree6,
                             );
                             handleSignUp();
+                            router.push('/member/join/success')
                         }}>확인</button>
                 </div>
             </div>
-
             <div className={styles.notice_box}>
                 <h3 className={styles.tit}>[유의사항]</h3>
                 <ul className={styles.list_cnt}>
@@ -242,7 +277,6 @@ export default function FormArea() {
                     <li>본인인증을 통해 확인된 정보는 수정하실 수 없습니다.</li>
                 </ul>
             </div>
-
         </div>
     )
 }

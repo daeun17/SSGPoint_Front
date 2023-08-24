@@ -62,4 +62,9 @@ export const headerMenuDatas: HeaderMenuType[] = [
         name: "마이 포인트",
         url: "/mypoint"
     },
+    {
+        id: 13,
+        name: "회원가입 완료",
+        url: "/member/join/success"
+    }
 ];

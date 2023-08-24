@@ -7,7 +7,7 @@ import { LogInFormDataType } from '@/types/loginFormDataType';
 
 
 export default function Loginarea() {
-  const autoLogin = localStorage.getItem('autoLogin');
+  const isClient = typeof window !== 'undefined';
 
   const [loginData, setLoginData] = useState<LogInFormDataType>({
     loginId: '',
@@ -19,17 +19,22 @@ export default function Loginarea() {
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    if (name === 'isAutoId' && e.target.checked) {
-      handleLocalStorage(loginData.loginId)
+    if (name === 'isAutoId') {
+      if (e.target.checked) {
+        handleLocalStorage(loginData.loginId);
+      } else {
+        // 체크박스가 해제되면 로컬 스토리지의 값도 삭제
+        localStorage.removeItem('autoLogin');
+      }
     }
     if (name === 'isAutoId' || name === 'isAutoLogin') {
-      console.log(name, e.target.checked)
+
       setLoginData({
         ...loginData,
         [name]: e.target.checked
       })
     } else {
-      console.log(name, value)
+
       setLoginData({
         ...loginData,
         [name]: value
@@ -46,16 +51,18 @@ export default function Loginarea() {
   }
 
   useEffect(() => {
-    console.log(typeof autoLogin)
-    if (autoLogin) {
-      setLoginData({
-        ...loginData,
-        loginId: autoLogin,
-        isAutoId: true
-      })
+    if (typeof window !== 'undefined') {
+      const autoLogin = isClient && localStorage.getItem('autoLogin') || '';
+      console.log("localStorage", autoLogin.length > 0 ? autoLogin : 'no data');
+      if (autoLogin) {
+        setLoginData({
+          ...loginData,
+          loginId: autoLogin,
+          isAutoId: true
+        })
+      }
     }
   }, [])
-
 
   const handleLogin = async () => {
     if (!loginData.loginId && !loginData.password) {
@@ -74,24 +81,22 @@ export default function Loginarea() {
     }
 
     try {
-      const response = await fetch('/api/v1/login', {
+      const response = await fetch('/api/v1/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          login_id: loginData.loginId,  
+          loginId: loginData.loginId,
           password: loginData.password
         })
       });
+      const data = await response.json();
+
+      console.log(data);
+      alert(JSON.stringify(data));
 
 
-      if (response.ok) {
-
-      } else {
-
-        console.error("Login failed:", await response.text());
-      }
     } catch (error) {
       console.error("Error sending POST request:", error);
     }
@@ -107,7 +112,7 @@ export default function Loginarea() {
           type="text"
           placeholder="아이디"
           onChange={handleOnChange}
-          defaultValue={autoLogin ?? ''}
+          defaultValue={loginData.loginId}
           title="로그인을 위해 아이디를 입력해주세요." />
       </div>
       <div className={styles.input_box}>
@@ -123,23 +128,23 @@ export default function Loginarea() {
       </div>
       <div className={`${styles.chk_group_box} ${styles.col2}`}>
         <div className={styles.chk_box}>
-          <input id="isAutoId" 
-                  type="checkbox" 
-                  name='isAutoId'
-                  checked={loginData.isAutoId&&true}
-                  onChange={handleOnChange}/>
+          <input id="isAutoId"
+            type="checkbox"
+            name='isAutoId'
+            checked={loginData.isAutoId && true}
+            onChange={handleOnChange} />
           <label htmlFor="isAutoId">아이디 저장</label>
         </div>
         <div className={styles.chk_box}>
-          <input id="isAutoLogin" 
-                  type="checkbox"
-                  name='isAutoLogin' 
-                  onChange={handleOnChange} />
+          <input id="isAutoLogin"
+            type="checkbox"
+            name='isAutoLogin'
+            onChange={handleOnChange} />
           <label htmlFor="isAutoLogin">자동로그인</label>
         </div>
       </div>
       <div className={styles.btn_box}>
-        <button onClick={() => { console.log(loginData.loginId, loginData.password) }} className={styles.btn_primary}>로그인</button>
+        <button onClick={handleLogin} className={styles.btn_primary}>로그인</button>
       </div>
       <ul className={styles.btn_list_box}>
         <li>
