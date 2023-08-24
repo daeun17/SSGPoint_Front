@@ -56,5 +56,10 @@ export const headerMenuDatas: HeaderMenuType[] = [
         id: 11,
         name: "이벤트 - 당첨 확인",
         url: "/winevent"
+    },
+    {
+        id: 12,
+        name: "회원가입 완료",
+        url: "/member/join/success"
     }
 ];

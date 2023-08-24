@@ -3,8 +3,11 @@
 import React, { useEffect, useState } from 'react'
 import styles from './FormArea.module.css'
 import { SignUpFormDataType } from '@/types/signUpFormDataType'
+import { useRouter } from 'next/navigation';
 
 export default function FormArea() {
+const router = useRouter();
+
     const [signupData, setSignupData] = useState<SignUpFormDataType>({
         loginId: '',
         password: '',
@@ -45,23 +48,49 @@ export default function FormArea() {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    login_id: signupData.loginId,
+                    loginId: signupData.loginId,
+                    userName: signupData.name,
+                    email: "",
                     password: signupData.password,
-                    name: signupData.name,
                     phone: signupData.phone,
                     address: signupData.address,
-                    agree1: signupData.agree1,
-                    agree2: signupData.agree2,
-                    agree3: signupData.agree3,
-                    agree4: signupData.agree4,
-                    agree5: signupData.agree5,
-                    agree6: signupData.agree6,
+                    // agree1: signupData.agree1,
+                    // agree2: signupData.agree2,
+                    // agree3: signupData.agree3,
+                    // agree4: signupData.agree4,
+                    // agree5: signupData.agree5,
+                    // agree6: signupData.agree6,
                 })
             }).then(res => res.json())
             .then(data => console.log(data))
             .catch(err => console.log(err))
-
             
+            
+            
+        } catch (error) {
+            console.error("Error sending POST request:", error);
+        }
+    }
+
+    const checkId = async () => {
+        try {
+            const response = await fetch('/api/v1/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    loginId: signupData.loginId,
+                })
+            })
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const data = await response.json();
+
+            console.log(data);
+            alert(JSON.stringify(data));
         } catch (error) {
             console.error("Error sending POST request:", error);
         }
@@ -94,7 +123,7 @@ export default function FormArea() {
 
                         </div>
                         <div className={styles.btn_box}>
-                            <button className={styles.btn2}> 중복확인 </button>
+                            <button className={styles.btn2} onClick={checkId}> 중복확인 </button>
                         </div>
                     </div>
                     <p className={styles.error_txt}> 아이디 형식에 맞게 입력해주세요. </p>
@@ -226,6 +255,7 @@ export default function FormArea() {
                                 signupData.agree5, signupData.agree6,
                             );
                             handleSignUp();
+                            router.push('/member/join/success')
                         }}>확인</button>
                 </div>
             </div>

@@ -1,11 +1,16 @@
+'use client'
+
 import React from 'react'
 import styles from './Step.module.css';
+import { usePathname } from 'next/navigation';
 
-export default function Step(props: {step : number}) {
+export default function Step(props: { step: number, title: string, description?: string }) {
+
+    const pathname = usePathname();
 
     let stepStyle;
 
-    switch(props.step) {
+    switch (props.step) {
         case 1:
             stepStyle = styles.step1;
             break;
@@ -15,7 +20,7 @@ export default function Step(props: {step : number}) {
         case 3:
             stepStyle = styles.step3;
             break;
-        case 4: 
+        case 4:
             stepStyle = styles.step4;
     }
 
@@ -42,8 +47,23 @@ export default function Step(props: {step : number}) {
                             <i className="hidden">4단계</i>
                         </li>
                     </ol>
-                    <p className={styles.tit}>본인인증</p>
-                    <p className={styles.txt}>본인인증 수단을 선택해주세요.</p>
+                    <p className={styles.tit}>{props.title}</p>
+                    <p className={styles.txt}>{props.description}</p>
+                    {pathname === '/member/join/success'
+                        ?
+                        <div>
+                            <p className="sp_tit1">
+                                <strong className="txt_line0">박*우</strong> 님,
+                                <span className="user_underline">pgw7120 ID</span>로
+                                <br />신세계포인트
+                                <strong className="fw500"> 통합 회원 가입</strong>이
+                                <br />
+                                완료되었습니다.
+                            </p>
+                        </div>
+                        : null
+
+                    }
                 </div>
             </div>
         </section></div>
