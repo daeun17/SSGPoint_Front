@@ -7,7 +7,7 @@ import { LogInFormDataType } from '@/types/loginFormDataType';
 
 
 export default function Loginarea() {
-  
+
 
   const [loginData, setLoginData] = useState<LogInFormDataType>({
     loginId: '',
@@ -28,13 +28,13 @@ export default function Loginarea() {
       }
     }
     if (name === 'isAutoId' || name === 'isAutoLogin') {
-      
+
       setLoginData({
         ...loginData,
         [name]: e.target.checked
       })
     } else {
-      
+
       setLoginData({
         ...loginData,
         [name]: value
@@ -51,18 +51,18 @@ export default function Loginarea() {
   }
 
   useEffect(() => {
-    if(typeof window !== 'undefined') {
+    if (typeof window !== 'undefined') {
       const autoLogin = localStorage.getItem('autoLogin') || '';
-      console.log("localStorage",autoLogin.length > 0 ? autoLogin : 'no data');
-      if(autoLogin) {
+      console.log("localStorage", autoLogin.length > 0 ? autoLogin : 'no data');
+      if (autoLogin) {
         setLoginData({
           ...loginData,
           loginId: autoLogin,
           isAutoId: true
         })
       }
-    }    
-  },[])
+    }
+  }, [])
 
   const handleLogin = async () => {
     if (!loginData.loginId && !loginData.password) {
@@ -81,24 +81,22 @@ export default function Loginarea() {
     }
 
     try {
-      const response = await fetch('/api/v1/login', {
+      const response = await fetch('/api/v1/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-          login_id: loginData.loginId,  
+          loginId: loginData.loginId,
           password: loginData.password
         })
       });
+      const data = await response.json();
+
+      console.log(data);
+      alert(JSON.stringify(data));
 
 
-      if (response.ok) {
-
-      } else {
-
-        console.error("Login failed:", await response.text());
-      }
     } catch (error) {
       console.error("Error sending POST request:", error);
     }
@@ -130,23 +128,23 @@ export default function Loginarea() {
       </div>
       <div className={`${styles.chk_group_box} ${styles.col2}`}>
         <div className={styles.chk_box}>
-          <input id="isAutoId" 
-                  type="checkbox" 
-                  name='isAutoId'
-                  checked={loginData.isAutoId&&true}
-                  onChange={handleOnChange}/>
+          <input id="isAutoId"
+            type="checkbox"
+            name='isAutoId'
+            checked={loginData.isAutoId && true}
+            onChange={handleOnChange} />
           <label htmlFor="isAutoId">아이디 저장</label>
         </div>
         <div className={styles.chk_box}>
-          <input id="isAutoLogin" 
-                  type="checkbox"
-                  name='isAutoLogin' 
-                  onChange={handleOnChange} />
+          <input id="isAutoLogin"
+            type="checkbox"
+            name='isAutoLogin'
+            onChange={handleOnChange} />
           <label htmlFor="isAutoLogin">자동로그인</label>
         </div>
       </div>
       <div className={styles.btn_box}>
-        <button onClick={() => { console.log(handleLogin) }} className={styles.btn_primary}>로그인</button>
+        <button onClick={handleLogin} className={styles.btn_primary}>로그인</button>
       </div>
       <ul className={styles.btn_list_box}>
         <li>

@@ -6,7 +6,7 @@ import { SignUpFormDataType } from '@/types/signUpFormDataType'
 import { useRouter } from 'next/navigation';
 
 export default function FormArea() {
-const router = useRouter();
+    const router = useRouter();
 
     const [signupData, setSignupData] = useState<SignUpFormDataType>({
         loginId: '',
@@ -14,12 +14,12 @@ const router = useRouter();
         name: '',
         phone: '',
         address: '',
-        agree1: localStorage.getItem('tempagree1') === 'true' ? true : false,
-        agree2: localStorage.getItem('tempagree2') === 'true' ? true : false,
-        agree3: localStorage.getItem('tempagree2') === 'true' ? true : false,
-        agree4: localStorage.getItem('tempagree2') === 'true' ? true : false,
-        agree5: localStorage.getItem('tempagree2') === 'true' ? true : false,
-        agree6: localStorage.getItem('tempagree2') === 'true' ? true : false,
+        agree1: false,
+        agree2: false,
+        agree3: false,
+        agree4: false,
+        agree5: false,
+        agree6: false
     })
 
     const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,7 +42,7 @@ const router = useRouter();
 
     const handleSignUp = async () => {
         try {
-            const response = await fetch('/api/v1/signup', {
+            const response = await fetch('https://smilekarina.duckdns.org/api/v1/user/join/cert', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -53,20 +53,15 @@ const router = useRouter();
                     email: "",
                     password: signupData.password,
                     phone: signupData.phone,
-                    address: signupData.address,
-                    // agree1: signupData.agree1,
-                    // agree2: signupData.agree2,
-                    // agree3: signupData.agree3,
-                    // agree4: signupData.agree4,
-                    // agree5: signupData.agree5,
-                    // agree6: signupData.agree6,
+                    address: signupData.address
+
                 })
             }).then(res => res.json())
-            .then(data => console.log(data))
-            .catch(err => console.log(err))
-            
-            
-            
+                .then(data => console.log(data))
+                .catch(err => console.log(err))
+
+
+
         } catch (error) {
             console.error("Error sending POST request:", error);
         }
@@ -74,15 +69,7 @@ const router = useRouter();
 
     const checkId = async () => {
         try {
-            const response = await fetch('/api/v1/signup', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    loginId: signupData.loginId,
-                })
-            })
+            const response = await fetch(`https://smilekarina.duckdns.org/api/v1/join/${signupData.loginId}`)
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -99,6 +86,12 @@ const router = useRouter();
     useEffect(() => {
         const tempName = localStorage.getItem('tempName');
         const tempPhone = localStorage.getItem('tempPhone');
+        const tempagree1 = localStorage.getItem('tempagree1') === 'true';
+        const tempagree2 = localStorage.getItem('tempagree2') === 'true';
+        const tempagree3 = localStorage.getItem('tempagree2') === 'true';
+        const tempagree4 = localStorage.getItem('tempagree2') === 'true';
+        const tempagree5 = localStorage.getItem('tempagree2') === 'true';
+        const tempagree6 = localStorage.getItem('tempagree2') === 'true';
 
         if (tempName && tempPhone) {
             setSignupData({
@@ -107,6 +100,15 @@ const router = useRouter();
                 phone: formatPhoneNumber(tempPhone),
             })
         }
+        setSignupData(prevData => ({
+            ...prevData,
+            agree1: tempagree1,
+            agree2: tempagree2,
+            agree3: tempagree3,
+            agree4: tempagree4,
+            agree5: tempagree5,
+            agree6: tempagree6
+        }));
 
     }, [])
 
