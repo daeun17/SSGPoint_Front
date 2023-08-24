@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+
+
 :root {
   --ssg-point-primary: #000;
   --ssg-point-secondary: #fff;
@@ -18,7 +20,9 @@
 :root {
   --swiper-theme-color: #007aff;
 }
-
+:root {
+  --swiper-navigation-size: 44px
+}
 
 @font-face {
   font-family: Noto Sans KR;
@@ -80,7 +84,6 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,button,c
   outline: none
 }
 
-
 body,
 ul,
 ol,
@@ -124,7 +127,15 @@ dd {
   animation: slideUp 0.3s ease-in-out forwards;
 }
 
+@keyframes slideUp {
+  0% {
+    top: 0;
+  }
 
+  100% {
+    top: -0.5rem;
+  }
+}
 .main_header {
   position: sticky;
   top: 0;
@@ -194,13 +205,6 @@ dd {
     color: #f16701 !important
 }
 
-
-
-
-
-
-
-
 /* 쿠폰 */
 
 
@@ -221,3 +225,38 @@ dd {
   border-radius: 50%;
   background: #000
 }
+
+.main_event_banner {
+  background-color: var(--ssg-point-secondary);
+}
+
+
+.swiper {
+  
+}
+.main_event_banner .swiper-scrollbar {
+  width: 73% !important;
+  height: 2px !important;
+  position: absolute;
+  z-index: 50;  /* 더 큰 z-index 값을 선택 */
+  bottom: 46px !important;
+  left: 30px !important;
+  display: flex;
+  align-items: center;
+  margin-right: 2rem;
+  background: rgba(0,0,0,.1);
+}
+
+
+
+.swiper-pagination {
+  position: absolute;
+  text-align: center;
+  transition: 300ms opacity;
+  transform: translate3d(0, 0, 0);
+  z-index: 10;
+  font-size: 12px;
+}
+
+
+
