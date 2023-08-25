@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import styles from './Loginarea.module.css'
+import styles from './LoginArea.module.css'
 import Link from 'next/link';
 import { LogInFormDataType } from '@/types/loginFormDataType';
 

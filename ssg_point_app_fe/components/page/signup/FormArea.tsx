@@ -81,9 +81,9 @@ export default function FormArea() {
             const data = await response.json();
             console.log(data.success);
             if (data.success) {
-                setModalContent("ID 중복 확인이 성공적으로 완료되었습니다.");
+                setModalContent("입력하신 아이디는 사용이 가능 합니다.");
             } else {
-                setModalContent("ID 중복 확인에 실패했습니다. 다른 ID를 사용해주세요.");
+                setModalContent("입력하신 아이디는 사용이 불가능 합니다.");
             }
         } catch (error) {
             console.error("Error sending POST request:", error);
