@@ -84,6 +84,10 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,button,c
   outline: none
 }
 
+a, abbr, acronym, address, applet, article, aside, audio, big, blockquote, body, button, canvas, caption, center, cite, code, del, details, dfn, div, dl, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, kbd, main, mark, menu, nav, object, ol, output, p, q, ruby, s, samp, section, small, strike, strong, summary, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+  color: #000;
+}
+
 body,
 ul,
 ol,
@@ -308,4 +312,16 @@ dd {
 }
 
 
-
+/* 아이디 찾기, 비번 찾기 */
+.sp_txt6, .sp_txt7 {
+  font-size: 14px;
+  word-break: keep-all;
+}
+.sp_txt6 {
+  line-height: 24px;
+  color: #767676;
+  padding-top: 8px;
+}
+.fw700 {
+  font-weight: 700!important;
+}

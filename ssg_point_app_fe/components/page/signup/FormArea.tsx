@@ -74,7 +74,7 @@ export default function FormArea() {
 
     const checkId = async () => {
         try {
-            const response = await fetch(`https://smilekarina.duckdns.org/api/v1/join/${signupData.loginId}`)
+            const response = await fetch(`https://smilekarina.duckdns.org/api/v1/join?loginId=${signupData.loginId}`)
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -105,7 +105,7 @@ export default function FormArea() {
             setSignupData({
                 ...signupData,
                 name: tempName,
-                phone: formatPhoneNumber(tempPhone),
+                phone: tempPhone,
             })
         }
         setSignupData(prevData => ({

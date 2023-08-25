@@ -1,11 +1,18 @@
 'use client'
 import React, { useEffect, useState } from 'react'
 import styles from './CertPage.module.css'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { CertFormDataType } from '@/types/certFormDataType'
+import { handleOnChange, handleLocalStorage } from '@/handler/CertHandle';
+import { useDisclosure } from '@nextui-org/react'
+import PublicModal from '@/components/widget/modal/Modal'
 
 export default function CertPage() {
-    const router = useRouter()
+    const router = useRouter();
+    const pathname = usePathname();
+    const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    const [modalContent, setModalContent] = useState<string>("");
+    const [routePath, setRoutePath] = useState<string>("");
     const [certData, setCertData] = useState<CertFormDataType>({
         name: '',
         birthday: '',
@@ -14,23 +21,55 @@ export default function CertPage() {
         nationality: 'L',
     });
 
-    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const { name, value } = e.target;
-        setCertData({
-            ...certData,
-            [name]: value
-        });
-        
+    // router를 props로 넘기기 어려움
+    const handleCertification = (pathname: string) => {
+        if (pathname === '/member/join/cert') {
+            router.push('/member/join/agree');
+        } else if (pathname === '/member/findIdPw'){
+            checkId();
+        }
     }
 
-    const handleLocalStorage = (name: String, phone: String) => {
-        localStorage.setItem('tempName', name.toString())
-        localStorage.setItem('tempPhone', phone.toString())
+    
+    const checkId = async () => {
+        setRoutePath('/member/join')
+        try {
+            const response = await fetch(`https://smilekarina.duckdns.org/api/v1/join?userName=${certData.name}&phone=${certData.phone}`)
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            const data = await response.json();
+            console.log(data);
+            // if (data.success) {
+            //     localStorage.setItem('loginId', data.loginId.toString())
+            //     router.push('/member/findIdResult');
+            // } else {
+            //     setModalContent("회원정보가 없습니다.\n정확한 정보를 입력하신 후 다시 시도해 주세요.");
+            //     onOpen();
+            // }
+        
+        } catch (error) {
+            console.error("Error sending POST request:", error);
+            
+        }
     }
+    // const test = () => {
+    //     setRoutePath('/member/join')
+    //     const data = false;
+    //     if (data) {
+    //         router.push('/member/join/agree');
+    //     } else {
+    //         setModalContent("회원정보가 없습니다.\n정확한 정보를 입력하신 후 다시 시도해 주세요.");
+    //         onOpen();
+    //     }
+    // }
 
 
     return (
         <div>
+            <div>
+                <PublicModal isOpen={isOpen} onOpenChange={onOpenChange} content={modalContent} routePath={routePath}/>
+                </div>
             {/* <form> */}
             <div className={styles.auth_tab}>
                 <ul role="tablist" className={styles.auth_tab_menu}>
@@ -53,7 +92,7 @@ export default function CertPage() {
                                     <p className={styles.tit}> 이름을 입력해 주세요. </p>
                                     <div className={styles.input_box}>
                                         <input name="name" id="name" type="text" placeholder='이름 입력' title="회원가입을 위해 입력해주세요."
-                                            onChange={handleOnChange} />
+                                            onChange={(e) => handleOnChange(e, certData, setCertData)} />
                                     </div>
                                     <p className={styles.error_txt}>
                                     </p>
@@ -64,12 +103,12 @@ export default function CertPage() {
                                     <div className={`${styles.radio_group_box} ${styles.col2}`}>
                                         <div className={styles.radio_box}>
                                             <input id="radio00" type="radio" name="gender" value="M" defaultChecked
-                                                onChange={handleOnChange} />
+                                                onChange={(e) => handleOnChange(e, certData, setCertData)} />
                                             <label htmlFor="radio00">남자</label>
                                         </div>
                                         <div className={styles.radio_box}>
                                             <input id="radio01" type="radio" name="gender" value="F"
-                                                onChange={handleOnChange} />
+                                                onChange={(e) => handleOnChange(e, certData, setCertData)} />
                                             <label htmlFor="radio01">여자</label>
                                         </div>
                                     </div>
@@ -84,7 +123,7 @@ export default function CertPage() {
                                                 name="nationality"
                                                 value="L"
                                                 defaultChecked
-                                                onChange={handleOnChange}
+                                                onChange={(e) => handleOnChange(e, certData, setCertData)}
                                             />
                                             <label htmlFor="radio10">내국인</label>
                                         </div>
@@ -94,7 +133,7 @@ export default function CertPage() {
                                                 type="radio"
                                                 name="nationality"
                                                 value="F"
-                                                onChange={handleOnChange}
+                                                onChange={(e) => handleOnChange(e, certData, setCertData)}
                                             />
                                             <label htmlFor="radio11">외국인</label>
                                         </div>
@@ -105,7 +144,7 @@ export default function CertPage() {
                                 </p>
                                     <div className={styles.input_box}>
                                         <input id="birthday" name='birthday' placeholder='법정생년월일 8자리' type="tel"
-                                            onChange={handleOnChange} />
+                                            onChange={(e) => handleOnChange(e, certData, setCertData)} />
 
                                     </div>
                                     <p className={styles.error_txt}>
@@ -127,7 +166,7 @@ export default function CertPage() {
                                         <div className={styles.input_box}>
                                             <input id="phone" name='phone' maxLength={11} type="tel"
                                                 placeholder='-없이 휴대폰 번호 입력'
-                                                onChange={handleOnChange} />
+                                                onChange={(e) => handleOnChange(e, certData, setCertData)} />
 
                                         </div>
                                     </div>
@@ -206,8 +245,14 @@ export default function CertPage() {
                             <div className={styles.tab_box1}>
                                 <div className={styles.btn_box}>
                                     <button className={styles.btn_primary}
-                                        onClick={() => {handleLocalStorage(certData.name, certData.phone);
-                                        router.push('/member/join/agree');}}> 인증번호 요청 </button>
+                                        onClick={() => {
+                                            handleLocalStorage(certData.name, certData.phone);
+                                            handleCertification(pathname);
+                                        }}> 인증번호 요청 </button>
+                                    {/* <button className={styles.btn_primary}
+                                        onClick={() => {
+                                            test();
+                                        }}> 인증번호 요청 </button> */}
                                 </div>
                             </div>
                         </div>

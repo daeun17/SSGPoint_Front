@@ -66,5 +66,15 @@ export const headerMenuDatas: HeaderMenuType[] = [
         id: 13,
         name: "회원가입 완료",
         url: "/member/join/success"
+    },
+    {
+        id: 14,
+        name: "아이디 찾기 본인인증",
+        url: "/member/findIdPw"
+    },
+    {
+        id: 15,
+        name: "아이디 찾기",
+        url: "/member/findIdResult"
     }
 ];
