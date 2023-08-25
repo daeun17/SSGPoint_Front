@@ -46,3 +46,88 @@
     margin: 0 2px;
     padding: 0 20px 20px;
 }
+
+.item_cnt .total_point {
+    display: flex;
+    box-sizing: border-box;
+    width: 100%;
+    align-items: center;
+    padding: 24px 0 14px;
+}
+
+.item_cnt .total_point dt {
+    font-size: 13px;
+    font-weight: 500;
+    color: #000;
+    line-height: 21px;
+    -ms-flex-align: center;
+    align-items: center;
+    flex: 1.3;
+}
+
+.item_cnt .total_point dd {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    font-family: Inter,Noto Sans KR,sans-serif;
+    font-size: 24px;
+    line-height: 29px;
+    font-weight: 700;
+    color: #000;
+}
+.item_cnt .total_point dd:after {
+    content: "";
+    display: inline-block;
+    margin-left: 7px;
+    width: 33px;
+    height: 30px;
+    background: url(https://m.shinsegaepoint.com/img/point_gradi.d5d9bfaf.png) no-repeat;
+    background-size: 100% auto;
+}
+
+.item_cnt dl+dl {
+    margin-top: 3px;
+}
+.item_cnt dl {
+    display: -ms-flexbox;
+    display: flex;
+}
+.item_cnt dt {
+    -ms-flex: 1.3;
+    flex: 1.3;
+    font-size: 12px;
+    color: #505050;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+}
+.item_cnt dd {
+    -ms-flex: 3.7;
+    flex: 3.7;
+    font-size: 13px;
+    color: #000;
+    font-family: Inter,Noto Sans KR,sans-serif;
+    line-height: 21px;
+    font-weight: 700;
+    text-align: right;
+    word-break: break-all;
+}
+.item_cnt dd span {
+    display: -ms-flexbox;
+    display: flex;
+    text-align: left;
+}
+.item_cnt dd .date {
+    font-size: 11px;
+    line-height: 19px;
+    margin-right: auto;
+    font-family: Inter,sans-serif;
+    font-weight: 400;
+    color: #767676;
+}
+.item_cnt dd em {
+    font-style: normal;
+}
