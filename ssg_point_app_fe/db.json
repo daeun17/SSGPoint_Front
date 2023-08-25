@@ -28,7 +28,7 @@
       "reg_date": "2023-08-12",
       "event_start": "2023-08-14",
       "event_end": "2023-09-11",
-      "event_thumbnail": "https://mycloudmembership-prd.s3.ap-northeast-2.amazonaws.com/shinsegaepoint/public/svcm-fo/webapp/20230728/9b27af5c-59cb-4246-9778-0a1dfb2b21a7.jpg",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_1.jpg",
       "event_partner_id": "200",
       "event_type": "단순연결",
       "event_url": "https://m.shinsegaepoint.com/ingevents/detail?eventNo=3340&tabActiveIdx=0"
@@ -40,7 +40,7 @@
       "reg_date": "2023-08-12",
       "event_start": "2023-08-14",
       "event_end": "2023-09-01",
-      "event_thumbnail": "https://mycloudmembership-prd.s3.ap-northeast-2.amazonaws.com/shinsegaepoint/public/svcm-fo/webapp/20230626/121a1bd2-7e2b-4469-9115-2d395f6d0b57.jpg",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_2.jpg",
       "event_partner_id": "204",
       "event_type": "응모형",
       "event_url": "https://m.shinsegaepoint.com/ingevents/detail?eventNo=3147"
@@ -52,7 +52,7 @@
       "reg_date": "2023-08-12",
       "event_start": "2023-08-14",
       "event_end": "2023-09-11",
-      "event_thumbnail": "https://mycloudmembership-prd.s3.ap-northeast-2.amazonaws.com/shinsegaepoint/public/svcm-fo/webapp/20230803/c3178706-2748-4911-8827-f2cd4a7ea7f2.jpg",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_3.jpg",
       "event_partner_id": "200",
       "event_type": "단순연결",
       "event_url": "https://m.shinsegaepoint.com/ingevents/detail?eventNo=3406&tabActiveIdx=0"
@@ -64,7 +64,7 @@
       "reg_date": "2023-08-12",
       "event_start": "2023-08-14",
       "event_end": "2023-09-11",
-      "event_thumbnail": "https://mycloudmembership-prd.s3.ap-northeast-2.amazonaws.com/shinsegaepoint/public/svcm-fo/webapp/20230608/4e50293b-4821-45da-a63d-9b1b047a5c4d.jpg",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_4.jpg",
       "event_partner_id": "200",
       "event_type": "단순연결",
       "event_url": "https://m.shinsegaepoint.com/membership/combine"
@@ -76,7 +76,7 @@
       "reg_date": "2023-08-12",
       "event_start": "2023-08-14",
       "event_end": "2023-09-11",
-      "event_thumbnail": "https://mycloudmembership-prd.s3.ap-northeast-2.amazonaws.com/shinsegaepoint/public/svcm-fo/webapp/20221205/dc8146cc-cbbe-42b0-a20f-0756a6740de2.jpg",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_5.jpg",
       "event_partner_id": "200",
       "event_type": "단순연결",
       "event_url": "https://m.shinsegaepoint.com/ingevents/detail?eventNo=2251"
@@ -88,7 +88,7 @@
       "reg_date": "2023-08-12",
       "event_start": "2023-08-14",
       "event_end": "2023-09-11",
-      "event_thumbnail": "https://mycloudmembership-prd.s3.ap-northeast-2.amazonaws.com/shinsegaepoint/public/svcm-fo/webapp/20220831/a863c01a-b28c-46e0-9f46-9772b8e1e8df.jpg",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_6.jpg",
       "event_partner_id": "200",
       "event_type": "단순연결",
       "event_url": "https://m.shinsegaepoint.com/cscenter/notice/detail?boardNo=241&pageNo=1"
@@ -102,7 +102,7 @@
       "reg_date": "2023-08-12",
       "event_start": "2023-08-14",
       "event_end": "2023-09-11",
-      "event_thumbnail": "https://mycloudmembership-prd.s3.ap-northeast-2.amazonaws.com/shinsegaepoint/public/svcm-fo/webapp/20230811/d82598ce-6fae-49af-948e-a14355b9c125.png",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_7.png",
       "event_partner_id": "200",
       "event_type": "단순연결",
       "event_url": "https://m.shinsegaepoint.com/endevents/detail?eventNo=3472"
@@ -114,34 +114,10 @@
       "reg_date": "2023-08-12",
       "event_start": "2023-08-14",
       "event_end": "2023-09-01",
-      "event_thumbnail": "https://mycloudmembership-prd.s3.ap-northeast-2.amazonaws.com/shinsegaepoint/public/svcm-fo/webapp/20230724/d23b002e-425c-45a9-9ab2-346f629a56cb.jpg",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_8.jpg",
       "event_partner_id": "204",
       "event_type": "응모형",
       "event_url": "https://m.shinsegaepoint.com/couponPage"
-    },
-    {
-      "id": 9,
-      "event_id": 30444,
-      "event_head": "맘키즈클럽플러스 행사상품 안내(8월 2차)",
-      "reg_date": "2023-08-12",
-      "event_start": "2023-08-14",
-      "event_end": "2023-09-11",
-      "event_thumbnail": "https://mycloudmembership-prd.s3.ap-northeast-2.amazonaws.com/shinsegaepoint/public/svcm-fo/webapp/20220831/0f5f992c-ca28-430e-9e1c-b5b6781d2ff2.jpg",
-      "event_partner_id": "200",
-      "event_type": "단순연결",
-      "event_url": "https://www.shinsegaegroupnewsroom.com/category/newsletter/"
-    },
-    {
-      "id": 6,
-      "event_id": 30444,
-      "event_head": "맘키즈클럽플러스 행사상품 안내(8월 2차)",
-      "reg_date": "2023-08-12",
-      "event_start": "2023-08-14",
-      "event_end": "2023-09-11",
-      "event_thumbnail": "https://mycloudmembership-prd.s3.ap-northeast-2.amazonaws.com/shinsegaepoint/public/svcm-fo/webapp/20220831/7d596cd3-9bc8-4274-993e-ac9dba49c100.jpg",
-      "event_partner_id": "200",
-      "event_type": "단순연결",
-      "event_url": "https://m.shinsegaepoint.com/membership/club/momkids"
     },
     {
       "id": 3,
@@ -150,34 +126,10 @@
       "reg_date": "2023-08-12",
       "event_start": "2023-08-14",
       "event_end": "2023-09-11",
-      "event_thumbnail": "https://mycloudmembership-prd.s3.ap-northeast-2.amazonaws.com/shinsegaepoint/public/svcm-fo/webapp/20230724/3d748100-bed7-47bd-9110-02c2d34d6f06.png",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_9.jpg",
       "event_partner_id": "200",
       "event_type": "단순연결",
       "event_url": "https://m.shinsegaepoint.com/couponPage"
-    },
-    {
-      "id": 7,
-      "event_id": 30444,
-      "event_head": "맘키즈클럽플러스 행사상품 안내(8월 2차)",
-      "reg_date": "2023-08-12",
-      "event_start": "2023-08-14",
-      "event_end": "2023-09-11",
-      "event_thumbnail": "https://mycloudmembership-prd.s3.ap-northeast-2.amazonaws.com/shinsegaepoint/public/svcm-fo/webapp/20220831/75946512-9567-46ff-a836-0d4ebb60ee88.jpg",
-      "event_partner_id": "200",
-      "event_type": "단순연결",
-      "event_url": "https://m.shinsegaepoint.com/membership/club/parking"
-    },
-    {
-      "id": 8,
-      "event_id": 30444,
-      "event_head": "맘키즈클럽플러스 행사상품 안내(8월 2차)",
-      "reg_date": "2023-08-12",
-      "event_start": "2023-08-14",
-      "event_end": "2023-09-11",
-      "event_thumbnail": "https://mycloudmembership-prd.s3.ap-northeast-2.amazonaws.com/shinsegaepoint/public/svcm-fo/webapp/20220831/d3420bff-c6c2-49c1-8d7e-5923db4b9841.jpg",
-      "event_partner_id": "200",
-      "event_type": "단순연결",
-      "event_url": "https://m.shinsegaepoint.com/membership/club/beauty"
     },
     {
       "id": 4,
@@ -186,7 +138,7 @@
       "reg_date": "2023-08-12",
       "event_start": "2023-08-14",
       "event_end": "2023-09-11",
-      "event_thumbnail": "https://mycloudmembership-prd.s3.ap-northeast-2.amazonaws.com/shinsegaepoint/public/svcm-fo/webapp/20230703/08691c95-3b4e-4f6c-bc8a-c4a00e46c3de.jpg",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_10.jpg",
       "event_partner_id": "200",
       "event_type": "단순연결",
       "event_url": "https://m.shinsegaepoint.com/ingevents/detail?eventNo=3046"
@@ -198,11 +150,62 @@
       "reg_date": "2023-08-12",
       "event_start": "2023-08-14",
       "event_end": "2023-09-11",
-      "event_thumbnail": "https://mycloudmembership-prd.s3.ap-northeast-2.amazonaws.com/shinsegaepoint/public/svcm-fo/webapp/20230102/054ae650-59cd-46ec-9459-f0b13d7bc0b3.jpg",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_11.jpg",
       "event_partner_id": "200",
       "event_type": "단순연결",
       "event_url": "https://m.shinsegaepoint.com/ingevents/detail?eventNo=2383&tabActiveIdx=0"
+    },
+    {
+      "id": 6,
+      "event_id": 30444,
+      "event_head": "맘키즈클럽플러스 행사상품 안내(8월 2차)",
+      "reg_date": "2023-08-12",
+      "event_start": "2023-08-14",
+      "event_end": "2023-09-11",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_12.jpg",
+      "event_partner_id": "200",
+      "event_type": "단순연결",
+      "event_url": "https://m.shinsegaepoint.com/membership/club/momkids"
+    },{
+      "id": 7,
+      "event_id": 30444,
+      "event_head": "맘키즈클럽플러스 행사상품 안내(8월 2차)",
+      "reg_date": "2023-08-12",
+      "event_start": "2023-08-14",
+      "event_end": "2023-09-11",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_13.jpg",
+      "event_partner_id": "200",
+      "event_type": "단순연결",
+      "event_url": "https://m.shinsegaepoint.com/membership/club/parking"
+    },
+    {
+      "id": 8,
+      "event_id": 30444,
+      "event_head": "맘키즈클럽플러스 행사상품 안내(8월 2차)",
+      "reg_date": "2023-08-12",
+      "event_start": "2023-08-14",
+      "event_end": "2023-09-11",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_14.jpg",
+      "event_partner_id": "200",
+      "event_type": "단순연결",
+      "event_url": "https://m.shinsegaepoint.com/membership/club/beauty"
+    },
+    {
+      "id": 9,
+      "event_id": 30444,
+      "event_head": "맘키즈클럽플러스 행사상품 안내(8월 2차)",
+      "reg_date": "2023-08-12",
+      "event_start": "2023-08-14",
+      "event_end": "2023-09-11",
+      "event_thumbnail": "https://storage.googleapis.com/ssg-point/event-banner/event_15.jpg",
+      "event_partner_id": "200",
+      "event_type": "단순연결",
+      "event_url": "https://www.shinsegaegroupnewsroom.com/category/newsletter/"
     }
+    
+    
+    
+    
   ],
   "event": [
     {
