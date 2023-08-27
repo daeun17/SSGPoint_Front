@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import styles from './CertPage.module.css'
 import { usePathname, useRouter } from 'next/navigation'
 import { CertFormDataType } from '@/types/certFormDataType'
-import { handleOnChange, handleLocalStorage } from '@/handler/CertHandle';
+import { handleOnChange, handleLocalStorage, checkId } from '@/handler/CertHandle';
 import { useDisclosure } from '@nextui-org/react'
 import PublicModal from '@/components/widget/modal/Modal'
 
@@ -21,55 +21,36 @@ export default function CertPage() {
         nationality: 'L',
     });
 
-    // router를 props로 넘기기 어려움
-    const handleCertification = (pathname: string) => {
-        if (pathname === '/member/join/cert') {
-            router.push('/member/join/agree');
-        } else if (pathname === '/member/findIdPw'){
-            checkId();
-        }
-    }
+    useEffect(() => {
+        setRoutePath(pathname);
+    }, []);
 
-    
-    const checkId = async () => {
-        setRoutePath('/member/join')
-        try {
-            const response = await fetch(`https://smilekarina.duckdns.org/api/v1/join?userName=${certData.name}&phone=${certData.phone}`)
-            if (!response.ok) {
-                throw new Error('Network response was not ok');
+
+    const handleCertification = async (routePath: string) => {
+        if (routePath === '/member/join/cert') {
+            router.push('/member/join/agree');
+        } else if (routePath === '/member/findIdPw') {
+            const result = await checkId(certData.name, certData.phone)
+            if (result) {
+                console.log(result[1])
+                localStorage.setItem('loginId', result[0].toString())
+                router.push(result[1])
             }
-            const data = await response.json();
-            console.log(data);
-            // if (data.success) {
-            //     localStorage.setItem('loginId', data.loginId.toString())
-            //     router.push('/member/findIdResult');
-            // } else {
-            //     setModalContent("회원정보가 없습니다.\n정확한 정보를 입력하신 후 다시 시도해 주세요.");
-            //     onOpen();
-            // }
-        
-        } catch (error) {
-            console.error("Error sending POST request:", error);
-            
+            else {
+                setModalContent("회원정보가 없습니다.\n정확한 정보를 입력하신 후 다시 시도해 주세요.");
+                setRoutePath('/member/join')
+                onOpen();
+            }
+
         }
     }
-    // const test = () => {
-    //     setRoutePath('/member/join')
-    //     const data = false;
-    //     if (data) {
-    //         router.push('/member/join/agree');
-    //     } else {
-    //         setModalContent("회원정보가 없습니다.\n정확한 정보를 입력하신 후 다시 시도해 주세요.");
-    //         onOpen();
-    //     }
-    // }
 
 
     return (
         <div>
             <div>
-                <PublicModal isOpen={isOpen} onOpenChange={onOpenChange} content={modalContent} routePath={routePath}/>
-                </div>
+                <PublicModal isOpen={isOpen} onOpenChange={onOpenChange} content={modalContent} routePath={routePath} />
+            </div>
             {/* <form> */}
             <div className={styles.auth_tab}>
                 <ul role="tablist" className={styles.auth_tab_menu}>
@@ -245,9 +226,9 @@ export default function CertPage() {
                             <div className={styles.tab_box1}>
                                 <div className={styles.btn_box}>
                                     <button className={styles.btn_primary}
-                                        onClick={() => {
+                                        onClick={(e) => {
                                             handleLocalStorage(certData.name, certData.phone);
-                                            handleCertification(pathname);
+                                            handleCertification(routePath);
                                         }}> 인증번호 요청 </button>
                                     {/* <button className={styles.btn_primary}
                                         onClick={() => {

@@ -45,9 +45,7 @@ export default function FormArea() {
         }
     }
 
-    const formatPhoneNumber = (number: string) => {
-        return number.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
-    };
+    
 
     const handleSignUp = async () => {
         try {
