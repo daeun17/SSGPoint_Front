@@ -234,5 +234,43 @@
       "addpoint" : 3,
       "extpoint" : 2,
       "extNextpoint" : 1
+  },
+  "pointlist" : {
+    "aTotalPoint": "9",
+    "uTotalPoint": "1", 
+    "pntList": [
+      {
+          "num": "1",
+          "point_id" : 1213,
+          "point": "1",
+          "used" : "True",
+          "point_type": "F",
+          "created_date": "2023-08-19",
+          "updated_date": "2023-08-19",
+          "franchisee_name": "신세계포인트 선물",
+          "addDetailDesc": "포인트 선물(사용) 취소", 
+          "receipt_number" : "",
+          "messageOnOff" : "ON",
+          "gift_type": "C", 
+          "giftNm": "안선영",            
+          "gift_sender_id": "tjsdud1477"
+      },
+      {
+          "num": "2",
+          "point": "1",
+          "used" : "True",
+          "point_id" : 1213,
+          "point_type": "F", 
+          "created_date": "2023-08-19",
+          "updated_date": "2023-08-19",
+          "franchisee_name": "신세계포인트닷컴",   
+          "addDetailDesc": "[APP] 럭키룰렛 포인트 지급", 
+          "receipt_number" : "",
+          "messageOnOff" : "OFF",
+          "gift_type" : "",
+          "giftNm": "",
+          "gift_sender_id": "" 
+      }
+    ]
   }
 }

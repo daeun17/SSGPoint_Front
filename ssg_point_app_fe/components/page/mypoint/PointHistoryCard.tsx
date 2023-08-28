@@ -1,4 +1,4 @@
-"use client"
+'use client'
 import React, { useEffect, useState } from 'react'
 import style from "./MyPoint.module.css"
 import { log } from 'console';
@@ -12,14 +12,23 @@ interface pointinfo{
 
 }
 
+// 날짜 형식 바꾸기 
+export function dateFormat({formatdate}:{formatdate : Date}){
+  let result = `${formatdate.getFullYear()}-${formatdate.getMonth() <9 ? "0"+(formatdate.getMonth()+1) : (formatdate.getMonth()+1)}-01`
+  return result
+}
+
+
 
 export default async function PointHistoryCard() {
   const [pointInfo,setPointinfo] = useState<pointinfo>();
   const nowdate = new Date();
   const extdate = new Date(nowdate);
   extdate.setMonth(nowdate.getMonth()+1);
+  const formextdate = dateFormat({formatdate : extdate});
   const extNextdate = new Date();
   extNextdate.setMonth(nowdate.getMonth()+2);
+  const formnextextdate = dateFormat({formatdate : extNextdate});
 
   useEffect(()=>{
     const getData = async () => {
@@ -48,11 +57,11 @@ export default async function PointHistoryCard() {
             <dt>소멸예정</dt>
             <dd>
               <span>
-                <em className={style.date}>{`${extdate}`}</em>
+                <em className={style.date}>{`${formextdate}`}</em>
                 <em>{pointInfo ? pointInfo.extpoint :"error"}p</em>
               </span>
               <span>
-                <em className={style.date}>{`${extNextdate}`}</em>
+                <em className={style.date}>{`${formnextextdate}`}</em>
                 <em>{pointInfo ? pointInfo.extNextpoint :"error"}p</em>
               </span>
             </dd>
