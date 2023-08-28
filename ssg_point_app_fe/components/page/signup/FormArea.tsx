@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import styles from './FormArea.module.css'
-import { SignUpFormDataType } from '@/types/signUpFormDataType'
+import { SignUpFormDataType } from '@/types/userDataType'
 import { useRouter } from 'next/navigation';
 import PublicModal from '@/components/widget/modal/Modal';
 import { Button, useDisclosure } from "@nextui-org/react";

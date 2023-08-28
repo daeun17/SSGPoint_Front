@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './LoginArea.module.css'
 import Link from 'next/link';
-import { LogInFormDataType } from '@/types/loginFormDataType';
+import { LogInFormDataType } from '@/types/userDataType';
 
 
 export default function Loginarea() {

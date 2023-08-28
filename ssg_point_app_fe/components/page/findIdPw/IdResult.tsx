@@ -27,7 +27,7 @@ export default function IdResult() {
                     </dl>
                 </div>
                 <div className={styles.btn_box}>
-                    <a href="/login" className={styles.btn_primary}>로그인</a>
+                    <Link href="/login" className={styles.btn_primary}>로그인</Link>
                 </div>
             </div>
             <div className={styles.find_pw_btn_box}>

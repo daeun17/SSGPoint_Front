@@ -1,6 +1,8 @@
 'use client'
 
-import { CertFormDataType } from "@/types/certFormDataType";
+import { CertFormDataType } from "@/types/userDataType";
+
+
 
 
 const formatPhoneNumber = (number: string) => {
@@ -25,7 +27,7 @@ export const handleLocalStorage = (name: String, phone: String) => {
   localStorage.setItem('tempPhone', phone.toString())
 }
 
-export const checkId = async (name: String, phone: String): Promise<[string, string] | undefined> => {
+export const checkId = async (name: String, phone: String) => {
   try {
     phone = formatPhoneNumber(phone?.toString() || "");
 
@@ -34,12 +36,12 @@ export const checkId = async (name: String, phone: String): Promise<[string, str
       throw new Error('Network response was not ok');
     }
     const data = await response.json();
-    console.log(data.success);
+    console.log(data);
 
 
     if (data.success) {
       
-      return [data.result, '/member/findIdResult'];
+      return data.result
     
     } else {
       console.log("a")
@@ -52,3 +54,30 @@ export const checkId = async (name: String, phone: String): Promise<[string, str
   }
   return undefined;
 }
+// export const changePw = async (loginId: String, name: String, phone: String): Promise<[string, string, string] | undefined> => {
+//   try {
+//     phone = formatPhoneNumber(phone?.toString() || "");
+
+//     const response = await fetch(`https://smilekarina.duckdns.org/api/v1/member/findPw?loginId=${loginId}userName=${name}&phone=${phone}`)
+//     if (!response.ok) {
+//       throw new Error('Network response was not ok');
+//     }
+//     const data = await response.json();
+//     console.log(data.success);
+
+
+//     // if (data.success) {
+      
+//     //   return [data.result, '/member/findIdResult'];
+    
+//     // } else {
+//     //   console.log("a")
+//     //   return undefined;
+//     // }
+
+//   } catch (error) {
+//     console.error("Error sending POST request:", error);
+
+//   }
+//   return undefined;
+// }
