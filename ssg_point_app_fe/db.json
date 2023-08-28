@@ -230,7 +230,7 @@
   
   "mypoint":{
       "id" : 1,
-      "total_point" : 6,
+      "total_point" : 9,
       "addpoint" : 3,
       "extpoint" : 2,
       "extNextpoint" : 1

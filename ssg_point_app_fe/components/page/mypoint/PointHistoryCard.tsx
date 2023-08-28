@@ -12,30 +12,6 @@ interface pointinfo{
 
 }
 
-function formatDateTo({date}:{date:string}) {
-  const now = new Date(date);
-  const year = now.getFullYear();
-  const month = (now.getMonth() + 1).toString().padStart(2, '0'); // 월은 0부터 시작합니다.
-  const day = now.getDate().toString().padStart(2, '0');
-  const hour = now.getHours().toString().padStart(2, '0');
-  const minute = now.getMinutes().toString().padStart(2, '0');
-  const second = now.getSeconds().toString().padStart(2, '0');
-
-  return `${year}-${month}-${day}`;
-}
-
-function formatDate({date}:{date:string}) {
-  const now = new Date(date);
-  const year = now.getFullYear();
-  const month = (now.getMonth() + 1).toString().padStart(2, '0'); // 월은 0부터 시작합니다.
-  const day = now.getDate().toString().padStart(2, '0');
-  const hour = now.getHours().toString().padStart(2, '0');
-  const minute = now.getMinutes().toString().padStart(2, '0');
-  const second = now.getSeconds().toString().padStart(2, '0');
-
-  return `${year}년${month}월${day}일`;
-}
-
 
 export default async function PointHistoryCard() {
   const [pointInfo,setPointinfo] = useState<pointinfo>();
@@ -72,11 +48,11 @@ export default async function PointHistoryCard() {
             <dt>소멸예정</dt>
             <dd>
               <span>
-                <em className={style.date}>{``}</em>
+                <em className={style.date}>{`${extdate}`}</em>
                 <em>{pointInfo ? pointInfo.extpoint :"error"}p</em>
               </span>
               <span>
-                <em className={style.date}>{``}</em>
+                <em className={style.date}>{`${extNextdate}`}</em>
                 <em>{pointInfo ? pointInfo.extNextpoint :"error"}p</em>
               </span>
             </dd>
