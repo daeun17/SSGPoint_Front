@@ -4,9 +4,14 @@ import React, { useEffect, useState } from 'react'
 import styles from './LoginArea.module.css'
 import Link from 'next/link';
 import { LogInFormDataType } from '@/types/userDataType';
+import { signIn } from 'next-auth/react';
+import { useSearchParams } from 'next/navigation';
 
 
 export default function Loginarea() {
+  const query = useSearchParams();
+  const callBackUrl = query.get('callbackUrl');
+
   const isClient = typeof window !== 'undefined';
 
   const [loginData, setLoginData] = useState<LogInFormDataType>({
@@ -79,32 +84,20 @@ export default function Loginarea() {
       alert('비밀번호를 입력해주세요.');
       return;
     }
-
-    try {
-      const response = await fetch('/api/v1/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          loginId: loginData.loginId,
-          password: loginData.password
-        })
-      });
-      const data = await response.json();
-
-      console.log(data);
-      alert(JSON.stringify(data));
-
-
-    } catch (error) {
-      console.error("Error sending POST request:", error);
-    }
+    console.log(loginData)
+      const result = await signIn('credentials', {
+        loginId: loginData.loginId,
+        password: loginData.password,
+        redirect: false,
+        callbackUrl: callBackUrl ? callBackUrl : '/'
+      })
+ 
   };
 
 
 
   return (
+    
     <div className={styles.login_input_area}>
       <div className={styles.input_box}>
         <input id="loginId"
@@ -158,5 +151,6 @@ export default function Loginarea() {
         </li>
       </ul>
     </div>
+    
   )
 }
