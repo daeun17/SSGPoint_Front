@@ -135,3 +135,80 @@
 .point_info_cardbox .item_cnt dd em {
     font-style: normal;
 }
+
+/* 포인트 내역 하위 필터 */
+.sort_radio_box {
+    text-align: center;
+    display: -ms-flexbox;
+    display: flex;
+}
+.sort_radio_box .sort_box {
+    -ms-flex: 1;
+    flex: 1;
+    position: relative;
+}
+.sort_radio_box .sort_box input {
+    border-radius: 0;
+    appearance: none;
+    font-family: Inter,Noto Sans KR,Malgun Gothic,맑은고딕,굴림,gulim,helvetica,arial,sans-serif;
+    letter-spacing: -.025em;
+}
+
+.sort_radio_box .sort_box input:checked+label {
+    font-weight: 500;
+    color: #d9044b;
+}
+.sort_radio_box .sort_box input:checked+label:after {
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+    height: 2px;
+    background: #d9044b;
+}
+.sort_radio_box .sort_box label {
+    font-size: 14px;
+    display: block;
+    height: 42px;
+    line-height: 41px;
+    box-sizing: border-box;
+    color: #767676;
+}
+
+/* sort button ui */
+.class_sch {
+    padding: 14px 6px 14px 0;
+    position: relative;
+    border-top: 1px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+}
+
+.class_sch .sort_select {
+    color: #000;
+    font-family: Inter, "Noto Sans KR", "Malgun Gothic", 맑은고딕, 굴림, gulim, helvetica, arial, sans-serif;
+    letter-spacing: -0.025em;
+    font-size: 13px;
+}
+
+/* 포인트 내역 부분  */
+.point_list_box {
+    padding: 25px 20px 60px 20px;
+}
+
+/* 포인트 내역 조회 날짜 표시 */
+.term {
+    font-size: 12px;
+    width: calc(100% - 118px);
+}
+
+/* 필터 버튼 */
+.button {
+    vertical-align: middle;
+    padding: 0;
+}

@@ -5,7 +5,6 @@ import React, { useEffect, useMemo, useState } from 'react'
 export default function () {
 
   const router = useRouter();
-  const query = useSearchParams();
   const handleSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
     console.log(e.target.value);
     router.push(`/event/ingevent?_sort=${e.target.value}&_order=${e.target.value === "reg_date" ? "desc" : "asc"}`);

@@ -1,6 +1,6 @@
-import { filterMenuDataType } from "@/types/FilterMenuDataType";
-
-export const FilterMenu : filterMenuDataType[] =[
+import { filterMenuDataType } from "@/types/filterMenuDataType";
+// 포인트 내역 안의 menu 타입 
+export const FilterMenuData : filterMenuDataType[] =[
     {
         id: 1,
         name : "전체"
