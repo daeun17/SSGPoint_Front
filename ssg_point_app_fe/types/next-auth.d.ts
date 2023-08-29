@@ -4,9 +4,9 @@ declare module "next-auth" {
 
     interface Session {
         user: {
+            userName: string,
             token: string,
             uuid: string,
-            name: string,
         } & DefaultSession["user"]
     }
 }

@@ -1,14 +1,20 @@
 import React from 'react'
 import styles from './SideContents.module.css'
+import Logo from '@/components/ui/header/Logo'
+import { signOut, useSession } from 'next-auth/react'
+import Link from 'next/link'
 
 export default function SideContents() {
+  const session = useSession()
+  const rogo = "/images/ssgpoint-logo.gif";
   return (
     <div>
+      <nav className={`${styles.lnb}`}>
       <div className={`${styles.lnb_cnt}`}>
         <div className={`${styles.lnb_header}`}>
-          <a aria-label="신세계포인트" className={`${styles.tit}`} href="">
-            SHINSEGAE POINT
-          </a>
+          <div className={`${styles.tit}`}>
+            <Logo url={'/'} imgUrl={rogo} imgAlt={'신세계포인트 로고'} />
+          </div>
         </div>
         <div className={`${styles.lnb_top}`}>
           <div className={`${styles.top_cnt}`}>
@@ -25,11 +31,16 @@ export default function SideContents() {
               <a className={`${styles.btn0}`} href="">
                 회원가입
               </a>
+              {/* {session.status === 'authenticated' ? 
+              <p onClick={()=>signOut(
+                {callbackUrl: 'http://localhost:3000/'}
+              )}>로그아웃 : {session.data.user.name}</p> 
+            : <Link href='/login'>로그인</Link> } */}
             </div>
           </div>
         </div>
         <div className={`${styles.lnb_favorit}`}>
-          <h3 className={`${styles.blind}`}>
+          <h3 className={`${styles.blind} hidden`}>
             즐겨찾기 메뉴
           </h3>
           <div className={`${styles.lnb_favorit_list}`}>
@@ -171,7 +182,7 @@ export default function SideContents() {
           닫기
         </button>
       </div>
-
+    </nav>
     </div>
   )
 }

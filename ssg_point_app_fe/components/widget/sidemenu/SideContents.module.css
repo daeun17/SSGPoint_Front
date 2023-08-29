@@ -1,0 +1,106 @@
+.lnb_header {
+    height: 60px;
+    padding: 16px 0 0 20px;
+    box-sizing: border-box;
+}
+.lnb_header .tit {
+    display: inline-block;
+    width: 57px;
+    height: 36px;
+    
+    background-size: 100% auto;
+    font-size: 1px;
+    line-height: 0;
+    color: transparent;
+}
+
+.lnb_top {
+    position: relative;
+    box-sizing: border-box;
+}
+.lnb_top .top_cnt {
+    padding: 18px 20px 24px;
+}
+.lnb_top .app_btn_box {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+.lnb_top .top_cnt .btn_box {
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 25px;
+}
+.lnb_top .top_cnt .btn_box [class*=btn] {
+    height: 36px;
+    font-size: 12px;
+    padding-top: 6px!important;
+    border-radius: 6px;
+}
+.btn_box [class*=btn] {
+    display: block;
+    border-radius: 8px;
+    width: 100%;
+    text-align: center;
+    height: 48px;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    padding: 12px;
+    box-sizing: border-box;
+}
+.btn_primary {
+    padding: 12px 16px!important;
+    background: linear-gradient(110deg,#f40000 -5.78%,#ff8a00 17.06%,#f8b404 33.44%,#f9ad05 48.81%,#ff8a00 64.68%,#b258cb 85.01%,#00c4b4 103.04%);
+    color: #000;
+    font-weight: 500;
+}
+.lnb_top .top_cnt .btn_box .btn0 {
+    margin-left: 8px;
+}
+.btn_box .btn0 {
+    color: #fff;
+    background: #000;
+}
+.lnb_favorit {
+    position: relative;
+    background: #fff9ea;
+    box-sizing: border-box;
+    padding: 26px 0 24px;
+}
+.lnb_favorit_list {
+    font-size: 0;
+    padding: 0 10px;
+}
+.favorit_list_cnt, .favorit_list_empty {
+    display: inline;
+}
+.lnb_favorit_list .favorit_list_cnt .menu_box:first-child, .lnb_favorit_list .favorit_list_cnt .menu_box:nth-child(2), .lnb_favorit_list .favorit_list_cnt .menu_box:nth-child(3) {
+    margin-bottom: 10px;
+}
+.lnb_favorit_list .menu_box {
+    position: relative;
+    height: 80px;
+    display: inline-block;
+    width: 33.3%;
+    padding-right: 1px;
+    box-sizing: border-box;
+    vertical-align: top;
+}
+.lnb_favorit_list .menu_box .menu {
+    display: block;
+    box-sizing: border-box;
+    padding: 40px 0 0 0;
+    width: 100%;
+    height: 100%;
+    font-size: 11px;
+    line-height: 16px;
+    text-align: center;
+    position: relative;
+}
+.lnb_favorit_list .favorit_list_cnt .menu_box:first-child, .lnb_favorit_list .favorit_list_cnt .menu_box:nth-child(2), .lnb_favorit_list .favorit_list_cnt .menu_box:nth-child(3) {
+    margin-bottom: 10px;
+}

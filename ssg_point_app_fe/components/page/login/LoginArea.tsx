@@ -8,9 +8,11 @@ import { signIn, signOut } from 'next-auth/react';
 import { useSearchParams } from 'next/navigation';
 
 
+
 export default function Loginarea() {
   const query = useSearchParams();
   const callBackUrl = query.get('callbackUrl');
+
 
   const isClient = typeof window !== 'undefined';
 
@@ -86,7 +88,7 @@ export default function Loginarea() {
     const result = await signIn('credentials', {
       loginId: loginData.loginId,
       password: loginData.password,
-      redirect: false,
+      redirect: true,
       callbackUrl: callBackUrl ? callBackUrl : '/'
     })
 

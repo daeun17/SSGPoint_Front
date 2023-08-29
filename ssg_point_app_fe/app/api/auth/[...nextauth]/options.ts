@@ -1,5 +1,6 @@
 import { NextAuthOptions } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
+import { getCsrfToken } from "next-auth/react"
 
 export const options: NextAuthOptions = {
     providers: [
@@ -7,28 +8,33 @@ export const options: NextAuthOptions = {
             name: "Credentials",
             credentials: {
                 loginId: { label: "loginId", type: "text", placeholder: "SSGPOINT" },
-                password: { label: "password", type: "password" }
+                password: { label: "password", type: "password" },
+                csrftoken: { label: "csrftoken", type: "hidden" }
             },
             async authorize(credentials, req) {
+
 
                 if (!credentials?.loginId || !credentials?.password) return null
 
                 const res = await fetch("https://smilekarina.duckdns.org/api/v1/login", {
                     method: 'POST',
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
                         loginId: credentials?.loginId,
                         password: credentials?.password,
+                        
                     })
                 })
 
+                // const user = await res.json()
                 const user = await res.json()
 
+
                 if (res.ok && user) {
-                    console.log(user)
-                    return user
+                    //console.log(user.result.token)
+                    return user.result
                 }
                 // Return null if user data could not be retrieved
                 return null
@@ -41,10 +47,9 @@ export const options: NextAuthOptions = {
     callbacks: {
 
 
-        // async jwt({ token, user }) {
-        //     // return { ...token, ...user };
-        //     return token;
-        // },
+        async jwt({ token, user }) {
+            return { ...token, ...user };
+        },
 
         async session({ session, token }) {
             session.user = token as any;
@@ -52,7 +57,7 @@ export const options: NextAuthOptions = {
         },
 
         async redirect({ url, baseUrl }) {
-            console.log("Redirect URL:", url);
+            //console.log("Redirect URL:", url);
             // Allows relative callback URLs
             if (url.startsWith("/")) return `${baseUrl}${url}`
             // Allows callback URLs on the same origin
@@ -61,7 +66,7 @@ export const options: NextAuthOptions = {
         },
     },
     pages: {
-        // signIn: '/login',
+        signIn: '/login',
         signOut: '/auth/signout',
         error: '/auth/error', // Error code passed in query string as ?error=
         verifyRequest: '/auth/verify-request', // (used for check email message)
