@@ -5,6 +5,7 @@ import { getServerSession } from 'next-auth'
 import { options } from '@/app/api/auth/[...nextauth]/options'
 
 
+
 export const metadata = {
   title: '신세계포인트 - 로그인',
   description: '로그인 페이지',

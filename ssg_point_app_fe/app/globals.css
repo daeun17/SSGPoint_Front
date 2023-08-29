@@ -286,29 +286,33 @@ dd {
 }
 
 
-
-.main_event_banner .swiper-scrollbar {
-  width: 73% !important;
-  height: 2px !important;
+.main_banner_box .main_banner_cnt .swiper-control {
   position: absolute;
-  z-index: 50;  /* 더 큰 z-index 값을 선택 */
-  bottom: 46px !important;
-  left: 30px !important;
-  display: flex;
-  align-items: center;
-  margin-right: 2rem;
-  background: rgba(0,0,0,.1);
+  right: 30px;
+  bottom: 7px;
+  z-index: 2;
+  box-sizing: border-box;
+  height: 18px;
 }
 
-
-
 .swiper-pagination {
-  position: absolute;
-  text-align: center;
-  transition: 300ms opacity;
-  transform: translate3d(0, 0, 0);
-  z-index: 10;
+  color: #000;
   font-size: 12px;
+  letter-spacing: -1.5px;
+  line-height: 14px;
+  font-family: Inter,Noto Sans KR,sans-serif;
+  display: block;
+  width: 100%;
+  text-align: right;
+}
+
+.swiper-pagination span {
+padding: 0px 3px;
+}
+
+.swiper-pagination-current {
+  color: #000;
+  font-weight: 700;
 }
 
 

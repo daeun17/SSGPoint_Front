@@ -14,7 +14,7 @@ function HeaderTop() {
 
     const handleSideMenu = () => {
         setIsOpened(!isOpened)
-        console.log(isOpened)
+        
     }
     const rogo = "/images/ssgpoint-logo.gif";
     const backurl = "/images/backurl.png";

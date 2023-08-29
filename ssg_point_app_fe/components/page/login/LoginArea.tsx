@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react'
 import styles from './LoginArea.module.css'
 import Link from 'next/link';
 import { LogInFormDataType } from '@/types/userDataType';
-import { signIn } from 'next-auth/react';
+import { signIn, signOut } from 'next-auth/react';
 import { useSearchParams } from 'next/navigation';
 
 
@@ -74,30 +74,28 @@ export default function Loginarea() {
       alert('아이디와 비밀번호를 입력해주세요.');
       return;
     }
-
     if (!loginData.loginId) {
       alert('아이디를 입력해주세요.');
       return;
     }
-
     if (!loginData.password) {
       alert('비밀번호를 입력해주세요.');
       return;
     }
-    console.log(loginData)
-      const result = await signIn('credentials', {
-        loginId: loginData.loginId,
-        password: loginData.password,
-        redirect: false,
-        callbackUrl: callBackUrl ? callBackUrl : '/'
-      })
- 
+    // console.log(loginData)
+    const result = await signIn('credentials', {
+      loginId: loginData.loginId,
+      password: loginData.password,
+      redirect: false,
+      callbackUrl: callBackUrl ? callBackUrl : '/'
+    })
+
   };
 
 
 
   return (
-    
+
     <div className={styles.login_input_area}>
       <div className={styles.input_box}>
         <input id="loginId"
@@ -150,7 +148,8 @@ export default function Loginarea() {
           <Link href="/member/join" className={styles.btn}>회원가입</Link>
         </li>
       </ul>
+      <button onClick={()=>{ signOut() }}>로그아웃버튼</button> 
     </div>
-    
+
   )
 }
