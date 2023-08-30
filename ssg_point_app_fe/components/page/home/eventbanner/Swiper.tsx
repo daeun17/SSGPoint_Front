@@ -8,11 +8,9 @@ import 'swiper/css';
 import 'swiper/css/scrollbar';
 // import required modules
 import { Scrollbar } from 'swiper/modules';
-import styles from './Swiper.module.css'
 import { EventBannerType } from '@/types/eventBannerDataType';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Pagination } from 'swiper/modules';
 import 'swiper/css/pagination';
 
 
@@ -27,6 +25,7 @@ export default function SwiperComponent(props: { height: number, start: number, 
     
         setIsCurrentIndex(swiper.realIndex + 1);
     }
+    
     
 
     return (
@@ -51,7 +50,7 @@ export default function SwiperComponent(props: { height: number, start: number, 
                         ))
                     }
                     {
-                    props.eventList.length !== 1
+                    props.end - props.start !== 1
                         ?
                         <div className='swiper-control'>
                             <div className='swiper-pagination'>
@@ -60,14 +59,15 @@ export default function SwiperComponent(props: { height: number, start: number, 
                                 </span>
                                 /
                                 <span className='swiper-pagination-total'>
-                                    {props.eventList.length}
+                                    {props.end - props.start}
                                 </span>
                             </div>
                         </div>
                         :
-                        ''
+                        null
                 }
                 </Swiper>
+                
             </div>
         </div>
     )
