@@ -1,8 +1,7 @@
 import React from 'react'
 import LoginArea from '@/components/page/login/LoginArea'
 import SnsLogin from '@/components/page/login/SnsLogin'
-import { getServerSession } from 'next-auth'
-import { options } from '@/app/api/auth/[...nextauth]/options'
+
 
 
 
@@ -13,8 +12,7 @@ export const metadata = {
 
 export default async function LoginPage() {
 
-  const session = await getServerSession(options)
-  //console.log(session)
+
 
   return (
 

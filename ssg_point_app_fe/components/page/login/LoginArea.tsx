@@ -97,7 +97,7 @@ export default function Loginarea() {
 
 
   return (
-
+    
     <div className={styles.login_input_area}>
       <div className={styles.input_box}>
         <input id="loginId"
@@ -150,8 +150,7 @@ export default function Loginarea() {
           <Link href="/member/join" className={styles.btn}>회원가입</Link>
         </li>
       </ul>
-      <button onClick={()=>{ signOut() }}>로그아웃버튼</button> 
     </div>
-
+    
   )
 }

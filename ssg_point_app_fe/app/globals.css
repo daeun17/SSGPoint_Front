@@ -161,6 +161,55 @@ dd {
   height: 56px;
   
 }
+.barcode_show_btn {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+}
+.ico_barcode2 {
+  margin: 0 6px 0 0;
+  position: relative;
+}
+.ico_barcode2 {
+  width: 27px;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAAeCAYAAABnuu2GAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDYuMC1jMDA2IDc5LjE2NDc1MywgMjAyMS8wMi8xNS0xMTo1MjoxMyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIyLjMgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkE3OEQyMkZFRjQxQTExRUJCQjAxQjkxQzRCNUE1Rjk1IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkE3OEQyMkZGRjQxQTExRUJCQjAxQjkxQzRCNUE1Rjk1Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QTc4RDIyRkNGNDFBMTFFQkJCMDFCOTFDNEI1QTVGOTUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QTc4RDIyRkRGNDFBMTFFQkJCMDFCOTFDNEI1QTVGOTUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz5LaAw/AAAAVUlEQVR42uzPuwnAMAwFQCmjaP8dnSJ2Y7ANqUK41wh9EFxWVYsn2evo4zBf7XPat5d/Tv+3d1f8NGBgYGBgYGBgYGBgYGBgYGBgYGBgYGBg38otwAA/qQqhmTZF/gAAAABJRU5ErkJggg==) no-repeat 0 0;
+  background-size: 100% auto;
+}
+.ico_barcode, .ico_barcode2 {
+  display: inline-block;
+  height: 15px;
+  text-indent: -999em;
+  vertical-align: top;
+}
+.barcode_show_btn .point {
+  width: 24px;
+  height: 24px;
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
+  text-indent: -999em;
+  margin-left: 4px;
+  background: url(/images/point-icon.png) no-repeat;
+  background-size: 100% auto;
+}
+.blind, legend, table caption {
+  overflow: hidden;
+  border: 0;
+  position: absolute;
+  z-index: -1;
+  width: 1px;
+  height: 1px;
+  clip: rect(1px,1px,1px,1px);
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+}
+.blind, legend {
+  left: -100%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
 
 
 /* 로그인 */

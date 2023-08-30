@@ -5,20 +5,22 @@ import SideMenu from '../widget/sidemenu/SideMenu'
 import Logo from '../ui/header/Logo'
 import { usePathname } from 'next/navigation'
 import BackUrl from '../ui/header/BackUrl'
+import { useSession } from 'next-auth/react'
 
 
 function HeaderTop() {
-    const [isLogin, setIsLogin] = useState<Boolean>(false)
+
     const [isOpened, setIsOpened] = useState<Boolean>(false)
     const pathname = usePathname();
+    const session = useSession()
 
     const handleSideMenu = () => {
         setIsOpened(!isOpened)
-        
+
     }
     const rogo = "/images/ssgpoint-logo.gif";
     const backurl = "/images/backurl.png";
-    
+
 
     return (
         <>
@@ -29,14 +31,23 @@ function HeaderTop() {
                     <Logo url={'/'} imgUrl={rogo} imgAlt={'신세계포인트 로고'}
                     />
                     : <BackUrl imgUrl={backurl} imgAlt={'뒤로가기'} />
-                        
+
                 }
-                    
+
                 <nav className='header_menu mr-2'>
                     <ul className='flex gap-4 justify-center items-center'>
                         <li className='text-sm font-medium'>
-                            {isLogin ?
-                                <HeaderUserStatus />
+                            {session.status === 'authenticated' ?
+                                
+                                    <button id="barcode_show_btn" className="barcode_show_btn wp">
+                                        <span className="ico_barcode2"></span>
+                                        <strong className="font-normal">0</strong>
+                                        <span className="point">P</span>
+                                        <span className="blind">
+                                            <span>바코드 보기</span>
+                                        </span>
+                                    </button>
+                                
                                 : <Link href='/login'>로그인</Link>}
                         </li>
                         <li onClick={handleSideMenu}>
