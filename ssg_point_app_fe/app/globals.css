@@ -335,14 +335,16 @@ dd {
 }
 
 
-.main_banner_box .main_banner_cnt .swiper-control {
+.swiper-control {
   position: absolute;
-  right: 30px;
-  bottom: 7px;
-  z-index: 2;
+  right: 50px;
+  bottom: 38px;
+  z-index: 10;
   box-sizing: border-box;
   height: 18px;
 }
+
+/* 스와이퍼 */
 
 .swiper-pagination {
   color: #000;
@@ -362,6 +364,18 @@ padding: 0px 3px;
 .swiper-pagination-current {
   color: #000;
   font-weight: 700;
+}
+
+
+
+.swiper-horizontal > .swiper-scrollbar, .swiper-scrollbar.swiper-scrollbar-horizontal {
+  position: absolute;
+  left: var(--swiper-scrollbar-sides-offset, 30px) !important;
+  bottom: var(--swiper-scrollbar-bottom, 46px) !important;
+  top: var(--swiper-scrollbar-top, auto);
+  z-index: 50;
+  height: var(--swiper-scrollbar-size, 2px) !important;
+  width: calc(100% - 2 * var(--swiper-scrollbar-sides-offset, 13%)) !important;
 }
 
 
