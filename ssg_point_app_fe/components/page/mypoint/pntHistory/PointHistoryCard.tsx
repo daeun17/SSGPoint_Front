@@ -1,6 +1,6 @@
 'use client'
 import React, { useEffect, useState } from 'react'
-import style from "./MyPoint.module.css"
+import style from "../MyPoint.module.css"
 
 interface pointinfo{
   id : number,

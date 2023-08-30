@@ -5,12 +5,13 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { FilterMenuData } from '@/datas/FilterMenuData'
 
 // 포인트 내역에 Menu  
-export default function FilterMenu() {
+export default function SortRadio() {
   
-  const [tabGb,settbGb] = useState<string>("1"); // tabGb변경을 위한 state 관리  
+  const [tabGb,settbGb] = useState<String>("1"); // tabGb변경을 위한 state 관리  
   
   const handlefilter = (e: React.ChangeEvent<HTMLInputElement>) => {
     settbGb(e.target.value);// tabGb 값 변경해주기 
+    console.log(tabGb);
   }
 
   // tab 변경시 url에 쿼리 값 넣어서 데이터 받아오기 
@@ -19,7 +20,7 @@ export default function FilterMenu() {
   useEffect(()=>{
       router.push(`/mypoint/pntHistory?tabGb=${tabGb}&fromDt=${query.get("fromDt")}&toDt=${query.get('toDt')}`);
       //todo data fetch 해서 메뉴 뿌려주기   
-  },[tabGb])
+  },[])
 
 
   const data = FilterMenuData;

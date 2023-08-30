@@ -2,7 +2,7 @@
 import React from 'react'
 import style from "./MyPoint.module.css"
 import { usePathname } from 'next/navigation'
-import PointHistoryCard from './PointHistoryCard';
+import PointHistoryCard from './pntHistory/PointHistoryCard';
 
 export default function CardBox() {
     const pathname = usePathname();
