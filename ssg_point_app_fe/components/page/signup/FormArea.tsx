@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import styles from './FormArea.module.css'
-import { SignUpFormDataType } from '@/types/signUpFormDataType'
+import { SignUpFormDataType } from '@/types/userDataType'
 import { useRouter } from 'next/navigation';
 import PublicModal from '@/components/widget/modal/Modal';
 import { Button, useDisclosure } from "@nextui-org/react";
@@ -45,9 +45,7 @@ export default function FormArea() {
         }
     }
 
-    const formatPhoneNumber = (number: string) => {
-        return number.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
-    };
+    
 
     const handleSignUp = async () => {
         try {
@@ -74,7 +72,7 @@ export default function FormArea() {
 
     const checkId = async () => {
         try {
-            const response = await fetch(`https://smilekarina.duckdns.org/api/v1/join/${signupData.loginId}`)
+            const response = await fetch(`https://smilekarina.duckdns.org/api/v1/join?loginId=${signupData.loginId}`)
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
@@ -105,7 +103,7 @@ export default function FormArea() {
             setSignupData({
                 ...signupData,
                 name: tempName,
-                phone: formatPhoneNumber(tempPhone),
+                phone: tempPhone,
             })
         }
         setSignupData(prevData => ({

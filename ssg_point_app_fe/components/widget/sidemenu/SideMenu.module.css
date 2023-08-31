@@ -18,6 +18,9 @@
     left: -80%; /* 왼쪽으로 -80%만큼 이동하여 완전히 화면 밖으로 밀어냅니다. */
     z-index: 200;
     transition: all 0.3s ease-in-out;
+    max-height: 100vh;  /* 화면 높이에 맞게 설정 */
+    overflow-y: auto;  /* 내용이 넘치면 스크롤바 표시 */
+    position: fixed;   /* 메뉴를 화면에 고정 */
 }
 
 .sidemenuwrap.open {

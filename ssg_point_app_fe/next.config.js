@@ -3,8 +3,8 @@ const nextConfig = {
   images: {
     domains: [
       'm.shinsegaepoint.com',
-      'storage.cloud.google.com',
-      'mycloudmembership-prd.s3.ap-northeast-2.amazonaws.com'
+      'mycloudmembership-prd.s3.ap-northeast-2.amazonaws.com',
+      'storage.googleapis.com'
     ],
   },
 }
