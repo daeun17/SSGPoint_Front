@@ -122,4 +122,9 @@ export const headerMenuDatas: HeaderMenuType[] = [
         name: "마이 페이지",
         url: "/mypage"
     },
+    {
+        id: 25,
+        name: "마이 포인트",
+        url: "/mypoint/pntHistory"
+    },
 ];

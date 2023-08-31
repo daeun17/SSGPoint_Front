@@ -229,14 +229,14 @@
       "event_url": "https://m.shinsegaepoint.com/ingevents/detail?eventNo=3147"
     }
   ],
-  
-"mypoint":{
+  "mypoint":{
       "id" : 1,
       "total_point" : 9,
       "addpoint" : 3,
       "extpoint" : 2,
       "extNextpoint" : 1
   },
+
   "pointlist" : {
       "isSuccess": true,
       "code": "S00000",
@@ -393,6 +393,5 @@
       "message": "정상적으로 처리 되었습니다.",
       "status": 200
   }
- ]
 
 }
