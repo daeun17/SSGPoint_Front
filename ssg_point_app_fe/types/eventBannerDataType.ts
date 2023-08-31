@@ -7,8 +7,8 @@
 
 export interface EventBannerType {
     id: number,
-    event_id: Number,
-    event_head: String,
+    eventId: Number,
+    eventHead: String,
     reg_date: String,
     event_start: String,
     event_end: String,
