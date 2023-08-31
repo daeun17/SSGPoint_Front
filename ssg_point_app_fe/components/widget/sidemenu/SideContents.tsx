@@ -34,7 +34,7 @@ export default function SideContents() {
                     <button className={`${styles.btn1}`} onClick={() => signOut({ callbackUrl: '/login' })} >
                       로그아웃
                     </button>
-                    <a className={`${styles.btn0}`} href="">
+                    <a className={`${styles.btn0}`} href="/mypage">
                       마이페이지
                     </a>
                   </div>

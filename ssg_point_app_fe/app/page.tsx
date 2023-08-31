@@ -1,9 +1,12 @@
+
+
 import MainEventBanner from "@/components/page/home/eventbanner/MainEventBanner";
 import SubEventBanner from "@/components/page/home/eventbanner/SubEventBanner";
 import MainMenu from "@/components/page/home/mainmenu/MainMenu";
 import React from "react";
 import { options } from "./api/auth/[...nextauth]/options";
 import { getServerSession } from 'next-auth'
+
 
 export const metadata = {
   title: '신세계포인트 - 메인',
@@ -13,7 +16,7 @@ export const metadata = {
 
 
 export default async function Home() {
-
+  
   const session = await getServerSession(options)
   console.log(session)
 

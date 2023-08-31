@@ -4,16 +4,16 @@ export const eventMenuData: MenuType[] = [
 {
     id: 1,
     name: "진행 이벤트",
-    url: "/ingevent"
+    url: "/event/ingevent"
 },
 {
     id: 2,
     name: "종료 이벤트",
-    url: "/endevent"
+    url: "/event/endevent"
 },
 {
     id: 3,
     name: "당첨 확인",
-    url: "/winevent"
+    url: "/event/winevent"
 }
 ];

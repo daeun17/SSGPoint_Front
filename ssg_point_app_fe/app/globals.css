@@ -392,3 +392,8 @@ padding: 0px 3px;
 .fw700 {
   font-weight: 700!important;
 }
+
+/* 마이 회원정보 */
+.fc_pk {
+  color: #ea035c!important;
+}

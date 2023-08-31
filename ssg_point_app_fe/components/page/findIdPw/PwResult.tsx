@@ -53,6 +53,11 @@ export default function PwResult() {
             setRoutePath("/login");
             onOpen();
         }
+        else {
+            setModalContent("비밀번호 변경에 실패하였습니다.");
+            setRoutePath("/member/findPwResult");
+            onOpen();
+        }
     }
 
 

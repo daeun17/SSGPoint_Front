@@ -3,6 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials"
 import { getCsrfToken } from "next-auth/react"
 
 export const options: NextAuthOptions = {
+    
     providers: [
         CredentialsProvider({
             name: "Credentials",
@@ -35,7 +36,8 @@ export const options: NextAuthOptions = {
                 if (res.ok && user) {
                     //console.log(user.result.token)
                     return user.result
-                }
+                } 
+                
                 // Return null if user data could not be retrieved
                 return null
             }

@@ -30,6 +30,7 @@ export default function CertPage() {
     const handleCertification = async () => {
         if (routePath === '/member/join/cert') {
             router.push('/member/join/agree');
+
         } else if (routePath === '/member/findIdPw') {
             const result = await checkId(certData.name, certData.phone)
             if (result) {
@@ -40,9 +41,8 @@ export default function CertPage() {
                 setModalContent("회원정보가 없습니다.\n정확한 정보를 입력하신 후 다시 시도해 주세요.");
                 setRoutePath('/member/join')
                 onOpen();
-                
-                
             }
+            
         } else if (routePath === '/member/findPw') {
             const result = await checkId(certData.name, certData.phone)
             if (result && result === certData.loginId) {

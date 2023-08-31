@@ -91,6 +91,7 @@ export default function Loginarea() {
       redirect: true,
       callbackUrl: callBackUrl ? callBackUrl : '/'
     })
+    
 
   };
 

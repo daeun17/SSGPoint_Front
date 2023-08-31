@@ -37,47 +37,15 @@ export const checkId = async (name: String, phone: String) => {
     }
     const data = await response.json();
     console.log(data);
-
-
     if (data.success) {
-      
       return data.result
-    
     } else {
       console.log("a")
       return undefined;
     }
-
   } catch (error) {
     console.error("Error sending POST request:", error);
 
   }
   return undefined;
 }
-// export const changePw = async (loginId: String, name: String, phone: String): Promise<[string, string, string] | undefined> => {
-//   try {
-//     phone = formatPhoneNumber(phone?.toString() || "");
-
-//     const response = await fetch(`https://smilekarina.duckdns.org/api/v1/member/findPw?loginId=${loginId}userName=${name}&phone=${phone}`)
-//     if (!response.ok) {
-//       throw new Error('Network response was not ok');
-//     }
-//     const data = await response.json();
-//     console.log(data.success);
-
-
-//     // if (data.success) {
-      
-//     //   return [data.result, '/member/findIdResult'];
-    
-//     // } else {
-//     //   console.log("a")
-//     //   return undefined;
-//     // }
-
-//   } catch (error) {
-//     console.error("Error sending POST request:", error);
-
-//   }
-//   return undefined;
-// }

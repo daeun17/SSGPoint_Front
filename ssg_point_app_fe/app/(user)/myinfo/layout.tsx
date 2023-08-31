@@ -1,16 +1,17 @@
 'use client'
 
 import PageHeader from '@/components/layout/SubMenu'
-import React from 'react'
 import { useSession } from 'next-auth/react'
-import { redirect, usePathname } from "next/navigation";
+import { redirect, usePathname } from 'next/navigation'
+import React from 'react'
 
-
-export default async function layout({
+export default function layout({
   children,
 }: {
   children: React.ReactNode
-}) {
+}) 
+{
+
   const pathName = usePathname()
   
   const { data: session, status } = useSession(
@@ -22,6 +23,7 @@ export default async function layout({
       }
     }
   )
+
   return (
     <section>
       <PageHeader/>

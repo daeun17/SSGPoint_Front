@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import React, { useState } from 'react'
-import HeaderUserStatus from './HeaderUserStatus'
+
 import SideMenu from '../widget/sidemenu/SideMenu'
 import Logo from '../ui/header/Logo'
 import { usePathname } from 'next/navigation'
@@ -9,16 +9,17 @@ import { useSession } from 'next-auth/react'
 import Barcode from './Barcode'
 
 function HeaderTop() {
+
+    
+
     const [isOpened, setIsOpened] = useState<Boolean>(false)
     const [showBarcode, setShowBarcode] = useState<boolean>(false)
 
-    const handleCloseBarcode = () => {
-        setShowBarcode(false);
-    };
 
 
     const pathname = usePathname();
     const session = useSession()
+    
 
     const handleSideMenu = () => {
         setIsOpened(!isOpened)
@@ -30,6 +31,9 @@ function HeaderTop() {
 
     const rogo = "/images/ssgpoint-logo.gif";
     const backurl = "/images/backurl.png";
+
+
+    
 
     return (
         <>
@@ -45,7 +49,7 @@ function HeaderTop() {
                         <li className='text-sm font-medium'>
                             {session.status === 'authenticated' ?
                                 <div>
-                                    <button id="barcode_show_btn" className="barcode_show_btn wp" onClick={toggleBarcode}>
+                                    <button id="barcode_show_btn" className="barcode_show_btn wp" onClick={() => {toggleBarcode(); }}>
                                         <span className="ico_barcode2"></span>
                                         <strong className="font-normal">0</strong>
                                         <span className="point">P</span>
@@ -53,7 +57,7 @@ function HeaderTop() {
                                             <span>바코드 보기</span>
                                         </span>
                                     </button>
-                                    <Barcode isActive={showBarcode} onClose={() => setShowBarcode(false)} />
+                                    <Barcode isActive={showBarcode} token={session.data.user.token} onClose={() => setShowBarcode(false)} />
                                 </div>
                                 : <Link href='/login'>로그인</Link>}
                         </li>
