@@ -11,16 +11,14 @@ export default function SortRadio() {
   
   const handlefilter = (e: React.ChangeEvent<HTMLInputElement>) => {
     settbGb(e.target.value);// tabGb 값 변경해주기 
-    console.log(tabGb);
   }
 
   // tab 변경시 url에 쿼리 값 넣어서 데이터 받아오기 
   const query = useSearchParams();
   const router = useRouter();
   useEffect(()=>{
-      router.push(`/mypoint/pntHistory?tabGb=${tabGb}&fromDt=${query.get("fromDt")}&toDt=${query.get('toDt')}`);
-      //todo data fetch 해서 메뉴 뿌려주기   
-  },[])
+      router.push(`/mypoint/pntHistory?tabGb=${tabGb}&fromDt=${query.get("fromDt")}&toDt=${query.get('toDt')}`); 
+  },[tabGb])
 
 
   const data = FilterMenuData;

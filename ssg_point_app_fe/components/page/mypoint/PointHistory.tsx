@@ -67,7 +67,7 @@ export default function PointHistory() {
                 </span>
             </p>
         </div>
-        <ul>
+        <ul className={style.point_history}>
             {pointData ? pointData.map((item: PointType) => 
                 (<PointHistoryDetail data = {item}/>
             )) : null

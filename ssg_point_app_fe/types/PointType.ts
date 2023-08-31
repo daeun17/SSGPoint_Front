@@ -1,7 +1,7 @@
 export interface PointType {
     "pointId" : number
     "point": number
-    "used" : boolean
+    "used" : string
     "pointType" :  string 
     "createdDate": Date
     "updatedDate": Date
