@@ -9,7 +9,7 @@ export const memberMenuData: MenuType[] = [
     {
         id: 2,
         name: "서비스 동의 관리",
-        url: "/myinfo/serviceAgree"
+        url: ["/myinfo/serviceAgree", "/myinfo/clubAgree"]
     },
     {
         id: 3,
@@ -25,5 +25,6 @@ export const memberMenuData: MenuType[] = [
         id: 5,
         name: "회원 탈퇴",
         url: "/withdrawal/leavePassword"
-    },
+    }
+    
 ];

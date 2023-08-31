@@ -114,6 +114,11 @@ export const headerMenuDatas: HeaderMenuType[] = [
     },
     {
         id: 23,
+        name: "마이 회원정보",
+        url: "/myinfo/clubAgree"
+    },
+    {
+        id: 24,
         name: "마이 페이지",
         url: "/mypage"
     },

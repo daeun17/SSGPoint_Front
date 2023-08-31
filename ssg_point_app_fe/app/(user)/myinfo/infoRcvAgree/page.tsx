@@ -1,3 +1,4 @@
+import Callinfo from '@/components/page/mymember/Callinfo'
 import React from 'react'
 
 export default function page() {
@@ -14,6 +15,7 @@ export default function page() {
           <br />다양한 혜택과 소식을 받으실 수 있습니다.
         </p>
       </div>
+      <Callinfo />
     </div>
   )
 }
