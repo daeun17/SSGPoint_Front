@@ -62,3 +62,23 @@
     box-sizing: border-box;
     padding: 12px 0;
 }
+.gnbDepth2Link {
+    position: relative;
+    color: #767676;
+    display: block;
+    height: 100%;
+    font-size: 15px;
+    line-height: 21px;
+    font-weight: 400;
+    box-sizing: border-box;
+    padding: 12px 0;
+}
+.gnbDepth2LinkActive:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    background: linear-gradient(93.4deg,#f40000,#ff8a00 14.06%,#f9ad05 37.76%,#fc348c 62.77%,#b258cb 78.91%,#00c4b4 94.39%);
+}
