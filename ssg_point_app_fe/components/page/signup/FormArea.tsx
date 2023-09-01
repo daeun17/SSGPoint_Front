@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import styles from './FormArea.module.css'
-import { SignUpFormDataType } from '@/types/signUpFormDataType'
+import { SignUpFormDataType } from '@/types/userDataType'
 import { useRouter } from 'next/navigation';
 import PublicModal from '@/components/widget/modal/Modal';
 import { Button, useDisclosure } from "@nextui-org/react";
@@ -45,9 +45,7 @@ export default function FormArea() {
         }
     }
 
-    const formatPhoneNumber = (number: string) => {
-        return number.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
-    };
+    
 
     const handleSignUp = async () => {
         try {
@@ -74,16 +72,16 @@ export default function FormArea() {
 
     const checkId = async () => {
         try {
-            const response = await fetch(`https://smilekarina.duckdns.org/api/v1/join/${signupData.loginId}`)
+            const response = await fetch(`https://smilekarina.duckdns.org/api/v1/join?loginId=${signupData.loginId}`)
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
             const data = await response.json();
             console.log(data.success);
             if (data.success) {
-                setModalContent("ID 중복 확인이 성공적으로 완료되었습니다.");
+                setModalContent("입력하신 아이디는 사용이 가능 합니다.");
             } else {
-                setModalContent("ID 중복 확인에 실패했습니다. 다른 ID를 사용해주세요.");
+                setModalContent("입력하신 아이디는 사용이 불가능 합니다.");
             }
         } catch (error) {
             console.error("Error sending POST request:", error);
@@ -105,7 +103,7 @@ export default function FormArea() {
             setSignupData({
                 ...signupData,
                 name: tempName,
-                phone: formatPhoneNumber(tempPhone),
+                phone: tempPhone,
             })
         }
         setSignupData(prevData => ({

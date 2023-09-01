@@ -3,10 +3,17 @@
 import React, { useEffect, useState } from 'react'
 import styles from './LoginArea.module.css'
 import Link from 'next/link';
-import { LogInFormDataType } from '@/types/loginFormDataType';
+import { LogInFormDataType } from '@/types/userDataType';
+import { signIn, signOut } from 'next-auth/react';
+import { useSearchParams } from 'next/navigation';
+
 
 
 export default function Loginarea() {
+  const query = useSearchParams();
+  const callBackUrl = query.get('callbackUrl');
+
+
   const isClient = typeof window !== 'undefined';
 
   const [loginData, setLoginData] = useState<LogInFormDataType>({
@@ -69,42 +76,29 @@ export default function Loginarea() {
       alert('아이디와 비밀번호를 입력해주세요.');
       return;
     }
-
     if (!loginData.loginId) {
       alert('아이디를 입력해주세요.');
       return;
     }
-
     if (!loginData.password) {
       alert('비밀번호를 입력해주세요.');
       return;
     }
+    // console.log(loginData)
+    const result = await signIn('credentials', {
+      loginId: loginData.loginId,
+      password: loginData.password,
+      redirect: true,
+      callbackUrl: callBackUrl ? callBackUrl : '/'
+    })
+    
 
-    try {
-      const response = await fetch('/api/v1/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          loginId: loginData.loginId,
-          password: loginData.password
-        })
-      });
-      const data = await response.json();
-
-      console.log(data);
-      alert(JSON.stringify(data));
-
-
-    } catch (error) {
-      console.error("Error sending POST request:", error);
-    }
   };
 
 
 
   return (
+    
     <div className={styles.login_input_area}>
       <div className={styles.input_box}>
         <input id="loginId"
@@ -148,15 +142,16 @@ export default function Loginarea() {
       </div>
       <ul className={styles.btn_list_box}>
         <li>
-          <Link href="" className={styles.btn}>아이디 찾기</Link>
+          <Link href="/member/findIdPw" className={styles.btn}>아이디 찾기</Link>
         </li>
         <li>
-          <Link href="" className={styles.btn}>비밀번호 찾기</Link>
+          <Link href="/member/findPw" className={styles.btn}>비밀번호 찾기</Link>
         </li>
         <li>
           <Link href="/member/join" className={styles.btn}>회원가입</Link>
         </li>
       </ul>
     </div>
+    
   )
 }
