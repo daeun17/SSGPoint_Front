@@ -8,11 +8,6 @@ import { options } from "./api/auth/[...nextauth]/options";
 import { getServerSession } from 'next-auth'
 
 
-export const metadata = {
-  title: '신세계포인트 - 메인',
-  description: '신세계포인트 이용 정보는 물론 쇼핑과 라이프 스타일 혜택까지 볼거리가 풍성한 신세계포인트 앱으로 일상에 신세계를 더해보세요.',
-}
-
 
 
 export default async function Home() {

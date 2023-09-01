@@ -11,17 +11,17 @@ export default async function layout({
 }: {
   children: React.ReactNode
 }) {
-  const pathName = usePathname()
+  // const pathName = usePathname()
   
-  const { data: session, status } = useSession(
-    {
-      required: true,
-      onUnauthenticated() {
-        // if( confirm('로그인이 필요합니다. 로그인 하시겠습니까?') )
-        redirect(`/api/auth/signin?callbackUrl=${pathName}`)
-      }
-    }
-  )
+  // const { data: session, status } = useSession(
+  //   {
+  //     required: true,
+  //     onUnauthenticated() {
+  //       // if( confirm('로그인이 필요합니다. 로그인 하시겠습니까?') )
+  //       redirect(`/api/auth/signin?callbackUrl=${pathName}`)
+  //     }
+  //   }
+  // )
   return (
     <section>
       <PageHeader/>
