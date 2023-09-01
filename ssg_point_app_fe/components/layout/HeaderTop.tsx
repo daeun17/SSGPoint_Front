@@ -58,7 +58,7 @@ function HeaderTop() {
                                             <span>바코드 보기</span>
                                         </span>
                                     </button>
-                                    <Barcode isActive={showBarcode}  onClose={() => setShowBarcode(false)} />
+                                    <Barcode isActive={showBarcode} token={session.data.user.token} onClose={() => setShowBarcode(false)} />
                                 </div>
                                 : <Link href='/login'>로그인</Link>}
                         </li>

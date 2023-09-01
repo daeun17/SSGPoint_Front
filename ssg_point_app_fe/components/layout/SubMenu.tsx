@@ -26,11 +26,11 @@ export default function PageHeader() {
 
   let currentMenuData: MenuType[] = menuDataMapping[pathname] || [];
 
- // If the path does not match any key in menuDataMapping, find if it matches any menu's url
+
 if (currentMenuData.length === 0) {
   for (const key in menuDataMapping) {
       if (menuDataMapping[key].some(menu => {
-          // Check if menu.url is an array and any of the urls in the array matches the path
+          
           if (Array.isArray(menu.url)) {
               return menu.url.some(url => path.includes(url));
           }
@@ -59,13 +59,13 @@ const PageMenuUi = ({ data, path }: { data: MenuType[], path: string }) => {
   return (
     <ul>
       {data.map((menu, idx) => {
-        // Check if the menu's URL matches the current path or if any URL in the menu's URL array matches the current path
+        
         const isActive = Array.isArray(menu.url) ? menu.url.some(url => path.includes(url)) : path.includes(menu.url);
 
         return (
           <li key={idx}>
             <Link 
-              href={Array.isArray(menu.url) ? menu.url[0] : menu.url}  // If url is an array, use the first url for the link
+              href={Array.isArray(menu.url) ? menu.url[0] : menu.url}  
               className={`
                 ${modulestyle.gnbDepth2Link} 
                 ${isActive ? `${modulestyle.tab} ${modulestyle.on} ${modulestyle.gnbDepth2LinkActive}` : modulestyle.tab}
