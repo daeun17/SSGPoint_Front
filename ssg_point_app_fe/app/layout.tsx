@@ -1,6 +1,7 @@
 import Footer from "@/components/layout/Footer"
 import Header from "@/components/layout/Header"
 import './globals.css'
+import AuthProvider from '@/app/context/AuthProvider'
 
 export const metadata = {
   title: 'Next.js',
@@ -15,9 +16,11 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
+      <AuthProvider>
         <Header />
         {children}
         <Footer />
+        </AuthProvider>
         </body>
     </html>
   )

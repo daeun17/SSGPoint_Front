@@ -1,5 +1,7 @@
+
 import React from 'react'
 import styles from './MainMenu.module.css'
+import Link from 'next/link'
 
 export default function MainMenu() {
     return (
@@ -8,9 +10,9 @@ export default function MainMenu() {
                 <h3 className="hidden">메인 메뉴</h3>
                 <ul>
                     <li>
-                        <a href="">
+                        <Link href="/event/ingevent">
                             <img src="/images/logo1.png"
-                                aria-hidden="true" alt="" />이벤트</a>
+                                aria-hidden="true" alt="" />이벤트</Link>
                     </li>
                     <li>
                         <a href="">

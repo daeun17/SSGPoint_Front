@@ -66,5 +66,65 @@ export const headerMenuDatas: HeaderMenuType[] = [
         id: 13,
         name: "회원가입 완료",
         url: "/member/join/success"
-    }
+    },
+    {
+        id: 14,
+        name: "아이디 찾기 본인인증",
+        url: "/member/findIdPw"
+    },
+    {
+        id: 15,
+        name: "아이디 찾기",
+        url: "/member/findIdResult"
+    },
+    {
+        id: 16,
+        name: "비밀번호 찾기 본인인증",
+        url: "/member/findPw"
+    },
+    {
+        id: 17,
+        name: "비밀번호 찾기",
+        url: "/member/findIdPwResult"
+    },
+    {
+        id: 18,
+        name: "마이 회원정보",
+        url: "/myinfo/infoRcvAgree"
+    },
+    {
+        id: 19,
+        name: "마이 회원정보",
+        url: "/myinfo/serviceAgree"
+    },
+    {
+        id: 20,
+        name: "마이 회원정보",
+        url: "/myinfo/cert"
+    },
+    {
+        id: 21,
+        name: "마이 회원정보",
+        url: "/myinfo/changePwd"
+    },
+    {
+        id: 22,
+        name: "마이 회원정보",
+        url: "/withdrawal/leavePassword"
+    },
+    {
+        id: 23,
+        name: "마이 회원정보",
+        url: "/myinfo/clubAgree"
+    },
+    {
+        id: 24,
+        name: "마이 페이지",
+        url: "/mypage"
+    },
+    {
+        id: 25,
+        name: "마이 포인트",
+        url: "/mypoint/pntHistory"
+    },
 ];

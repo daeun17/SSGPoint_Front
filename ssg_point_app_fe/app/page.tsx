@@ -1,16 +1,19 @@
+
+
 import MainEventBanner from "@/components/page/home/eventbanner/MainEventBanner";
 import SubEventBanner from "@/components/page/home/eventbanner/SubEventBanner";
 import MainMenu from "@/components/page/home/mainmenu/MainMenu";
 import React from "react";
-
-export const metadata = {
-  title: '신세계포인트 - 메인',
-  description: '신세계포인트 이용 정보는 물론 쇼핑과 라이프 스타일 혜택까지 볼거리가 풍성한 신세계포인트 앱으로 일상에 신세계를 더해보세요.',
-}
+import { options } from "./api/auth/[...nextauth]/options";
+import { getServerSession } from 'next-auth'
 
 
 
-export default function Home() {
+
+export default async function Home() {
+  
+  const session = await getServerSession(options)
+  console.log(session)
 
 
   return (

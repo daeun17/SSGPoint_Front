@@ -2,12 +2,8 @@
 
 
 import React, { useEffect, useState } from 'react'
-
 import { EventBannerType } from '@/types/eventBannerDataType'
-
 import SwiperComponent from './Swiper';
-
-
 
 
 export default function EventBanner() {
@@ -25,8 +21,6 @@ export default function EventBanner() {
       )
     getEvent()
   }, [])
-
-
 
   return (
     <div className='mb-4'>

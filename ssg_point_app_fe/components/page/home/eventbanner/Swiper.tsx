@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+
+import React, { useState } from 'react'
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
@@ -6,32 +8,35 @@ import 'swiper/css';
 import 'swiper/css/scrollbar';
 // import required modules
 import { Scrollbar } from 'swiper/modules';
-import styles from './Swiper.module.css'
 import { EventBannerType } from '@/types/eventBannerDataType';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Pagination } from 'swiper/modules';
 import 'swiper/css/pagination';
 
 
 
 export default function SwiperComponent(props: { height: number, start: number, end: number, eventList: EventBannerType[] }) {
 
+    const [isCurrentIndex, setIsCurrentIndex] = useState(1);
+    
 
+    const handleTransitionStart = (swiper: any) => {
+        // console.log(swiper.realIndex);
+    
+        setIsCurrentIndex(swiper.realIndex + 1);
+    }
+    
+    
 
     return (
         <div>
             <div>
                 <Swiper
-                    scrollbar={{
-                        hide: false,
-
-                    }}
-                    pagination={{
-                        type: 'fraction',
-                    }}
-                    modules={[Pagination, Scrollbar]}
-                    className="main_event_banner"
+                    spaceBetween={0}
+                    slidesPerView={1}
+                    modules={[Scrollbar]}
+                    scrollbar={{ draggable: true }}
+                    onTransitionStart={handleTransitionStart}
                 >
                     {
                         props.eventList.map((event, idx) => (
@@ -44,8 +49,29 @@ export default function SwiperComponent(props: { height: number, start: number, 
                             ) : null
                         ))
                     }
+                    {
+                    props.end - props.start !== 1
+                        ?
+                        <div className='swiper-control'>
+                            <div className='swiper-pagination'>
+                                <span className='swiper-pagination-current'>
+                                    {isCurrentIndex}
+                                </span>
+                                /
+                                <span className='swiper-pagination-total'>
+                                    {props.end - props.start}
+                                </span>
+                            </div>
+                        </div>
+                        :
+                        null
+                }
                 </Swiper>
+                
             </div>
         </div>
     )
 }
+
+
+
