@@ -2,14 +2,14 @@
 
 import React, { useEffect, useState } from 'react'
 import styles from './Barcode.module.css'
-import { useBarcode } from 'next-barcode';
+// import { useBarcode } from 'next-barcode';
 
 
 
 interface BarcodeProps {
     onClose: () => void;
     isActive: boolean;
-    token: string;
+    token?: string;
 }
 
 
@@ -18,16 +18,16 @@ export default function Barcode({ onClose, isActive, token }: BarcodeProps) {
     const [barcode, setBarcode] = useState<string>('')
 
 
-    const { inputRef } = useBarcode({
-        value: barcode,
-        options: {
-            background: '#ffffff',
-            width: 2.4,
-            height: 52,
-            font: "bold 24px Inter",
-            textAlign: "right",
-        }
-    });
+    // const { inputRef } = useBarcode({
+    //     value: barcode,
+    //     options: {
+    //         background: '#ffffff',
+    //         width: 2.4,
+    //         height: 52,
+    //         font: "bold 24px Inter",
+    //         textAlign: "right",
+    //     }
+    // });
 
     
 
@@ -81,7 +81,7 @@ export default function Barcode({ onClose, isActive, token }: BarcodeProps) {
                                     <div className={`${styles.image_barcode}`}>
                                         <div id="barcode0" className={`${styles.barcode0}`}>
                                             <div>
-                                                <svg ref={inputRef} />
+                                                {/* <svg ref={inputRef} /> */}
                                             </div>
                                             <div style={{ "display": "none" }}> 바코드 생성 실패 </div>
                                         </div>
