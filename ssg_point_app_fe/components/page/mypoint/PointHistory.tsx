@@ -37,19 +37,19 @@ export default function PointHistory() {
     const [pointData, setPointData] = useState<PointType[]>();
     const [atotalPoint, setATotalPoint] = useState<number>();
     const [uTotalPoint,setUTotalPoint] = useState<number>();
-    useEffect(()=>{
-        const getData = async() => {
-            await fetch('http://localhost:9999/pointlist')
-            .then(res => res.json())
-            .then(data =>{
-                setPointData(data.result.pntList)
-                setATotalPoint(data.result.aTotalPoint)
-                setUTotalPoint(data.result.uTotalPoint)
-                console.log(data)
-            })
-        }
-        getData();
-    },[])
+    // useEffect(()=>{
+    //     const getData = async() => {
+    //         await fetch('http://localhost:9999/pointlist')
+    //         .then(res => res.json())
+    //         .then(data =>{
+    //             setPointData(data.result.pntList)
+    //             setATotalPoint(data.result.aTotalPoint)
+    //             setUTotalPoint(data.result.uTotalPoint)
+    //             console.log(data)
+    //         })
+    //     }
+    //     getData();
+    // },[])
 
   return (
     <div className={style.point_wrap}>

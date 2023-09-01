@@ -4,11 +4,16 @@ import Logo from '@/components/ui/header/Logo'
 import { signOut, useSession } from 'next-auth/react'
 import Image from 'next/image'
 import Menu from './Menu'
+import { dateFormat } from '@/components/page/mypoint/PointFilter'
 
 
 export default function SideContents() {
   const session = useSession()
   const rogo = "/images/ssgpoint-logo.gif";
+  const formatDate = dateFormat
+  const nowdate = new Date();
+  const defultdate = new Date();// 현재 날짜 조회 
+  defultdate.setMonth(nowdate.getMonth()-1); // 기본 설정 날짜 
   return (
     <div>
       <nav className={`${styles.lnb}`}>
@@ -68,7 +73,7 @@ export default function SideContents() {
             <div className={`${styles.lnb_favorit_list}`}>
               <div className={`${styles.favorit_list_cnt}`}>
                 <p className={`${styles.menu_box}`}>
-                  <a className={`${styles.menu}`} href="/mypoint/pntHistory">
+                  <a className={`${styles.menu}`} href={`/mypoint/pntHistory?pointType=all&rangeStartDate=${formatDate({formatdate: defultdate})}&rangeEndDate=${formatDate({formatdate: nowdate})}&usedType=all&pointHistoryType=all`}>
                     <Image src="/images/menu_big_00.png" alt="" width={40} height={40} />
                     포인트 내역
                   </a>
