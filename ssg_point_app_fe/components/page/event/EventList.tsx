@@ -38,7 +38,7 @@ export default function EventList() {
                     key = {item.id}
                     id = {item.id}
                     img = {item.event_thumbnail}
-                    title = {item.event_head}
+                    title = {item.eventHead}
                     startdate = {item.event_start}
                     enddate = {item.event_end}
                 />
