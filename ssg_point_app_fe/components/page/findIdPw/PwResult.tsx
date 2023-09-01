@@ -35,7 +35,7 @@ export default function PwResult() {
             onOpen();
         }
         const res = await fetch('https://smilekarina.duckdns.org/api/v1/member/findPw', {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -47,8 +47,8 @@ export default function PwResult() {
             ),
         });
         const data = await res.json();
-        console.log(data);
-        if (data.result === "success") {
+        console.log(data.success);
+        if (data.success === true) {
             setModalContent("비밀번호가 변경되었습니다.");
             setRoutePath("/login");
             onOpen();
@@ -113,7 +113,7 @@ export default function PwResult() {
                                 
                             );
                             newPassword();
-                            router.push('/member/join/success')
+                            
                         }}
                         >확인</button>
                 </div>

@@ -30,7 +30,7 @@ export default function Barcode({ onClose, isActive, token }: BarcodeProps) {
     });
     
 
-    console.log(token)
+
 
     useEffect(() => {
         const getBarcode = async () => {
