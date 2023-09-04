@@ -1,13 +1,11 @@
 "use client"
-import { myPointMenuData } from '@/datas/myPointMenuData';
-import { eventMenuData } from '@/datas/eventMenuData';
+
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React from 'react'
 import modulestyle from "./SubMenu.module.css"
 import { MenuType } from '@/types/MenuType';
-import { memberMenuData } from '@/datas/myMemberData';
-import { mypageMenuData } from '@/datas/myPageData';
+import { mypageMenuData, memberMenuData, eventMenuData, myPointMenuData, myloungeMenuData } from '@/datas/subMenuData';
 
 const menuDataMapping: {
   [key: string]: MenuType[];
@@ -15,7 +13,8 @@ const menuDataMapping: {
   mypoint: myPointMenuData,
   event: eventMenuData,
   myinfo: memberMenuData,
-  mypage: mypageMenuData
+  mypage: mypageMenuData,
+  mylounge: myloungeMenuData
   // 다른 pathname을 추가하려면 여기에 추가하세요.
   // 예: anotherPath: anotherMenuData
 };

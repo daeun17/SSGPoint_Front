@@ -45,7 +45,7 @@ export default function FormArea() {
         }
     }
 
-    
+
 
     const handleSignUp = async () => {
         try {
@@ -55,12 +55,25 @@ export default function FormArea() {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    loginId: signupData.loginId,
-                    userName: signupData.name,
-                    email: "",
-                    password: signupData.password,
-                    phone: signupData.phone,
-                    address: signupData.address
+                    userSignUpIn:
+                    {
+                        loginId: signupData.loginId,
+                        userName: signupData.name,
+                        email: "",
+                        password: signupData.password,
+                        phone: signupData.phone,
+                        address: signupData.address
+                    },
+                    agreeAdvertiseIn:
+                    {
+                        optionOne: signupData.agree1,
+                        optionTwo: signupData.agree2,
+                        agreeEmail: signupData.agree3,
+                        letter: signupData.agree4,
+                        dm: signupData.agree5,
+                        tm: signupData.agree6
+                    }
+
                 })
             }).then(res => res.json())
                 .then(data => console.log(data))
@@ -121,7 +134,7 @@ export default function FormArea() {
         <div>
             <div>
                 <div>
-                <PublicModal isOpen={isOpen} onOpenChange={onOpenChange} content={modalContent}/>
+                    <PublicModal isOpen={isOpen} onOpenChange={onOpenChange} content={modalContent} />
                 </div>
             </div>
             <div className={styles.cnt_box0}>

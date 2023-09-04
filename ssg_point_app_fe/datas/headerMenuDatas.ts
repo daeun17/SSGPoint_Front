@@ -127,4 +127,29 @@ export const headerMenuDatas: HeaderMenuType[] = [
         name: "비밀번호 변경",
         url: "/member/findPwResult"
     },
+    {
+        id: 26,
+        name: "마이 라운지",
+        url: "/mylounge/findstore"
+    },
+    {
+        id: 27,
+        name: "마이 라운지",
+        url: "/mylounge/findstore"
+    },
+    {
+        id: 28,
+        name: "마이 라운지",
+        url: "/mylounge/findstore"
+    },
+    {
+        id: 29,
+        name: "마이 라운지",
+        url: "/mylounge/findstore"
+    },
+    {
+        id: 30,
+        name: "마이 라운지",
+        url: "/mylounge/findstore"
+    },
 ];

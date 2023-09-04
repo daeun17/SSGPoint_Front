@@ -1,27 +1,41 @@
+'use client'
+
 import Link from 'next/link'
 import React from 'react'
 import styles from './SnsLogin.module.css'
+import { signIn } from 'next-auth/react'
+import { useSearchParams } from 'next/navigation'
 
 export default function SnsLogin() {
+
+    const query = useSearchParams();
+    const callBackUrl = query.get('callbackUrl');
+
     return (
         <div>
             <div className={styles.sns_list_box}>
                 <h3 className={styles.tit}>간편 로그인</h3>
                 <ul className={styles.sns_list}>
                     <li className={styles.naver}>
-                        <Link href="" title="새창 열림" className={styles.btn}>
+                        <button onClick={() => signIn('naver', {
+                            redirect: true,
+                            callbackUrl: callBackUrl ? callBackUrl : '/'
+                        })} title="새창 열림" className={styles.btn}>
                             <span className='hidden'>naver</span>
-                        </Link>
+                        </button>
                     </li>
                     <li className={styles.kakao}>
-                        <Link href="" title="새창 열림" className={styles.btn}>
+                        <button onClick={() => signIn('kakao', {
+                            redirect: true,
+                            callbackUrl: callBackUrl ? callBackUrl : '/'
+                        })} title="새창 열림" className={styles.btn}>
                             <span className='hidden'>kakao</span>
-                        </Link>
+                        </button>
                     </li>
                     <li className={styles.apple}>
-                        <Link href="" title="새창 열림" className={styles.btn}>
+                        <button onClick={() => signIn()} title="새창 열림" className={styles.btn}>
                             <span className='hidden'>apple</span>
-                        </Link>
+                        </button>
                     </li></ul>
                 {/* <div id="alertPopupsnsLoginListLoginErrorAlertPopup" className={styles.alert_popup}>
           <div className={styles.layer}>
