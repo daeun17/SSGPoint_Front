@@ -16,6 +16,7 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
+        <div id="modal-root"></div>
       <AuthProvider>
         <Header />
         {children}

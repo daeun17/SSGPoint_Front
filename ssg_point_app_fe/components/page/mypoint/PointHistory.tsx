@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import style from "./MyPoint.module.css"
 import PointHistoryDetail from './PointHistoryDetail';
 import { usePathname } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
 export default function PointHistory() {
 
@@ -11,7 +12,7 @@ export default function PointHistory() {
     // const pathname = usePathname();
     // const apipath = "/point/pointList"
     // const query = useSearchParams();
-    // const session = useSession();
+    const session = useSession();
 
     // const [pointData, setPointData] = useState<PointType[]>();
     // useEffect(()=>{
@@ -37,19 +38,20 @@ export default function PointHistory() {
     const [pointData, setPointData] = useState<PointType[]>();
     const [atotalPoint, setATotalPoint] = useState<number>();
     const [uTotalPoint,setUTotalPoint] = useState<number>();
-    // useEffect(()=>{
-    //     const getData = async() => {
-    //         await fetch('http://localhost:9999/pointlist')
-    //         .then(res => res.json())
-    //         .then(data =>{
-    //             setPointData(data.result.pntList)
-    //             setATotalPoint(data.result.aTotalPoint)
-    //             setUTotalPoint(data.result.uTotalPoint)
-    //             console.log(data)
-    //         })
-    //     }
-    //     getData();
-    // },[])
+    useEffect(()=>{
+        const getData = async() => {
+            await fetch('http://localhost:9999/pointlist')
+            .then(res => res.json())
+            .then(data =>{
+                setPointData(data.result.pntList)
+                setATotalPoint(data.result.aTotalPoint)
+                setUTotalPoint(data.result.uTotalPoint)
+                console.log(data)
+                console.log(session.data? session.data.user.token: null)
+            })
+        }
+        getData();
+    },[])
 
   return (
     <div className={style.point_wrap}>
