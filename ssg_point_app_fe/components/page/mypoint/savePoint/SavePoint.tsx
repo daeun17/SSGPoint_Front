@@ -15,8 +15,7 @@ export default function SavePoint() {
         </p>
     </div>
     <div className={style.mypoint_cnt}>
-        <p className={style.sp_line_tit0}> 영수증 정보 등록</p>
-        
+        <p className={style.sp_line_tit0}> 영수증 정보 등록</p>        
 
     </div>
     </>
