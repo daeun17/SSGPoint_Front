@@ -151,6 +151,8 @@ export default function Loginarea() {
           <Link href="/member/join" className={styles.btn}>회원가입</Link>
         </li>
       </ul>
+      
+
     </div>
     
   )

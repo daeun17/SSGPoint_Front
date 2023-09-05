@@ -214,7 +214,7 @@ export const SideMenuData: SideMenuDataType[] = [
         title: "마이 페이지",
         subtitle: "마이 라운지",
         menuName: "매장 찾기",
-        menuUrl: "/",
+        menuUrl: "/mylounge/findstore",
         menuIcon: "/images/sideMenu/menu_23.png"
     },
     {
@@ -265,4 +265,5 @@ export const SideMenuData: SideMenuDataType[] = [
         menuUrl: "/",
         menuIcon: "/images/sideMenu/menu_33.png"
     },
+    
 ];

@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation'
 import BackUrl from '../ui/header/BackUrl'
 import { useSession } from 'next-auth/react'
 import Barcode from './Barcode'
+import GetUsablePoint from './GetUsablePoint'
 
 function HeaderTop() {
 
@@ -52,13 +53,13 @@ function HeaderTop() {
                                 <div>
                                     <button id="barcode_show_btn" className="barcode_show_btn wp" onClick={() => {toggleBarcode(); }}>
                                         <span className="ico_barcode2"></span>
-                                        <strong className="font-normal">0</strong>
+                                        <GetUsablePoint token={session.data.user.token} />
                                         <span className="point">P</span>
                                         <span className="blind">
                                             <span>바코드 보기</span>
                                         </span>
                                     </button>
-                                    <Barcode isActive={showBarcode}  onClose={() => setShowBarcode(false)} />
+                                    <Barcode isActive={showBarcode} token={session.data.user.token} onClose={() => setShowBarcode(false)} />
                                 </div>
                                 : <Link href='/login'>로그인</Link>}
                         </li>
