@@ -1,13 +1,23 @@
 "use client"
-import { useRouter, useSearchParams } from 'next/navigation'
+import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import React, { useEffect, useMemo, useState } from 'react'
 
-export default function () {
+export default function SelectSortType () {
 
   const router = useRouter();
+  const pathname = usePathname();
+
+
   const handleSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
     console.log(e.target.value);
-    router.push(`/event/ingevent?_sort=${e.target.value}&_order=${e.target.value === "reg_date" ? "desc" : "asc"}`);
+    if(pathname === "/event/ingevent"){
+      router.push(`/event/ingevent?_sort=${e.target.value}&_order=${e.target.value === "reg_date" ? "desc" : "asc"}`);
+      // router.push(`/event/ingevent/${e.target.value}`);
+      
+    }else if(pathname === "/couponPage"){
+      router.push(`/couponPage/${e.target.value}?page=0&size=10`);
+    }
+    
   }
 
   return (

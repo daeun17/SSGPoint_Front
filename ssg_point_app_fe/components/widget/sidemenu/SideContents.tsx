@@ -79,7 +79,7 @@ export default function SideContents() {
                   </a>
                 </p>
                 <p className={`${styles.menu_box}`}>
-                  <a className={`${styles.menu}`} href="">
+                  <a className={`${styles.menu}`} href="/mypoint/chgPntPwdCert">
                   <Image src="/images/menu_big_05.png" alt="" width={40} height={40} />
                     포인트 비밀번호 변경
                   </a>
