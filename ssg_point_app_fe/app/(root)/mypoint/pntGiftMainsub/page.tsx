@@ -9,7 +9,6 @@ export default function page() {
   return (
     <div className='box-bording px-5'>
         <PntGiftsubHeader/>
-        <PntGiftsubSerchUser/>
         <PntGiftContent/>
     </div>
   )
