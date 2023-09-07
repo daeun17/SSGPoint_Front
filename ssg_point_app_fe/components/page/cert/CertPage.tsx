@@ -55,6 +55,18 @@ export default function CertPage() {
                 setRoutePath('/member/findPw')
                 onOpen();
             }
+        }else if (routePath === '/mypoint/chgPntPwdCert') {
+            const result = await checkId(certData.name, certData.phone)
+            if (result) {
+                localStorage.setItem('loginId', result.toString())
+                router.push('/mypoint/chgPntPwd')
+            }
+            else {
+                setModalContent("회원정보가 없습니다.\n정확한 정보를 입력하신 후 다시 시도해 주세요.");
+                setRoutePath('/mypoint/chgPntPwdCert')
+                onOpen();
+            }
+            
         }
     }
 
