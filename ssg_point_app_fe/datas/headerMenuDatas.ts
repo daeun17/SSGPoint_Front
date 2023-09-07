@@ -167,4 +167,9 @@ export const headerMenuDatas: HeaderMenuType[] = [
         name: "마이 회원정보",
         url: "/withdrawal/leaveOnline"
     },
+    {
+        id: 33,
+        name: "마이 회원정보",
+        url: "/withdrawal/leaveOnline"
+    },
 ];

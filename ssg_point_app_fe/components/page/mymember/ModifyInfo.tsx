@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import styles from './FormArea.module.css'
+import styles from './ModifyInfo.module.css'
 import { SignUpFormDataType } from '@/types/userDataType'
 import { useRouter } from 'next/navigation';
 import PublicModal from '@/components/widget/modal/Modal';
@@ -10,7 +10,7 @@ import { DaumAddressType } from '@/types/DaumAddressType';
 import PostCodeDaum from '@/components/widget/post/PostCodeDaum';
 
 
-export default function FormArea() {
+export default function ModifyInfo() {
 
     const isClient = typeof window !== 'undefined';
     const router = useRouter();
