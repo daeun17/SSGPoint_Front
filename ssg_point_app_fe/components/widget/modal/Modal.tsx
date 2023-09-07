@@ -1,8 +1,10 @@
+
+
 import React from "react";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button } from "@nextui-org/react";
 import { usePathname, useRouter } from "next/navigation";
 import { withdrawal } from "@/handler/WithdrawalHandle";
-import { useSession } from "next-auth/react";
+
 
 type PublicModalProps = {
     isOpen: boolean;
