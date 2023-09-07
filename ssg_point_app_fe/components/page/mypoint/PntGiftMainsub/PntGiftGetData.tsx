@@ -14,23 +14,53 @@ export default function PntGiftGetData() {
       </div>
       <div className={style.margin_box}>
         <p className={style.p_txt3}> 포인트 비밀번호</p>
-          <input
-            className={style.input_box1}
-            type="password"
-            id='pointPw'
-            maxLength={4}
-            datatype='number'
-          />
-          <a href="/mypoint/chgPntPwdCert" className={style.p_txt1}>포인트 비밀번호가 기억나지 않으세요? </a>
-      </div>
-      <div className={style.margin_box}>
-        <p className={style.p_txt2}>포인트 선물 메시지</p>
-        <input type='radio' value="사용" id="use" name='checkused'/>
-        <label htmlFor="use" className={style.input_radio} >선물</label>
-        <input type='radio' value="사용 안함" id="notuse" name='checkused' />
-        <label htmlFor="notuse" className={style.input_radio} >사용 안함</label>
+        <input
+          className={style.input_box1}
+          type="password"
+          id='pointPw'
+          maxLength={4}
+          datatype='number'
+        />
+        <a href="/mypoint/chgPntPwdCert" className={style.p_txt1}>포인트 비밀번호가 기억나지 않으세요? </a>
       </div>
 
+      {/* 포인트 선물 메시지 */}
+      <div className={style.margin_box}>
+        <p className={style.p_txt2}>포인트 선물 메시지</p>
+        <div className={`${style.rd_group_box} ${style.col2}`}>
+          <div className={style.rd_box}>
+            <input id="isUsed"
+              type="radio"
+              name='isUsed' />
+            <label htmlFor="isUsed">사용</label>
+          </div>
+          <div className={style.rd_box}>
+            <input id="isnoUsed"
+              type="radio"
+              name='isUsed' />
+            <label htmlFor="isnoUsed">사용 안함</label>
+          </div>
+        </div>
+      </div>
+
+
+      <div className={style.cardChoose}>
+        <p className={style.nochosse}>축하해요</p>
+        <p className={style.nochosse}>감사해요</p>
+        <p className={style.nochosse}>미안해요</p>
+        <p className={style.nochosse}>사랑해요</p>
+      </div>
+
+      <div className='box-border my-[20px] flex justify-center'>
+        <div className={style.gift_card_paper}>
+          <div className='w-[315px] mx-auto'>
+            <div className={style.card_cotents}>
+              <textarea name="cardContents" id="메세지카드내용" maxLength={50} rows={3}
+                className={style.card_cotents_textarea} />
+            </div>
+          </div>
+        </div>
+      </div>
 
       <div className={style.btn_box}>
         <p className={style.btn1}>미리보기</p>
@@ -38,6 +68,6 @@ export default function PntGiftGetData() {
           선물하기
         </button>
       </div>
-    </form>
+    </form >
   )
 }

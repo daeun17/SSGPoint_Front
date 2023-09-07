@@ -19,7 +19,6 @@
     padding: 8px 0 0 0;
 }
 
-/* 준영님 코드 */
 .input_box1{
     box-sizing: border-box;
     display: block;
@@ -171,7 +170,43 @@
     margin-top: 20px;
 }
 
-.input_radio :before {
+
+
+.rd_group_box.col2 .rd_box {
+    width: 30%
+}
+
+.rd_group_box.col_f {
+    display: -ms-flexbox;
+    display: flex
+}
+
+.rd_group_box.col_f .rd_box {
+    width: 55px
+}
+
+.rd_group_box {
+    font-size: 0;
+    margin-top: 16px
+}
+
+.rd_box {
+    position: relative;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 0
+}
+
+.rd_box label {
+    display: block;
+    min-height: 22px;
+    padding: 1px 0 0 30px;
+    line-height: 18px;
+    font-size: 13px;
+    word-break: keep-all
+}
+
+.rd_box label:before {
     content: "";
     position: absolute;
     left: 0;
@@ -181,12 +216,58 @@
     background: #fff;
     border: 1px solid #505050;
     border-radius: 50%;
-    z-index: 2;
-    
+    z-index: 2
 }
 
-.input_radio:before {
+.rd_box.color_g1 label:before {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    box-sizing: border-box
+}
+
+.rd_box.color_g1 input:checked~label:before {
+    border: none
+}
+
+.rd_box input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    border: none
+}
+
+.rd_box input:checked+label:before,
+.rd_box input:checked~label:before {
     background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAiCAYAAAAge+tMAAAACXBIWXMAACxLAAAsSwGlPZapAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAEGSURBVHgB1ZfhDYMgEIWvG7hBu0FH6SgdwRHaTRzJERzhFZJr2hgEFQ4eX0KM/jCfYF7eiXTKRToBwM1dnnr7lh7w0m4t+LEIOyo9Y4Uw4/yGkHQP4hPC8P4qTm7ENg9hJCE9CiN+N3uUXsfeP5Mwgo3YU/zzQdhAJPb0+VUYQST2ktJ6VC9d1b4QObGHQBdw6y7GIDf2dJdDx2QmjxKxtyFuJo9SsZd4UVF5lI49L2ctD6vYs5ZHTuy1kkeNtldaHjXbXil5tGh7ufJo2fbOyoOh7R2VB1PbOyIPy9izkgfrkJuQj9F+XjwhzzPkHpDnG3J3yM9gHHI9EXkvzTnkfgnIm8feB4Jf38SOCiBoAAAAAElFTkSuQmCC) no-repeat 50% #000;
     border-color: #000;
-    background-size: 12px auto;
+    background-size: 12px auto
+}
+
+.cardChoose{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.cardChoose p {
+    width: 100%;
+    text-align: center;
+    border: #bcbcbc;
+    background-color: #e5e5e5;
+    padding: 15px 2px 15px;
+    font-size: 14px;
+}
+.cardChoose p .chosse {
+    width: 100%;
+    text-align: center;
+    border: #bcbcbc;
+    background-color: #ea035c;
+    padding: 15px 2px 15px;
+    font-size: 14px;
 }
