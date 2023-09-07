@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import style from "./MyPoint.module.css"
 import PointHistoryDetail from './PointHistoryDetail';
 import { usePathname } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 
 export default function PointHistory() {
 
@@ -11,7 +12,7 @@ export default function PointHistory() {
     // const pathname = usePathname();
     // const apipath = "/point/pointList"
     // const query = useSearchParams();
-    // const session = useSession();
+    const session = useSession();
 
     // const [pointData, setPointData] = useState<PointType[]>();
     // useEffect(()=>{
@@ -46,6 +47,7 @@ export default function PointHistory() {
                 setATotalPoint(data.result.aTotalPoint)
                 setUTotalPoint(data.result.uTotalPoint)
                 console.log(data)
+                console.log(session.data? session.data.user.token: null)
             })
         }
         getData();
