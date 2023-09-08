@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import styles from './Barcode.module.css'
-// import { useBarcode } from 'next-barcode';
+import { useBarcode } from 'next-barcode';
 
 
 
@@ -18,52 +18,49 @@ export default function Barcode({ onClose, isActive, token }: BarcodeProps) {
     const [barcode, setBarcode] = useState<string>('')
 
 
-    // const { inputRef } = useBarcode({
-    //     value: barcode,
-    //     options: {
-    //         background: '#ffffff',
-    //         width: 2.4,
-    //         height: 52,
-    //         font: "bold 24px Inter",
-    //         textAlign: "right",
-    //     }
-    // });
-
+    const { inputRef } = useBarcode({
+        value: barcode ? barcode : "default_value", // barcode가 없을 경우의 기본값
+        options: {
+            background: '#ffffff',
+            width: 2.4,
+            height: 52,
+            font: "bold 24px Inter",
+            textAlign: "right",
+        }
+    });
     
 
-    useEffect(() => {
-        const getBarcode = async () => {
-            if (!token) {
-                console.error("Token is not provided.");
-                return; 
-            }
-            
 
-            try {
-                const response = await fetch(`https://smilekarina.duckdns.org/api/v1/card/pointcard`, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                    }
-                    
-                });
 
-                if (!response.ok) {
-                    throw new Error(`Fetch failed with status: ${response.status}`);
-                }
+    // useEffect(() => {
+    //     const getBarcode = async () => {
+    //         if (!token) {
+    //             console.error("Token is not provided.");
+    //             return;
+    //         }
+    //         try {
+    //             const response = await fetch(`https://smilekarina.duckdns.org/api/v1/card/pointcard`, {
+    //                 method: 'GET',
+    //                 headers: {
+    //                     'Content-Type': 'application/json',
+    //                     'Authorization': `Bearer ${token}`
+    //                 }
+    //             });
 
-                const data = await response.json();
-                setBarcode(data.result.cardNumber);
-                
-            } catch (error) {
-                console.error('Error fetching barcode:', error);
-            }
-        };
+    //             if (!response.ok) {
+    //                 throw new Error(`Fetch failed with status: ${response.status}`);
+    //             }
+    //             const data = await response.json();
+    //             setBarcode(data.result.cardNumber);
 
-        getBarcode();
-        
-    }, []); 
+    //         } catch (error) {
+    //             console.error('Error fetching barcode:', error);
+    //         }
+    //     };
+
+    //     getBarcode();
+
+    // }, []);
 
 
     return (
@@ -81,7 +78,7 @@ export default function Barcode({ onClose, isActive, token }: BarcodeProps) {
                                     <div className={`${styles.image_barcode}`}>
                                         <div id="barcode0" className={`${styles.barcode0}`}>
                                             <div>
-                                                {/* <svg ref={inputRef} /> */}
+                                                <svg ref={inputRef} />
                                             </div>
                                             <div style={{ "display": "none" }}> 바코드 생성 실패 </div>
                                         </div>

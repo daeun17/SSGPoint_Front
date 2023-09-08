@@ -60,7 +60,7 @@ export default function Loginarea() {
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const autoLogin = isClient && localStorage.getItem('autoLogin') || '';
-      console.log("localStorage", autoLogin.length > 0 ? autoLogin : 'no data');
+      
       if (autoLogin) {
         setLoginData({
           ...loginData,
@@ -151,6 +151,8 @@ export default function Loginarea() {
           <Link href="/member/join" className={styles.btn}>회원가입</Link>
         </li>
       </ul>
+      
+
     </div>
     
   )

@@ -2,19 +2,18 @@
 
 import React, { useEffect, useState } from 'react'
 import styles from './PwResult.module.css'
-import { ChangePWFormDataType } from '@/types/userDataType'
-import { useRouter } from 'next/navigation';
+import { FindPWFormDataType } from '@/types/userDataType'
 import PublicModal from '@/components/widget/modal/Modal';
 import { useDisclosure } from '@nextui-org/react';
 
 export default function PwResult() {
-    const router = useRouter();
+    
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const [modalContent, setModalContent] = useState<string>("");
     const [routePath, setRoutePath] = useState<string>("");
-    const [pwresult, setPwresult] = useState<string>("");
+    
 
-    const [newPw, setNewPw] = useState<ChangePWFormDataType>({
+    const [newPw, setNewPw] = useState<FindPWFormDataType>({
         loginId: '',
         password: '',
         passwordCk: '',
@@ -35,7 +34,7 @@ export default function PwResult() {
             onOpen();
         }
         const res = await fetch('https://smilekarina.duckdns.org/api/v1/member/findPw', {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -47,8 +46,8 @@ export default function PwResult() {
             ),
         });
         const data = await res.json();
-        console.log(data);
-        if (data.result === "success") {
+        console.log(data.success);
+        if (data.success === true) {
             setModalContent("비밀번호가 변경되었습니다.");
             setRoutePath("/login");
             onOpen();
@@ -109,11 +108,9 @@ export default function PwResult() {
                     <button 
                         className={styles.btn_primary}
                         onClick={() => {
-                            console.log(
-                                
-                            );
+                            
                             newPassword();
-                            router.push('/member/join/success')
+                            
                         }}
                         >확인</button>
                 </div>

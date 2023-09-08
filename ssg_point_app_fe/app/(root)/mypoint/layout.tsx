@@ -6,11 +6,9 @@ import { useSession } from 'next-auth/react'
 import { redirect, usePathname } from "next/navigation";
 
 
-export default async function layout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+// export default async function layout(props: {children: React.ReactNode, modal :React.ReactNode}) {
+export default async function layout(props: {children: React.ReactNode}) {
+
   const pathName = usePathname()
   
   const { data: session, status } = useSession(
@@ -24,8 +22,9 @@ export default async function layout({
   )
   return (
     <section>
+      {/* {props.modal} */}
       <PageHeader/>
-      {children}
+      {props.children}
     </section>
   )
 }

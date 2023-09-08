@@ -1,25 +1,21 @@
 "use client"
-import React, { useEffect, useState } from 'react'
+import React, { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import style from './MyPoint.module.css'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { FilterMenuData } from '@/datas/FilterMenuData'
+import { sortKeysType } from './PointList'
 
 // 포인트 내역에 Menu  
-export default function SortRadio() {
-  
-  const [tabGb,settbGb] = useState<String>("1"); // tabGb변경을 위한 state 관리  
+export default function SortRadio(
+  {querySort, setQuerySort}
+  :
+  {querySort: sortKeysType, setQuerySort: Dispatch<SetStateAction<sortKeysType>>}) {
   
   const handlefilter = (e: React.ChangeEvent<HTMLInputElement>) => {
-    settbGb(e.target.value);// tabGb 값 변경해주기 
+    setQuerySort({
+      ...querySort,
+      pointType: e.target.value
+    });// tabGb 값 변경해주기 
   }
-
-  // tab 변경시 url에 쿼리 값 넣어서 데이터 받아오기 
-  const query = useSearchParams();
-  const router = useRouter();
-  useEffect(()=>{
-      router.push(`/mypoint/pntHistory?tabGb=${tabGb}&fromDt=${query.get("fromDt")}&toDt=${query.get('toDt')}`); 
-  },[tabGb])
-
 
   const data = FilterMenuData;
   return (

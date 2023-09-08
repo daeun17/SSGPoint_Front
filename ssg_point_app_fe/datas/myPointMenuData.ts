@@ -30,5 +30,10 @@ export const myPointMenuData : MenuType[] = [
         id : 6,
         name : "영수증으로 적립",
         url : "/mypoint/savePoint"
+    },    
+    {
+        id : 7,
+        name : "포인트 비밀번호 변경",
+        url : "/mypoint/chgPntPwdCert"
     },
 ]
